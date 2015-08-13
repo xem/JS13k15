@@ -30,7 +30,7 @@ a: all data (countries,  capitols,  places)
 b: Uint8Array during data load
 c: canvas context
 d: function used to display the earth (flat or 3D)
-e: current state of the game (1: home screen,  2: level description, 3: puzzle,  4: game over)
+e: current state of the game (1: home screen, 2: level description, 3: puzzle, 4: game over)
 f: stars position
 g: game over
 h: 
@@ -49,8 +49,8 @@ t: all countries
 u: easy countries shuffled
 v: medium countries shuffled
 w: hard countries shuffled
-x: X coord
-y: Y coord
+x: current X coordinate to draw
+y: current Y coordinate to draw
 z: all capitols
 A: easy capitols shuffled
 B: medium capitols shuffled
@@ -60,21 +60,21 @@ E: easy places shuffled
 F: medium places shuffled
 G: hard places shuffled
 H:
-I:
-J:
+I: X coordinate clicked
+J: Y coordinate clicked
 K:
 L:
 M: Math
-N: Current side of a country on a 3D view
-O: Current subpath (island)
-P: Current path (whole country)
+N: current side of a country on a 3D view
+O: current subpath (island)
+P: current path (whole country)
 Q:
 R:
-S: Stars rotation offset
-T: World rotation offset
+S: stars rotation offset
+T: world rotation offset
 U:
 V:
-W: Canvas
+W: canvas
 X: temp var
 Y: temp var
 Z: temp var
@@ -143,6 +143,10 @@ F = [];
 // Hard places
 G = [];
 
+// Coordinates clicked
+I = 0;
+J = 0;
+
 // Stars rotation
 S = 0;
 
@@ -198,12 +202,12 @@ with(new XMLHttpRequest){
         }
         
         // Shuffle the puzzles
-        u.sort(function(){return 0.5 - M.random()});
-        v.sort(function(){return 0.5 - M.random()});
-        w.sort(function(){return 0.5 - M.random()});
-        A.sort(function(){return 0.5 - M.random()});
-        B.sort(function(){return 0.5 - M.random()});
-        C.sort(function(){return 0.5 - M.random()});
+        u.sort(X=function(){return 0.5 - M.random()});
+        v.sort(X);
+        w.sort(X);
+        A.sort(X);
+        B.sort(X);
+        C.sort(X);
         
         
         
@@ -322,7 +326,6 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
             O = P[j];
             c.beginPath();
             
-            
             // Map (flat)
             if(flat){
                 //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
@@ -372,6 +375,33 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
             }
         }
     }
+    
+    // After a click, show the good country, the distance, etc
+    if(flat && (I || J)){
+        
+        
+        
+        
+        
+        
+        P = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][1];
+        
+        for(j = 0; j < P.length; j++){
+            O = P[j];
+            c.fillStyle="yellow";
+            c.beginPath();
+            
+            //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
+            for(k = 0;k < O.length; k += 2){
+                x2 = O.charCodeAt(k);
+                y2 = O.charCodeAt(k + 1);
+                c.lineTo(x2 * 4.4 + 40, y2 * 2.2 + 70);
+            }
+            c.closePath();
+            c.fill();
+            c.stroke();
+        }
+    }
 }
 
 /* Draw the level homescreen */
@@ -382,17 +412,22 @@ level = function(n){
     c.fillStyle = "#fff";
     c.font = "60px Impact, Charcoal";
     c.textAlign = "center";
-    c.fillText("World Countries (easy)", 600, 320, 800);
+    c.fillText("Level " + (n+1) + ":", 600, 280, 800);
+    c.fillText("World Countries (easy)", 600, 360, 800);
     
     
 }
 
 /* Handle Clicks */
-onclick = function(){
+onclick = function(a){
     if(e==0){
-        e=1;
+        e = 1;
     }
     else if(e==1){
-        e=2;
+        e = 2;
+    }
+    else if(e==2){
+        I = a.pageX;
+        J = a.pageY;
     }
 }
