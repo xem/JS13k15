@@ -266,9 +266,10 @@ d = function(title, flat, country, capitol, place){
     if(title){
         c.fillStyle = "#fff";
         c.font = "300px Impact, Charcoal";
-        c.fillText("GE      Quiz", 30, 380);
+        c.fillText("GE", 30, 375, 300);
+        c.fillText("Quiz", 620, 375, 500);
         c.font = "30px Impact, Charcoal";
-        c.fillText("JS13kGames 2015", 880, 410);
+        c.fillText("JS13kGames 2015", 880, 405);
         c.font = "80px Impact, Charcoal";
         c.fillText("START", 500, 570);
     }
@@ -285,13 +286,14 @@ d = function(title, flat, country, capitol, place){
     }
     
     
-    c.beginPath();
-    c.fillStyle = "#75D1FF";
+    // Blue circle
     if(!flat){
-        c.arc(470, 290, 140, 0, 7);
+        c.beginPath();
+        c.fillStyle = "#75D1FF";
+        c.arc(470, 260, 140, 0, 7);
+        c.fill();
     }
     
-    c.fill();
     c.strokeStyle = "#83864F";
     c.fillStyle = "#95D866";
     for(i = 0; i < t.length; i++){
@@ -338,7 +340,7 @@ d = function(title, flat, country, capitol, place){
                     x2 = M.sin(x2 * M.PI) * M.cos(y2 * M.PI / 2);
                     y2 = M.sin(-y2 * M.PI / 2);
                     x2 = x2 * 140 + 470;
-                    y2 = y2 * 140 + 290;
+                    y2 = y2 * 140 + 260;
                     c.lineTo(x2, y2);
 
                 }
