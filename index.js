@@ -1,11 +1,11 @@
 /*
 * The game contains 13 levels with increasing difficulty and varying challenges.
-* In each level you have an error gauge of 30,000km and you have to find 10 different places.
-* When the name of a place appears, click on the map where you think it is placed before the end of the allowed time (10 seconds).
-* If you make an error, your error gauge decreases according to the offset in km between your click and the real place.
-* If you don't answer in the allowed time, you get a penalty of 10,000km
-* If your gauge gets to zero, the game is over and you can see and share your score.
-* When you finish a level, the remaining km are added to your score.
+* In each level you have an error gauge of 30, 000km and you have to find 10 different places.
+* When the name of a place appears,  click on the map where you think it is placed before the end of the allowed time (10 seconds).
+* If you make an error,  your error gauge decreases according to the offset in km between your click and the real place.
+* If you don't answer in the allowed time,  you get a penalty of 10, 000km
+* If your gauge gets to zero,  the game is over and you can see and share your score.
+* When you finish a level,  the remaining km are added to your score.
 * Levels:
 * - Countries (easy)
 * - Famous places (easy)
@@ -26,11 +26,11 @@
 /** Variables summary **/
 
 /*
-a: all data (countries, capitols, places)
+a: all data (countries,  capitols,  places)
 b: Uint8Array during data load
 c: canvas context
 d: function used to display the earth (flat or 3D)
-e: current state of the game (1: home screen, 2: in-game, 3: game over)
+e: current state of the game (1: home screen,  2: in-game,  3: game over)
 f: stars position
 g: game over
 h: 
@@ -85,66 +85,69 @@ $:
 
 
 /** Console log shortcut */
-l=function(a){ console.log(a) }
+l = function(a){ console.log(a) }
 
 /** Initializations **/
 
 // Math
-M=Math;
+M = Math;
 
 // Context
-c=W.getContext("2d");
+c = W.getContext("2d");
+
+// Game states
+e  =  0;
 
 // Stars
-f=[];
-for(i=0;i<300;i++){
-    f[i]=[M.random()*1200,M.random()*650,M.random()*2];
+f = [];
+for(i = 0; i < 300; i++){
+    f[i] = [M.random() * 1200, M.random() * 650, M.random() * 2];
 }
 
 // Game over
-g=0;
+g = 0;
 
 // All countries
-t=[];
+t = [];
 
 // Easy countries
-u=[];
+u = [];
 
 // Medium countries
-v=[];
+v = [];
 
 // Hard countries
-w=[];
+w = [];
 
 // All capitols
-z=[];
+z = [];
 
 // Easy capitols
-A=[];
+A = [];
 
 // Medium capitols
-B=[];
+B = [];
 
 // Hard capitols
-C=[];
+C = [];
 
 // All places
-D=[];
+D = [];
 
 // Easy places
-E=[];
+E = [];
 
 // Medium places
-F=[];
+F = [];
 
 // Hard places
-G=[];
+G = [];
 
 // Stars rotation
-S=0;
+S = 0;
 
 // Earth rotation
-T=0;
+T = 0;
 
 
 
@@ -152,19 +155,18 @@ T=0;
 
 // Load the data in AJAX, as an arrayBuffer
 with(new XMLHttpRequest){
-    open("GET","data.bin"),
-    responseType='arraybuffer',
-    send(),
-    onload=function(){
-        a="";
-        for(i in b=new Uint8Array(response))
-            a+=String.fromCharCode(b[i])
-        a=a.split("þ");
-        for(i=0;i<a.length-1;i+=2){
+    open("GET", "data.bin"), 
+    responseType = 'arraybuffer', 
+    send(), 
+    onload = function(){
+        a = "";
+        for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]);
+        a = a.split("þ");
+        for(i = 0; i < a.length - 1; i += 2){
             
-            X=[a[i],a[i+1]];
-            Y=[a[i].split(",")[0],a[i+1].split("ÿ")];
-            Z=[a[i].split(",")[0],a[i].split(",")[1],a[i+1].split("ÿ")];
+            X = [a[i], a[i + 1]];
+            Y = [a[i].split(",")[0], a[i + 1].split("ÿ")];
+            Z = [a[i].split(",")[0], a[i].split(",")[1], a[i + 1].split("ÿ")];
             t.push(Y);
             z.push(Z);
             
@@ -203,136 +205,156 @@ with(new XMLHttpRequest){
 
         s = setInterval(function(){
         
+            // Reset canvas
+            W.width ^= 0;
             
-            // Draw world
-            d();
-
             /** Welcome screen **/
+            
+            if(e==0) d(1,0);
 
-            /** Game loop **/
+            /** Level 1 **/
+            if(e==1) d(0,1);
 
-                /** Level 1 **/
+            /** Level 2 **/
 
-                /** Level 2 **/
+            /** Level 3 **/
 
-                /** Level 3 **/
+            /** Level 4 **/
 
-                /** Level 4 **/
+            /** Level 5 **/
 
-                /** Level 5 **/
+            /** Level 7 **/
 
-                /** Level 7 **/
+            /** Level 8 **/
 
-                /** Level 8 **/
+            /** Level 9 **/
 
-                /** Level 9 **/
+            /** Level 10 **/
 
-                /** Level 10 **/
+            /** Level 11 **/
 
-                /** Level 11 **/
+            /** Level 12 **/
 
-                /** Level 12 **/
+            /** Level 13 **/
 
-                /** Level 13 **/
-
-                /** Score **/
+            /** Score **/
 
             /** Game over **/
 
-        }, 20);
+        }, 16);
     }
 }
 
 
-/** Draw world **/
+/** Draw the game **/
 
-d=function(){
-    S--;
-    S=S%1200;
-    T++;
-    T=T%220;
-    N=0;
-    W.width^=0;
+d = function(title, flat, country, capitol, place){
     
+    // Background
+    W.style.background = flat ? "#def" : "#000"
     
-    c.fillStyle="#fff";
-    c.font="300px Impact";
-    c.fillText("GE      Quiz",30,410);
-    c.font="30px Impact";
-    c.fillText("a JS 13k game by xem",880,440);
-    c.font="80px Impact";
-    c.fillText("START",500,600);
-    
-    for(i=0;i<300;i++){
-      c.beginPath();
-      c.arc(f[i][0]+S,f[i][1],f[i][2]+M.random()*.5,0,7);
-      c.arc(f[i][0]+S+1200,f[i][1],f[i][2]+M.random()*.5,0,7);
-      c.fill();
-      
+    // Earth / star rotation
+    if(!flat){
+        S--;
+        S %= 1200;
+        T += .5;
+        T %= 220;
+        N = 0;
+    }
+
+    // Text title screen
+    if(title){
+        c.fillStyle = "#fff";
+        c.font = "300px Impact, Charcoal";
+        c.fillText("GE      Quiz", 30, 380);
+        c.font = "30px Impact, Charcoal";
+        c.fillText("JS13kGames 2015", 880, 410);
+        c.font = "80px Impact, Charcoal";
+        c.fillText("START", 500, 570);
     }
     
-    c.fill();
+    // Stars
+    if(!flat){
+        for(i = 0; i < 300; i++){
+          c.beginPath();
+          c.arc(f[i][0] + S, f[i][1], f[i][2] + M.random() * .5, 0, 7);
+          c.arc(f[i][0] + S + 1200, f[i][1], f[i][2] + M.random() * .5, 0, 7);
+          c.fill();
+          
+        }
+    }
     
     
     c.beginPath();
-    c.fillStyle="#75D1FF";
-    c.arc(470,290,140,0,7);
-    c.stroke();
+    c.fillStyle = "#75D1FF";
+    if(!flat){
+        c.arc(470, 290, 140, 0, 7);
+    }
+    
     c.fill();
-    c.strokeStyle="#83864F";
-    c.fillStyle="#95D866";
-    for(i=0;i<t.length;i++){
-        P=t[i][1];
-        for(j=0;j<P.length;j++){
-            O=P[j];
+    c.strokeStyle = "#83864F";
+    c.fillStyle = "#95D866";
+    for(i = 0; i < t.length; i++){
+        P = t[i][1];
+        for(j = 0; j < P.length; j++){
+            O = P[j];
             c.beginPath();
-            for(k=0;k<O.length;k+=2){
-                x2=(O.charCodeAt(k)+T)/110;
-                y2=-(O.charCodeAt(k+1)-120)/150;
-                while(x2>1)x2-=2;
-                if(x2>-1&&x2<-.5)x2=-0.5;
-                if(x2>.5&&x2<1)x2=0.5;
-                if(!k&&t[i][0]!="Russia"&&t[i][0]!="Canada"){
-                    if(x2<0)N=-.5;
-                    if(x2>0)N=.5;
+            
+            
+            if(flat){
+                //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
+                for(k = 0;k < O.length; k += 2){
+                    x2 = O.charCodeAt(k);
+                    y2 = O.charCodeAt(k + 1);
+                    c.lineTo(x2 * 4.4 + 40, y2 * 2.2 + 30);
                 }
-                if(t[i][0]=="Russia"){
-                    N=-.5;
-                    if(T>50)N=.5;
-                    if(T>160)N=-.5;
-                }
-                if(t[i][0]=="Canada"){
-                    N=.5;
-                    if(T>80)N=-.5;
-                    if(T>180)N=.5;
-                }
-                if((x2<=-.5||x2>=.5))x2=N;
-                x2=M.sin(x2*M.PI)*M.cos(y2*M.PI/2);
-                y2=M.sin(-y2*M.PI/2);
-                x2=x2*140+470;
-                y2=y2*140+290;
-                c.lineTo(x2,y2);
+                c.closePath();
+                c.fill();
+                c.stroke();
+            }
+            
+            else{
+                for(k = 0; k < O.length; k += 2){
+                    x2 = (O.charCodeAt(k) + 220 - T) / 110;
+                    y2 = -(O.charCodeAt(k + 1) - 120) / 150;
+                    while(x2 > 1) x2-=2;
+                    if(x2 > -1 && x2 < -.5) x2 = -0.5;
+                    if(x2 > .5 && x2 < 1) x2 = 0.5;
+                    if(!k && t[i][0] != "Russia" && t[i][0] != "Canada"){
+                        if(x2 < 0) N = -.5;
+                        if(x2 > 0) N = .5;
+                    }
+                    if(t[i][0] == "Russia"){
+                        N = -.5;
+                        if(T > 70) N = .5;
+                        if(T > 170) N = -.5;
+                    }
+                    if(t[i][0] == "Canada"){
+                        N = .5;
+                        if(T > 40) N = -.5;
+                        if(T > 140) N = .5;
+                    }
+                    if((x2 <= -.5 || x2 >= .5)) x2 = N;
+                    x2 = M.sin(x2 * M.PI) * M.cos(y2 * M.PI / 2);
+                    y2 = M.sin(-y2 * M.PI / 2);
+                    x2 = x2 * 140 + 470;
+                    y2 = y2 * 140 + 290;
+                    c.lineTo(x2, y2);
 
+                }
+                c.closePath();
+                c.fill();
+                c.stroke();
             }
-            c.closePath();
-            c.fill();
-            c.stroke();
-            
-            /*
-            
-            c.moveTo(O.charCodeAt(0)*4+2-.1, O.charCodeAt(1)*2+1-.1);
-            for(k=0;k<O.length;k+=2){
-                x2=O.charCodeAt(k);
-                y2=O.charCodeAt(k+1);
-                c.lineTo(x2*4+2, y2*2+1);
-            }
-            c.closeP();
-            c.fill();
-            c.stroke();
-            
-            */
             
         }
     
+    }
+}
+
+/* Handle Clicks */
+onclick = function(){
+    if(e==0){
+        e=1;
     }
 }
