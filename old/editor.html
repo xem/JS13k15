@@ -1,0 +1,252 @@
+<!doctype html>
+<meta charset=utf-8>
+<title>GeoQuiz map editor</title>
+<canvas id=C width=510 height=250 style="background:url(a.png) no-repeat -5px -5px; background-size:530px"></canvas>
+<pre id=P></pre>
+<style>*{margin:0}</style>
+<script>
+
+/*
+* This tool was made to draw easily the fronteers of all the world's countries.
+* It prints data corresponding to each country under the map.
+* How to use:
+* Click to place each point of the path. (first point is encoded as (x / 4, y / 2), following points are just diffs (x - oldx + 64 / y - oldy + 64)
+* Press space key to start drawing the next country
+* Right click to insert a separation (for countries separated in many islands/parts), encoded by a "~".
+*/
+
+// countries
+names=["Algeria",
+"Argentina",
+"Australia",
+"Austria",
+"Belgium",
+"Brazil",
+"Bulgaria",
+"Canada",
+"Chile",
+"China",
+"Croatia",
+"Cuba",
+"Czech Republic",
+"Denmark",
+"Ecuador",
+"Egypt",
+"Estonia",
+"Finland",
+"France",
+"Germany",
+"Greece",
+"Hungary",
+"Iceland",
+"India",
+"Indonesia",
+"Iran",
+"Iraq",
+"Ireland",
+"Israel",
+"Italy",
+"Jamaica",
+"Japan",
+"Lebanon",
+"Lithuania",
+"Luxembourg",
+"Macedonia",
+"Madagascar",
+"Mexico",
+"Monaco",
+"Morocco",
+"Nepal",
+"Netherlands",
+"New Zealand",
+"North Korea",
+"Norway",
+"Palestine",
+"Paraguay",
+"Peru",
+"Philippines",
+"Poland",
+"Portugal",
+"Romania",
+"Qatar",
+"Russia",
+"Saudi Arabia",
+"Singapore",
+"Slovakia",
+"Slovenia",
+"South Africa",
+"South Korea",
+"Spain",
+"Sweden",
+"Switzerland",
+"Taiwan",
+"Tunisia",
+"Turkey",
+"Ukraine",
+"Uruguay",
+"United Arab Emirates",
+"United Kingdom",
+"United States of America",
+"Venezuela",
+"Vatican City",
+"Vietnam",
+"Guyana",
+"Libya"]
+
+c=C.getContext("2d");
+
+sp=""; // current subpath
+
+l=s=>console.log(s);
+
+// Trace path
+C.onclick = function(e){
+    if(e.which==1){
+        if(sp.length==0||sp[sp.length-1]=="~"){
+            x=~~(e.pageX);
+            y=~~(e.pageY);
+            xtxt=String.fromCharCode(~~(x/4)).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
+            ytxt=String.fromCharCode(~~(y/2)).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
+            oldx=x;
+            oldy=y;
+            sp+=xtxt;
+            P.innerHTML+=xtxt;
+            sp+=ytxt;
+            P.innerHTML+=ytxt;
+            //l("oldx "+oldx+" oldy "+oldy);
+        }
+        else{
+            dx=64+e.pageX-oldx;
+            dy=64+e.pageY-oldy;
+            //l("encode dx "+dx+" dy "+dy);
+            if(dx>0&&dx<127&&dy>0&&dy<127){
+                l("ok");
+                xtxt=String.fromCharCode(dx).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
+                ytxt=String.fromCharCode(dy).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
+                oldx=e.pageX;
+                oldy=e.pageY;
+                sp+=xtxt;
+                P.innerHTML+=xtxt;
+                sp+=ytxt;
+                P.innerHTML+=ytxt;
+                //l("oldx "+oldx+" oldy "+oldy);
+            }
+        }
+    }
+}
+
+// Next point of path
+C.onmousemove=function(e){
+    C.width=C.width;
+    c.strokeStyle="red";
+    c.lineWidth = ".4";
+    var path, subpath;
+    
+    for(k=0;k<p.length;k++){
+    
+        path=p[k].split("~");
+        for(i=0;i<path.length;i++){
+            subpath = path[i].replace(/\\\\/g,"\\").replace(/\\r/g,"\r").replace(/\\n/g,"\n").replace(/\\'/g,"'").replace(/&lt;/g,"<");
+            for(j=0;j<subpath.length;j+=2){
+                if(j==0){
+                    x2=subpath.charCodeAt(j);
+                    y2=subpath.charCodeAt(j+1);
+                    //l(x2 + " " + y2);
+                    c.moveTo(x2*4-.1, y2*2-.1);
+                    c.lineTo(x2*4, y2*2);
+                    oldx2=x2*4;
+                    oldy2=y2*2;
+                    //l(oldx2 + " " + oldy2);
+                }
+                
+                else{
+                    dx2=subpath.charCodeAt(j);
+                    dy2=subpath.charCodeAt(j+1);
+                    //l("decode dx "+dx+" dy "+dy);
+                    x2=oldx2+dx2-64;
+                    y2=oldy2+dy2-64;
+                    c.lineTo(x2, y2);
+                    oldx2=x2;
+                    oldy2=y2;
+                    //l(oldx2 + " & " + oldy2);
+                }
+            }
+            c.closePath();
+            c.stroke();
+        }
+    
+    }
+    
+    
+    path=sp.split("~");
+    for(i=0;i<path.length;i++){
+        subpath = path[i].replace(/\\\\/g,"\\").replace(/\\r/g,"\r").replace(/\\n/g,"\n").replace(/\\'/g,"'").replace(/&lt;/g,"<");
+        for(j=0;j<subpath.length;j+=2){
+            if(j==0){
+                x2=subpath.charCodeAt(j);
+                y2=subpath.charCodeAt(j+1);
+                //l(x2 + " " + y2);
+                c.moveTo(x2*4-.1, y2*2-.1);
+                c.lineTo(x2*4, y2*2);
+                oldx2=x2*4;
+                oldy2=y2*2;
+                //l(oldx2 + " " + oldy2);
+            }
+            
+            else{
+                dx2=subpath.charCodeAt(j);
+                dy2=subpath.charCodeAt(j+1);
+                //l("decode dx "+dx+" dy "+dy);
+                x2=oldx2+dx2-64;
+                y2=oldy2+dy2-64;
+                c.lineTo(x2, y2);
+                oldx2=x2;
+                oldy2=y2;
+                //l(oldx2 + " & " + oldy2);
+            }
+        }
+        c.stroke();
+    }
+    c.lineTo(~~(e.pageX), ~~(e.pageY));
+    c.stroke();
+    
+}
+
+// Change path
+onkeydown=function(e){
+    if(e.keyCode== 32){
+        p.push(sp);
+        P.innerHTML+="',\n/* " + names[p.length] + " */ '";
+        sp="";
+    }
+}
+
+// Separate islands/parts of a country
+C.oncontextmenu = function(e){
+    sp+="~";
+    P.innerHTML+="~";
+    return false;
+}
+
+
+
+var p=[
+/* Algeria */ '5&G>F@>EDJ?EDD6I<?.2@<L:>;',
+/* Argentina */ 'g@F8BBD<HDC?H;?=<?7<6@6>9C2FAIE>EG<AB:H~y;?@=',
+/* Australia */ 'nQ;L9<C;8>;G<=5J4F@Q<DDCT8GBEKGAN7G5>6~jlFA:E',
+/* Austria */ ';?D;?B=',
+/* Belgium */ '7<>F?',
+/* Brazil */ 'cE897?:453=@7D=A6HBB;F?@EL=EGREED?G<F@L<F6E@G;G',
+/* Bulgaria */ '=ADG?A=',
+/* Canada */ '	@5B8;=P3Q?RDP@F:CFF=>=E=PEEF<C<;@H;@9=H;;<<A;F=?CD9AA<6E9FJG@FE>@<F=C7JA?EF=FMAK7>E:2A:DH?BF:B=;6D2FF89;;A;?~H=OCBD;B4?><~OB?B~R>N@%I7?K<~',
+/* Clile */ 'y=;9>>3<6@5>:B6;5AVANBIIV',
+/* China */ '_FCCKBB:C9?AD9H78+789<H>G9CEFGA=FQIIIE5DEDIG;IDL:B498C=7<F=BCJ8?85=89',
+
+
+
+
+]; // paths
+
+
+P.innerHTML= "/* " + names[p.length] + " */ '";
+</script>
