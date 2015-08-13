@@ -30,7 +30,7 @@ a: all data (countries,  capitols,  places)
 b: Uint8Array during data load
 c: canvas context
 d: function used to display the earth (flat or 3D)
-e: current state of the game (1: home screen,  2: in-game,  3: game over)
+e: current state of the game (1: home screen,  2: level description, 3: puzzle,  4: game over)
 f: stars position
 g: game over
 h: 
@@ -197,7 +197,13 @@ with(new XMLHttpRequest){
          
         }
         
-        
+        // Shuffle the puzzles
+        u.sort(function(){return 0.5 - M.random()});
+        v.sort(function(){return 0.5 - M.random()});
+        w.sort(function(){return 0.5 - M.random()});
+        A.sort(function(){return 0.5 - M.random()});
+        B.sort(function(){return 0.5 - M.random()});
+        C.sort(function(){return 0.5 - M.random()});
         
         
         
@@ -211,9 +217,13 @@ with(new XMLHttpRequest){
             /** Welcome screen **/
             
             if(e==0) d(1,0);
+            
+            
 
             /** Level 1 **/
-            if(e==1) d(0,1);
+            if(e==1) level(0);
+            
+            if(e==2) d(0,1,0,0,0);
 
             /** Level 2 **/
 
@@ -246,12 +256,12 @@ with(new XMLHttpRequest){
 }
 
 
-/** Draw the game **/
+/** Draw the world map and the game's UI **/
 
-d = function(title, flat, country, capitol, place){
+d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     
     // Background
-    W.style.background = flat ? "#def" : "#000"
+    W.style.background = flat ? "#75D1FF" : "#000";
     
     // Earth / star rotation
     if(!flat){
@@ -285,6 +295,15 @@ d = function(title, flat, country, capitol, place){
         }
     }
     
+    // UI
+    if(flat){
+        c.rect(0,0,1200,60);
+        c.fill();
+        c.fillStyle = "#fff";
+        c.font = "40px Impact, Charcoal";
+        c.fillText(["Country: ","Capitol: ","Place: "][countryorcapitolorplace] + [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][0], 10,45);
+    }
+    
     
     // Blue circle
     if(!flat){
@@ -294,6 +313,7 @@ d = function(title, flat, country, capitol, place){
         c.fill();
     }
     
+    // Draw countries
     c.strokeStyle = "#83864F";
     c.fillStyle = "#95D866";
     for(i = 0; i < t.length; i++){
@@ -303,18 +323,20 @@ d = function(title, flat, country, capitol, place){
             c.beginPath();
             
             
+            // Map (flat)
             if(flat){
                 //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
                 for(k = 0;k < O.length; k += 2){
                     x2 = O.charCodeAt(k);
                     y2 = O.charCodeAt(k + 1);
-                    c.lineTo(x2 * 4.4 + 40, y2 * 2.2 + 30);
+                    c.lineTo(x2 * 4.4 + 40, y2 * 2.2 + 70);
                 }
                 c.closePath();
                 c.fill();
                 c.stroke();
             }
             
+            // Globe (3D)
             else{
                 for(k = 0; k < O.length; k += 2){
                     x2 = (O.charCodeAt(k) + 220 - T) / 110;
@@ -348,15 +370,29 @@ d = function(title, flat, country, capitol, place){
                 c.fill();
                 c.stroke();
             }
-            
         }
-    
     }
+}
+
+/* Draw the level homescreen */
+level = function(n){
+    
+    // Background
+    W.style.background = "#000";
+    c.fillStyle = "#fff";
+    c.font = "60px Impact, Charcoal";
+    c.textAlign = "center";
+    c.fillText("World Countries (easy)", 600, 320, 800);
+    
+    
 }
 
 /* Handle Clicks */
 onclick = function(){
     if(e==0){
         e=1;
+    }
+    else if(e==1){
+        e=2;
     }
 }
