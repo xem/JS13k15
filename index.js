@@ -26,7 +26,7 @@
 /** Variables summary **/
 
 /*
-a: all data (countries,  capitols,  places)
+a: all data (countries, capitols, places...)
 b: Uint8Array during data load
 c: canvas context
 d: function used to display the earth (flat or 3D)
@@ -43,7 +43,7 @@ n: current question (0-9)
 o: time counter (.5s / 30 frames display + 2s / 120 frames alert) after a click on a puzzle before showing the next one
 p: closest point
 q: distance to closest point
-r: current score
+r: current level score
 s: setInterval handler
 t: all countries 
 u: easy countries shuffled
@@ -69,7 +69,7 @@ N: current "side" (-1 left, 1 right) of a country on the 3D view
 O: current subpath (island)
 P: current path (whole country)
 Q:
-R:
+R: total score
 S: stars rotation offset
 T: world rotation offset
 U:
@@ -156,6 +156,9 @@ J = 0;
 // Country clicked
 K = 0;
 
+// Total score
+R = 0;
+
 // Stars rotation
 S = 0;
 
@@ -229,10 +232,19 @@ with(new XMLHttpRequest){
             
             /** Welcome screen **/
             
-            if(e==0) d(1,0);
-
+            if(e==0){
+                d(1,0);
+            }
+            
             /** Level 1 **/
-            if(e==1) H(0);
+            
+            // Presentation
+            if(e==1){
+                H(0);
+                r = 30000;
+            }
+            
+            // Game
             if(e==2){
                 d(0,1,0,0,0);
                 if(!o){
@@ -327,8 +339,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     // Blue circle
     if(!flat){
         c.beginPath();
-        c.fillStyle = "#75D1FF";
-        gradient = c.createLinearGradient(0,0,0,600);
+        gradient = c.createLinearGradient(300,0,600,0);
         gradient.addColorStop(0,"#75D1FF");
         gradient.addColorStop(1,"#3591bF");
         c.fillStyle = gradient;
@@ -449,6 +460,8 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         c.fill();
         
         if(!K){
+            c.strokeStyle = "red";
+            c.lineWidth = "2";
             c.setLineDash([5, 5]);
             c.beginPath();
             c.moveTo(I, J);
