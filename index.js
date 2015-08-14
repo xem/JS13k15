@@ -276,7 +276,8 @@ with(new XMLHttpRequest){
 d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     
     // Background
-    W.style.background = flat ? "#75D1FF" : "#000";
+    W.style.background = "#75D1FF";
+    W.style.background = flat ? "radial-gradient(#75D1FF 50%, #3591bF)" : "#000";
     
     // Earth / star rotation
     if(!flat){
@@ -327,6 +328,10 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     if(!flat){
         c.beginPath();
         c.fillStyle = "#75D1FF";
+        gradient = c.createLinearGradient(0,0,0,600);
+        gradient.addColorStop(0,"#75D1FF");
+        gradient.addColorStop(1,"#3591bF");
+        c.fillStyle = gradient;
         c.arc(470, 260, 140, 0, 7);
         c.fill();
     }
@@ -344,9 +349,9 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
             if(flat){
                 //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
                 for(k = 0;k < O.length; k += 2){
-                    x2 = O.charCodeAt(k);
-                    y2 = O.charCodeAt(k + 1);
-                    c.lineTo(x2 * 4.6 + 40, y2 * 2.3 + 70);
+                    x = O.charCodeAt(k);
+                    y = O.charCodeAt(k + 1);
+                    c.lineTo(x * 4.6 + 40, y * 2.3 + 70);
                 }
                 c.closePath();
                 c.fill();
@@ -355,15 +360,16 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
             
             // Globe (3D)
             else{
+  
                 for(k = 0; k < O.length; k += 2){
-                    x2 = (O.charCodeAt(k) + 220 - T) / 110;
-                    y2 = -(O.charCodeAt(k + 1) - 120) / 150;
-                    while(x2 > 1) x2-=2;
-                    if(x2 > -1 && x2 < -.5) x2 = -0.5;
-                    if(x2 > .5 && x2 < 1) x2 = 0.5;
+                    x = (O.charCodeAt(k) + 220 - T) / 110;
+                    y = -(O.charCodeAt(k + 1) - 120) / 150;
+                    while(x > 1) x-=2;
+                    if(x > -1 && x < -.5) x = -0.5;
+                    if(x > .5 && x < 1) x = 0.5;
                     if(!k && t[i][0] != "Russia" && t[i][0] != "Canada"){
-                        if(x2 < 0) N = -.5;
-                        if(x2 > 0) N = .5;
+                        if(x < 0) N = -.5;
+                        if(x > 0) N = .5;
                     }
                     if(t[i][0] == "Russia"){
                         N = -.5;
@@ -375,17 +381,19 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
                         if(T > 40) N = -.5;
                         if(T > 140) N = .5;
                     }
-                    if((x2 <= -.5 || x2 >= .5)) x2 = N;
-                    x2 = M.sin(x2 * M.PI) * M.cos(y2 * M.PI / 2);
-                    y2 = M.sin(-y2 * M.PI / 2);
-                    x2 = x2 * 140 + 470;
-                    y2 = y2 * 140 + 260;
-                    c.lineTo(x2, y2);
+                    if((x <= -.5 || x >= .5)) x = N;
+                    x = M.sin(x * M.PI) * M.cos(y * M.PI / 2);
+                    y = M.sin(-y * M.PI / 2);
+                    x = x * 140 + 470;
+                    y = y * 140 + 260;
+                    c.lineTo(x, y);
 
                 }
                 c.closePath();
                 c.fill();
                 c.stroke();
+                
+                
             }
         }
     }
@@ -403,18 +411,18 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
             
             //c.moveTo(O.charCodeAt(0) * 4.6 + 40 - .1,  O.charCodeAt(1) * 2.3 + 70 - .1);
             for(k = 0;k < O.length; k += 2){
-                x2 = O.charCodeAt(k);
-                y2 = O.charCodeAt(k + 1);
-                c.lineTo(x2 * 4.6 + 40, y2 * 2.3 + 70);
+                x = O.charCodeAt(k);
+                y = O.charCodeAt(k + 1);
+                c.lineTo(x * 4.6 + 40, y * 2.3 + 70);
                 
                 // Compute the distance between point and flag
-                X = M.sqrt(M.pow((x2 * 4.6 + 40) - I, 2) + M.pow((y2 * 2.3 + 70) - J, 2));
+                X = M.sqrt(M.pow((x * 4.6 + 40) - I, 2) + M.pow((y * 2.3 + 70) - J, 2));
                 //if(o==1) l(X);
                 
                 // Save it if it's the smallest
                 if(X < q){
                     q = X;
-                    p = [x2 * 4.6 + 40, y2 * 2.3 + 70];
+                    p = [x * 4.6 + 40, y * 2.3 + 70];
                 }
             }
             
