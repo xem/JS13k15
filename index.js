@@ -153,6 +153,9 @@ G = [];
 I = 0;
 J = 0;
 
+// Country clicked
+K = 0;
+
 // Stars rotation
 S = 0;
 
@@ -418,7 +421,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
             
             //if(o==1) l(q);
             
-            K = c.isPointInPath(I, J);
+            if(c.isPointInPath(I, J)) K = 1;
             c.closePath();
             c.fill();
             c.stroke();
@@ -437,7 +440,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         c.stroke();
         c.fill();
         
-        if(!k){
+        if(!K){
             c.setLineDash([5, 5]);
             c.beginPath();
             c.moveTo(I, J);
