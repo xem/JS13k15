@@ -8,16 +8,16 @@
 * When you finish a level, the remaining km are added to your score.
 * Levels:
 * - Countries (easy)
-* - Famous places (easy)
 * - Capitols (easy)
-* - USA states (10,000kn only)
+* - Famous places (easy)
 * - Countries (medium)
-* - Famous places (medium)
 * - Capitols (medium)
-* - USA capitols (10,000km only)
+* - Famous places (medium)
 * - Countries (hard)
-* - Famous places (hard)
 * - Capitols (hard)
+* - Famous places (hard)
+* - TBD
+* - TBD
 * - TBD
 * - TBD
 */
@@ -39,8 +39,8 @@ j: loop var
 k: loop var
 l: console.log
 m: current level (0-12)
-n: current question (0-9)
-o: time counter (.5s / 30 frames display + 2s / 120 frames alert) after a click on a puzzle before showing the next one
+n: current puzzle (0-9)
+o: time counter (.5s / 15 frames display + 2s / 60 frames alert) after a click on a puzzle before showing the next one
 p: closest point
 q: distance to closest point
 r: current level score
@@ -109,6 +109,12 @@ g = 0;
 
 // time counter
 h = 0;
+
+// Level
+m = 0;
+
+// Puzzle
+n = 0;
 
 // Answer time counter
 o = 0;
@@ -235,44 +241,86 @@ with(new XMLHttpRequest){
             
             /** Welcome screen **/
             
-            if(e==0){
+            if(e == 0){
                 d(1,0);
             }
             
-            /** Level 1 **/
-            
-            // Presentation
-            if(e==1){
+            // Level presentation
+            if(e == 1){
                 H(0);
                 r = 30000;
             }
             
             // Game
-            if(e==2){
-                d(0,1,0,0,0);
+            if(e == 2){
+                
+                /** Level 1 **/
+                if(m == 0){
+                    d(0,1,0,0,n);
+                }
+                
+                /** Level 2 **/
+                if(m == 1){
+                    d(0,1,1,0,n);
+                }
+                
+                /** Level 3 **/
+                if(m == 2){
+                    d(0,1,2,0,n);
+                }
+                
+                /** Level 4 **/
+                if(m == 3){
+                    m++;
+                    //d(0,1,0,0,n);
+                }
+                
+                /** Level 5 **/
+                if(m == 4){
+                    d(0,1,0,1,n);
+                }
+                
+                /** Level 6 **/
+                if(m == 5){
+                    d(0,1,1,1,n);
+                }
+                
+                /** Level 7 **/
+                if(m == 6){
+                    d(0,1,2,1,n);
+                }
+                
+                /** Level 8 **/
+                if(m == 7){
+                    m++; //d(0,1,0,0,n);
+                }
+                
+                /** Level 9 **/
+                if(m == 8){
+                    d(0,1,0,2,n);
+                }
+                
+                /** Level 10 **/
+                if(m == 9){
+                    d(0,1,1,2,n);
+                }
+                
+                /** Level 11 **/
+                if(m == 10){
+                    d(0,1,2,2,n);
+                }
+                
+                /** Level 12 **/
+                if(m == 11){
+                    d(0,1,0,0,n);
+                }
+                
+                /** Level 13 **/
+                if(m == 12){
+                    d(0,1,0,0,n);
+                }
             }
 
-            /** Level 2 **/
-
-            /** Level 3 **/
-
-            /** Level 4 **/
-
-            /** Level 5 **/
-
-            /** Level 7 **/
-
-            /** Level 8 **/
-
-            /** Level 9 **/
-
-            /** Level 10 **/
-
-            /** Level 11 **/
-
-            /** Level 12 **/
-
-            /** Level 13 **/
 
             /** Score **/
 
@@ -332,7 +380,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         c.rect(0, 60, h * 4, 5);
         c.fill();
         c.font = "40px Impact, Charcoal";
-        c.fillText(["Country: ","Capitol: ","Place: "][countryorcapitolorplace] + [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][0], 10,45);
+        c.fillText(["Country: ","Capitol: ","Place: "][countryorcapitolorplace] + [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][[0,1,0][countryorcapitolorplace]], 10, 45);
     }
     
     
@@ -371,7 +419,6 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
             
             // Globe (3D)
             else{
-  
                 for(k = 0; k < O.length; k += 2){
                     x = (O.charCodeAt(k) + 220 - T) / 110;
                     y = -(O.charCodeAt(k + 1) - 120) / 150;
@@ -398,13 +445,10 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
                     x = x * 140 + 470;
                     y = y * 140 + 260;
                     c.lineTo(x, y);
-
                 }
                 c.closePath();
                 c.fill();
                 c.stroke();
-                
-                
             }
         }
     }
@@ -436,9 +480,6 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
                     p = [x * 4.6 + 40, y * 2.3 + 70];
                 }
             }
-            
-            
-            //if(o==1) l(q);
             
             if(c.isPointInPath(I, J)) K = 1;
             c.closePath();
@@ -472,7 +513,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         // Count until the next
         o++;
         
-        if(o > 30){
+        if(o > 15){
             c.textAlign = "center";
             c.fillStyle = "#000";
             c.font = "100px Impact, Charcoal";
@@ -502,18 +543,49 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     }
     
     if(flat && !o) h--;
+    
+    // Next puzzle
+    if(o>58){
+        c.beginPath;
+        c.fillStyle = "#000";
+        c.fillRect(0,0,1200,650);
+    }
+    if(o == 60){
+        n++;
+        I = 0;
+        J = 0;
+        o = 0;
+        K = 0;
+        h = 300;
+        q = 2000;
+        if(n == 10){
+            n = 0;
+            m++;
+            e = 1;
+        }
+    }
 }
 
 /** Draw a level's homescreen **/
-H = function(n){
+H = function(){
     
     // Background
     W.style.background = "#000";
     c.fillStyle = "#fff";
     c.font = "60px Impact, Charcoal";
     c.textAlign = "center";
-    c.fillText("Level " + (n+1) + ":", 600, 280, 800);
-    c.fillText("World Countries (easy)", 600, 360, 800);
+    c.fillText("Level " + (m+1) + ":", 600, 280, 800);
+    c.fillText([
+    "World Countries (easy)",
+    "Capitols (easy)",
+    "Famous places (easy)",
+    "World Countries (medium)",
+    "Capitols (medium)",
+    "Famous places (medium)",
+    "World countries (hard)",
+    "Famous places (hard)",
+    "Capitols (hard)"
+    ][m], 600, 360, 800);
     
 }
 
