@@ -247,7 +247,7 @@ with(new XMLHttpRequest){
             
             // Level presentation
             if(e == 1){
-                H(0);
+                H();
                 r = 30000;
             }
             
@@ -500,6 +500,17 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         c.stroke();
         c.fill();
         
+        c.fillStyle = "green";
+        c.beginPath();
+        c.moveTo(p[0],p[1]);
+        c.lineTo(p[0]-1, p[1]);
+        c.lineTo(p[0]-1, p[1]-40);
+        c.lineTo(p[0], p[1]-40);
+        c.lineTo(p[0]+20, p[1]-30);
+        c.lineTo(p[0], p[1]-20);
+        c.stroke();
+        c.fill();
+        
         if(!K){
             c.strokeStyle = "red";
             c.lineWidth = "2";
@@ -546,7 +557,6 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     
     // Next puzzle
     if(o>58){
-        c.beginPath;
         c.fillStyle = "#000";
         c.fillRect(0,0,1200,650);
     }
