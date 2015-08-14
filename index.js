@@ -1,25 +1,25 @@
 /*
 * The game contains 13 levels with increasing difficulty and varying challenges.
-* In each level you have an error gauge of 30, 000km and you have to find 10 different places.
-* When the name of a place appears,  click on the map where you think it is placed before the end of the allowed time (10 seconds).
-* If you make an error,  your error gauge decreases according to the offset in km between your click and the real place.
-* If you don't answer in the allowed time,  you get a penalty of 10, 000km
-* If your gauge gets to zero,  the game is over and you can see and share your score.
-* When you finish a level,  the remaining km are added to your score.
+* In each level you have a distance gauge of 30,000km and you have to find 10 different places.
+* When the name of a place appears, click on the map where you think it is placed before the end of the allowed time (10 seconds).
+* If you make an error, your distance gauge decreases according to the offset in km between your click and the real place.
+* If you don't answer in the allowed time, you get a penalty of 10,000km
+* If your gauge gets to zero, the game is over and you can see and share your score.
+* When you finish a level, the remaining km are added to your score.
 * Levels:
 * - Countries (easy)
 * - Famous places (easy)
 * - Capitols (easy)
-* - USA states
-* - planets of the solar system
+* - USA states (10,000kn only)
 * - Countries (medium)
 * - Famous places (medium)
 * - Capitols (medium)
-* - USA capitols
+* - USA capitols (10,000km only)
 * - Countries (hard)
 * - Famous places (hard)
 * - Capitols (hard)
-* - Satellites of planets of the solar system
+* - TBD
+* - TBD
 */
 
 
@@ -101,11 +101,14 @@ e  =  0;
 // Stars
 f = [];
 for(i = 0; i < 300; i++){
-    f[i] = [M.random() * 1200, M.random() * 650, M.random() * 2];
+    f[i] = [M.random() * 1200, M.random() * 650, M.random() + .5];
 }
 
 // Game over
 g = 0;
+
+// time counter
+h = 0;
 
 // Answer time counter
 o = 0;
@@ -247,9 +250,6 @@ with(new XMLHttpRequest){
             // Game
             if(e==2){
                 d(0,1,0,0,0);
-                if(!o){
-                    h--;
-                }
             }
 
             /** Level 2 **/
@@ -307,7 +307,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         c.fillText("GE", 30, 375, 300);
         c.fillText("Quiz", 620, 375, 500);
         c.font = "30px Impact, Charcoal";
-        c.fillText("JS13kGames 2015", 880, 405);
+        c.fillText("JS13kGames 2015", 900, 405);
         c.font = "80px Impact, Charcoal";
         c.fillText("START", 500, 570);
     }
@@ -417,7 +417,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         // Draw the target country
         for(j = 0; j < P.length; j++){
             O = P[j];
-            c.fillStyle="yellow";
+            c.fillStyle = "yellow";
             c.beginPath();
             
             //c.moveTo(O.charCodeAt(0) * 4.6 + 40 - .1,  O.charCodeAt(1) * 2.3 + 70 - .1);
@@ -448,7 +448,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         
         
         // Drop flag
-        c.fillStyle="blue";
+        c.fillStyle = "blue";
         c.beginPath();
         c.moveTo(I,J);
         c.lineTo(I-1, J);
@@ -472,7 +472,36 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         // Count until the next
         o++;
         
+        if(o > 30){
+            c.textAlign = "center";
+            c.fillStyle = "#000";
+            c.font = "100px Impact, Charcoal";
+            if(K || q < 5){
+                c.fillText("PERFECT", 600, 350);
+            }
+            else{
+                c.fillText(["GREAT","NICE","HMMM","MEH","OWW","NOOO"][~~(q/30)] || "EEEK", 600, 350);
+                c.font = "50px Impact, Charcoal";
+                c.fillText("You're " + ( q < 100  ?  (~~(q/5))*100  :  (~~(q/50))*1000 ) + "km away", 600, 400);
+                
+                
+            }
+        }
     }
+    
+    // Time out
+    if(flat && h == 0){
+        c.textAlign = "center";
+        o++;
+        c.fillStyle = "#000";
+        c.font = "100px Impact, Charcoal";
+        c.fillText("TIME OUT", 600, 350);
+        c.font = "50px Impact, Charcoal";
+        c.fillText("10,000km penalty", 600, 400);
+        
+    }
+    
+    if(flat && !o) h--;
 }
 
 /** Draw a level's homescreen **/
@@ -489,7 +518,7 @@ H = function(n){
 }
 
 /** Handle Clicks **/
-onclick = function(a){
+W.onclick = function(a){
     
     // Home screen
     if(e==0){
