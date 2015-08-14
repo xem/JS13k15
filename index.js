@@ -33,16 +33,16 @@ d: function used to display the earth (flat or 3D)
 e: current state of the game (1: home screen, 2: level description, 3: puzzle, 4: game over)
 f: stars position
 g: game over
-h: 
+h: time counter (10s / 600 frames per puzzle)
 i: loop var
 j: loop var
 k: loop var
 l: console.log
 m: current level (0-12)
 n: current question (0-9)
-o: current earth rotation offset
-p: current target
-q: current distance from target
+o: time counter (.5s / 30 frames display + 2s / 120 frames alert) after a click on a puzzle before showing the next one
+p: closest point
+q: distance to closest point
 r: current score
 s: setInterval handler
 t: all countries 
@@ -59,13 +59,13 @@ D: all places
 E: easy places shuffled
 F: medium places shuffled
 G: hard places shuffled
-H:
+H: function that draws the presentation screen for a level
 I: X coordinate clicked
 J: Y coordinate clicked
-K:
+K: clicked inside a country or not
 L:
 M: Math
-N: current side of a country on a 3D view
+N: current "side" (-1 left, 1 right) of a country on the 3D view
 O: current subpath (island)
 P: current path (whole country)
 Q:
@@ -106,6 +106,12 @@ for(i = 0; i < 300; i++){
 
 // Game over
 g = 0;
+
+// Answer time counter
+o = 0;
+
+// Min distance to a country
+q = 2000;
 
 // All countries
 t = [];
@@ -221,13 +227,15 @@ with(new XMLHttpRequest){
             /** Welcome screen **/
             
             if(e==0) d(1,0);
-            
-            
 
             /** Level 1 **/
-            if(e==1) level(0);
-            
-            if(e==2) d(0,1,0,0,0);
+            if(e==1) H(0);
+            if(e==2){
+                d(0,1,0,0,0);
+                if(!o){
+                    h--;
+                }
+            }
 
             /** Level 2 **/
 
@@ -255,7 +263,7 @@ with(new XMLHttpRequest){
 
             /** Game over **/
 
-        }, 16);
+        }, 33);
     }
 }
 
@@ -271,7 +279,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     if(!flat){
         S--;
         S %= 1200;
-        T += .5;
+        T += 1;
         T %= 220;
         N = 0;
     }
@@ -301,9 +309,12 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     
     // UI
     if(flat){
-        c.rect(0,0,1200,60);
+        c.rect(0, 0, 1200, 66);
         c.fill();
+        c.beginPath();
         c.fillStyle = "#fff";
+        c.rect(0, 60, h * 4, 5);
+        c.fill();
         c.font = "40px Impact, Charcoal";
         c.fillText(["Country: ","Capitol: ","Place: "][countryorcapitolorplace] + [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][0], 10,45);
     }
@@ -332,7 +343,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
                 for(k = 0;k < O.length; k += 2){
                     x2 = O.charCodeAt(k);
                     y2 = O.charCodeAt(k + 1);
-                    c.lineTo(x2 * 4.4 + 40, y2 * 2.2 + 70);
+                    c.lineTo(x2 * 4.6 + 40, y2 * 2.3 + 70);
                 }
                 c.closePath();
                 c.fill();
@@ -378,34 +389,70 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     
     // After a click, show the good country, the distance, etc
     if(flat && (I || J)){
-        
-        
-        
-        
-        
-        
+
         P = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][1];
         
+        // Draw the target country
         for(j = 0; j < P.length; j++){
             O = P[j];
             c.fillStyle="yellow";
             c.beginPath();
             
-            //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
+            //c.moveTo(O.charCodeAt(0) * 4.6 + 40 - .1,  O.charCodeAt(1) * 2.3 + 70 - .1);
             for(k = 0;k < O.length; k += 2){
                 x2 = O.charCodeAt(k);
                 y2 = O.charCodeAt(k + 1);
-                c.lineTo(x2 * 4.4 + 40, y2 * 2.2 + 70);
+                c.lineTo(x2 * 4.6 + 40, y2 * 2.3 + 70);
+                
+                // Compute the distance between point and flag
+                X = M.sqrt(M.pow((x2 * 4.6 + 40) - I, 2) + M.pow((y2 * 2.3 + 70) - J, 2));
+                //if(o==1) l(X);
+                
+                // Save it if it's the smallest
+                if(X < q){
+                    q = X;
+                    p = [x2 * 4.6 + 40, y2 * 2.3 + 70];
+                }
             }
+            
+            
+            //if(o==1) l(q);
+            
+            K = c.isPointInPath(I, J);
             c.closePath();
             c.fill();
             c.stroke();
         }
+        
+        
+        // Drop flag
+        c.fillStyle="blue";
+        c.beginPath();
+        c.moveTo(I,J);
+        c.lineTo(I-1, J);
+        c.lineTo(I-1, J-40);
+        c.lineTo(I, J-40);
+        c.lineTo(I+20, J-30);
+        c.lineTo(I, J-20);
+        c.stroke();
+        c.fill();
+        
+        if(!k){
+            c.setLineDash([5, 5]);
+            c.beginPath();
+            c.moveTo(I, J);
+            c.lineTo(p[0], p[1]);
+            c.stroke();
+        }
+        
+        // Count until the next
+        o++;
+        
     }
 }
 
-/* Draw the level homescreen */
-level = function(n){
+/** Draw a level's homescreen **/
+H = function(n){
     
     // Background
     W.style.background = "#000";
@@ -415,18 +462,24 @@ level = function(n){
     c.fillText("Level " + (n+1) + ":", 600, 280, 800);
     c.fillText("World Countries (easy)", 600, 360, 800);
     
-    
 }
 
-/* Handle Clicks */
+/** Handle Clicks **/
 onclick = function(a){
+    
+    // Home screen
     if(e==0){
         e = 1;
     }
+    
+    // Level presentation screen
     else if(e==1){
         e = 2;
+        h = 300;
     }
-    else if(e==2){
+    
+    // Puzzle screen
+    else if(e==2 && !o){
         I = a.pageX;
         J = a.pageY;
     }
