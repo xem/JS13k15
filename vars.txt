@@ -1,0 +1,57 @@
+Variables summary:
+-------------------
+
+a: all data (countries, capitols, places...)
+b: Uint8Array during data load
+c: canvas context
+d: function used to display the earth (flat or 3D)
+e: current state of the game (1: home screen, 2: level description, 3: puzzle, 4: game over)
+f: stars position
+g: game over
+h: time counter (10s / 600 frames per puzzle)
+i: loop var
+j: loop var
+k: loop var
+l: console.log
+m: current level (0-12)
+n: current puzzle (0-9)
+o: time counter (.5s / 15 frames display + 2s / 60 frames alert) after a click on a puzzle before showing the next one
+p: closest point
+q: distance to closest point
+r: current level score
+s: setInterval handler
+t: all countries and capitols
+u: easy countries shuffled
+v: medium countries shuffled
+w: hard countries shuffled
+x: current X coordinate to draw
+y: current Y coordinate to draw
+z: -
+A: easy capitols shuffled
+B: medium capitols shuffled
+C: hard capitols shuffled
+D: -
+E: easy places shuffled
+F: medium places shuffled
+G: hard places shuffled
+H: function that draws the presentation screen for a level
+I: X coordinate clicked
+J: Y coordinate clicked
+K: clicked inside a country or not
+L: -
+M: Math
+N: current "side" (-1 left, 1 right) of a country on the 3D view
+O: current subpath (island)
+P: current path (whole country)
+Q: -
+R: total score
+S: stars rotation offset
+T: world rotation offset
+U: -
+V: -
+W: canvas
+X: temp var
+Y: temp var
+Z: temp var
+_: temp var
+$: temp var
