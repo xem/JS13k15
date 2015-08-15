@@ -191,7 +191,7 @@ with(new XMLHttpRequest){
             if(e == 2){
                 
                 // Level 1
-                if(m == 0) d(1,0,0,n);
+                if(m == 0) d(1,1,0,n);
                 
                 // Level 2
                 if(m == 1) d(1,1,0,n);
@@ -294,62 +294,64 @@ d = function(flat, countryorcapitolorplace, difficulty, puzzle){
     c.strokeStyle = "#83864F";
     c.fillStyle = "#95D866";
     
-    for(i = 0; i < t.length; i++){
-        
-        // Current country
-        P = t[i][2];
-        
-        for(j = 0; j < P.length; j++){
+    if(o < 85){
+        for(i = 0; i < t.length; i++){
             
-            // Current island / territory to draw
-            O = P[j];
-            c.beginPath();
+            // Current country
+            P = t[i][2];
             
-            // Map (flat)
-            if(flat){
-                //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
-                for(k = 0;k < O.length; k += 2){
-                    x = O.charCodeAt(k);
-                    y = O.charCodeAt(k + 1);
-                    c.lineTo(x * 4.6 + 40, y * 2.3 + 70);
+            for(j = 0; j < P.length; j++){
+                
+                // Current island / territory to draw
+                O = P[j];
+                c.beginPath();
+                
+                // Map (flat)
+                if(flat){
+                    //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
+                    for(k = 0;k < O.length; k += 2){
+                        x = O.charCodeAt(k);
+                        y = O.charCodeAt(k + 1);
+                        c.lineTo(x * 4.6 + 40, y * 2.3 + 70);
+                    }
+                    c.closePath();
+                    c.fill();
+                    c.stroke();
                 }
-                c.closePath();
-                c.fill();
-                c.stroke();
-            }
-            
-            // Globe (3D)
-            else{
-                for(k = 0; k < O.length; k += 2){
-                    x = (O.charCodeAt(k) + 220 - T) / 110;
-                    y = -(O.charCodeAt(k + 1) - 120) / 150;
-                    while(x > 1) x-=2;
-                    if(x > -1 && x < -.5) x = -0.5;
-                    if(x > .5 && x < 1) x = 0.5;
-                    if(!k && t[i][0] != "Russia" && t[i][0] != "Canada"){
-                        if(x < 0) N = -.5;
-                        if(x > 0) N = .5;
+                
+                // Globe (3D)
+                else{
+                    for(k = 0; k < O.length; k += 2){
+                        x = (O.charCodeAt(k) + 220 - T) / 110;
+                        y = -(O.charCodeAt(k + 1) - 120) / 150;
+                        while(x > 1) x-=2;
+                        if(x > -1 && x < -.5) x = -0.5;
+                        if(x > .5 && x < 1) x = 0.5;
+                        if(!k && t[i][0] != "Russia" && t[i][0] != "Canada"){
+                            if(x < 0) N = -.5;
+                            if(x > 0) N = .5;
+                        }
+                        if(t[i][0] == "Russia"){
+                            N = -.5;
+                            if(T > 70) N = .5;
+                            if(T > 170) N = -.5;
+                        }
+                        if(t[i][0] == "Canada"){
+                            N = .5;
+                            if(T > 40) N = -.5;
+                            if(T > 140) N = .5;
+                        }
+                        if((x <= -.5 || x >= .5)) x = N;
+                        x = M.sin(x * M.PI) * M.cos(y * M.PI / 2);
+                        y = M.sin(-y * M.PI / 2);
+                        x = x * 140 + 470;
+                        y = y * 140 + 260;
+                        c.lineTo(x, y);
                     }
-                    if(t[i][0] == "Russia"){
-                        N = -.5;
-                        if(T > 70) N = .5;
-                        if(T > 170) N = -.5;
-                    }
-                    if(t[i][0] == "Canada"){
-                        N = .5;
-                        if(T > 40) N = -.5;
-                        if(T > 140) N = .5;
-                    }
-                    if((x <= -.5 || x >= .5)) x = N;
-                    x = M.sin(x * M.PI) * M.cos(y * M.PI / 2);
-                    y = M.sin(-y * M.PI / 2);
-                    x = x * 140 + 470;
-                    y = y * 140 + 260;
-                    c.lineTo(x, y);
+                    c.closePath();
+                    c.fill();
+                    c.stroke();
                 }
-                c.closePath();
-                c.fill();
-                c.stroke();
             }
         }
     }
@@ -500,15 +502,15 @@ d = function(flat, countryorcapitolorplace, difficulty, puzzle){
             h = 300; // puzzle timer
             q = 2000; // distance to target
             
-            // If puzzle 10: reset everything for next level
-            if(n == 3){
+            // After 10th puzzle: reset everything for next level
+            if(n == 10){
                 n = 0;  // puzzle
                 e = 1; // state (level presentation)
                 R += r; // total score
                 r = 30000; // level score
                 m++;  // level
                 
-                // If level 10: game over
+                // After 9th level: game over (win)
                 if(m == 9){
                     clearInterval(s);
                     l("game over. score: " + R);
