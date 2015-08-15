@@ -1,50 +1,31 @@
 /*
-* JS13kGames 2015 - GEO Quiz - Maxime EUZIERE
-*
 * The game contains 13 levels with increasing difficulty and varying challenges.
-* The goal is to go through the 13 levels of the game and try to find the countries, capitols and places that appear on screen, ten by ten.
-* Sometimes, the levels can be reversed!
-*
-* Explorer mode:
-* -------------
-*
-* In this mode, you can't lose. It's made to help you learn the world's geography without time limit.
-* At the end, you get a score corresponding to your cumulated mistakes.
-* Try to make the lowest score possible and learn things!
-*
-* Traveler mode:
-* --------------
-*
-* This mode is a real challenge.
-* In each level, you have an error gauge of 30,000km and you have to find 10 different places.
+* In each level you have a distance gauge of 30,000km and you have to find 10 different places.
 * When the name of a place appears, click on the map where you think it is placed before the end of the allowed time (10 seconds).
-* If you make an error, your error gauge decreases according to the offset in km between your click and the real place.
-* If you don't answer in the allowed time, you get a penalty of 10,000km.
+* If you make an error, your distance gauge decreases according to the offset in km between your click and the real place.
+* If you don't answer in the allowed time, you get a penalty of 10,000km
+* If your gauge gets to zero, the game is over and you can see and share your score.
 * When you finish a level, the remaining km are added to your score.
-* If your gauge gets to zero, the game is over.
-*
 * Levels:
-* -------
-*
 * - Countries (easy)
 * - Capitols (easy)
 * - Famous places (easy)
-* - USA states (easy)
 * - Countries (medium)
 * - Capitols (medium)
 * - Famous places (medium)
-* - USA capitols (easy)
 * - Countries (hard)
 * - Capitols (hard)
-* - USA states (hard)
 * - Famous places (hard)
-* - USA capitols (hard)
+* - TBD
+* - TBD
+* - TBD
+* - TBD
 */
 
 
-/* Variables summary:
-  -------------------
+/** Variables summary **/
 
+/*
 a: all data (countries, capitols, places...)
 b: Uint8Array during data load
 c: canvas context
@@ -64,17 +45,17 @@ p: closest point
 q: distance to closest point
 r: current level score
 s: setInterval handler
-t: all countries and capitols
+t: all countries 
 u: easy countries shuffled
 v: medium countries shuffled
 w: hard countries shuffled
 x: current X coordinate to draw
 y: current Y coordinate to draw
-z: -
+z: all capitols
 A: easy capitols shuffled
 B: medium capitols shuffled
 C: hard capitols shuffled
-D: -
+D: all places
 E: easy places shuffled
 F: medium places shuffled
 G: hard places shuffled
@@ -82,52 +63,52 @@ H: function that draws the presentation screen for a level
 I: X coordinate clicked
 J: Y coordinate clicked
 K: clicked inside a country or not
-L: -
+L:
 M: Math
 N: current "side" (-1 left, 1 right) of a country on the 3D view
 O: current subpath (island)
 P: current path (whole country)
-Q: -
+Q:
 R: total score
 S: stars rotation offset
 T: world rotation offset
-U: -
-V: -
+U:
+V:
 W: canvas
 X: temp var
 Y: temp var
 Z: temp var
-_: temp var
-$: temp var
+_:
+$:
 
 */
+
+
+/** Console log shortcut */
+l = function(a){ console.log(a) }
 
 /** Initializations **/
 
 // Math
 M = Math;
 
-// Game data
-a = "";
-
-// Context2d
+// Context
 c = W.getContext("2d");
 
-// Game status
-e = 0;
+// Game states
+e  =  0;
 
-// Stars position and size
+// Stars
 f = [];
-for(i = 0; i < 300; i++) f[i] = [M.random() * 1200, M.random() * 650, M.random() + .5];
+for(i = 0; i < 300; i++){
+    f[i] = [M.random() * 1200, M.random() * 650, M.random() + .5];
+}
 
 // Game over
 g = 0;
 
 // time counter
 h = 0;
-
-// Log
-l = function(a){ console.log(a) }
 
 // Level
 m = 0;
@@ -181,67 +162,55 @@ G = [];
 I = 0;
 J = 0;
 
-// Side of a country
-N = 0;
-
-// Country clicked perfectly
+// Country clicked
 K = 0;
 
 // Total score
 R = 0;
 
-// Stars scroll offset
+// Stars rotation
 S = 0;
 
-// Earth rotation offset
+// Earth rotation
 T = 0;
 
 
 
-/** Gather data **/
+/** Data **/
 
-// Load the game's data in AJAX, as an arrayBuffer, from the file called "0"
-
+// Load the data in AJAX, as an arrayBuffer
 with(new XMLHttpRequest){
-    open("GET", 0), 
+    open("GET", "data.bin"), 
     responseType = 'arraybuffer', 
     send(), 
     onload = function(){
-        
-        // Fill a with the file's text content
+        a = "";
         for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]);
-        
-        // Separate entries using "þ"
         a = a.split("þ");
-        
-        // Loop on all the entries
         for(i = 0; i < a.length - 1; i += 2){
             
-            // Make an array with [country, capitol, coords, capitol coords] or [place, , coords, ]
+            X = [a[i], a[i + 1]];
+            Y = [a[i].split(",")[0], a[i + 1].split("ÿ")];
             Z = [a[i].split(",")[0], a[i].split(",")[1], a[i + 1].split("ÿ")];
+            t.push(Y);
+            z.push(Z);
             
-            // The last 2 chars are the capitol's coordinates. 
-            z[3] = Z[2][Z[2].length - 1].slice(-2);
-            Z[2][Z[2].length - 1] = Z[2][Z[2].length - 1].slice(0,-2);
-            
-            // Add it to the list of all countries and capitols
-            t.push(Z);
 
             // Retrieve easy countries and capitols
             if(i < 2 * 76){
-                u.push(Z);
+                u.push(Y);
                 A.push(Z);
             }
             
             // Retrieve medium countries and capitols
             else if(i < 2 * (76 + 47)){
-                v.push(Z);
+                v.push(Y);
                 B.push(Z);
             }
             
             // Retrieve hard countries and capitols
             else if(i < 2 * (76 + 47 + 74)){
-                w.push(Z);
+                w.push(Y);
                 C.push(Z);
             }
             
@@ -253,14 +222,15 @@ with(new XMLHttpRequest){
          
         }
         
-        // Shuffle the levels' puzzles
-        X = function(){return .5 - M.random()}
-        u.sort(X);
+        // Shuffle the puzzles
+        u.sort(X=function(){return 0.5 - M.random()});
         v.sort(X);
         w.sort(X);
         A.sort(X);
         B.sort(X);
         C.sort(X);
+        
+        
         
         /** Game loop **/
 
@@ -269,87 +239,90 @@ with(new XMLHttpRequest){
             // Reset canvas
             W.width ^= 0;
             
-            // Welcome screen
+            /** Welcome screen **/
+            
             if(e == 0){
-                d(1, 0);
+                d(1,0);
             }
             
             // Level presentation
             if(e == 1){
                 H();
+                r = 30000;
             }
             
-            // Puzzle
+            // Game
             if(e == 2){
                 
-                // Level 1
+                /** Level 1 **/
                 if(m == 0){
                     d(0,1,0,0,n);
                 }
                 
-                // Level 2
+                /** Level 2 **/
                 if(m == 1){
                     d(0,1,1,0,n);
                 }
                 
-                /*
-                // Level 3
+                /** Level 3 **/
                 if(m == 2){
                     d(0,1,2,0,n);
                 }
                 
-                // Level 4
+                /** Level 4 **/
                 if(m == 3){
                     m++;
                     //d(0,1,0,0,n);
                 }
                 
-                // Level 5
+                /** Level 5 **/
                 if(m == 4){
                     d(0,1,0,1,n);
                 }
                 
-                // Level 6
+                /** Level 6 **/
                 if(m == 5){
                     d(0,1,1,1,n);
                 }
                 
-                // Level 7
+                /** Level 7 **/
                 if(m == 6){
                     d(0,1,2,1,n);
                 }
                 
-                // Level 8
+                /** Level 8 **/
                 if(m == 7){
                     m++; //d(0,1,0,0,n);
                 }
                 
-                // Level 9
+                /** Level 9 **/
                 if(m == 8){
                     d(0,1,0,2,n);
                 }
                 
-                // Level 10
+                /** Level 10 **/
                 if(m == 9){
                     d(0,1,1,2,n);
                 }
-               
-                // Level 11
+                
+                /** Level 11 **/
                 if(m == 10){
                     d(0,1,2,2,n);
                 }
                 
-                // Level 12
+                /** Level 12 **/
                 if(m == 11){
                     d(0,1,0,0,n);
                 }
                 
-                // Level 13
+                /** Level 13 **/
                 if(m == 12){
                     d(0,1,0,0,n);
                 }
-                */
             }
+
+
+            /** Score **/
 
             /** Game over **/
 
@@ -372,6 +345,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         S %= 1200;
         T += 1;
         T %= 220;
+        N = 0;
     }
 
     // Text title screen
@@ -425,7 +399,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     c.strokeStyle = "#83864F";
     c.fillStyle = "#95D866";
     for(i = 0; i < t.length; i++){
-        P = t[i][2];
+        P = t[i][1];
         for(j = 0; j < P.length; j++){
             O = P[j];
             c.beginPath();
@@ -482,7 +456,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     // After a click, show the good country, the distance, etc
     if(flat && (I || J)){
 
-        P = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][2];
+        P = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][1];
         
         // Draw the target country
         for(j = 0; j < P.length; j++){
@@ -515,31 +489,7 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         
         
         // Drop flag
-        if(!K){
-            c.fillStyle = "green";
-            c.strokeStyle = "green";
-            c.beginPath();
-            c.moveTo(p[0],p[1]);
-            c.lineTo(p[0]-1, p[1]);
-            c.lineTo(p[0]-1, p[1]-40);
-            c.lineTo(p[0], p[1]-40);
-            c.lineTo(p[0]+20, p[1]-30);
-            c.lineTo(p[0], p[1]-20);
-            c.stroke();
-            c.fill();
-            
-            c.strokeStyle = "red";
-            c.lineWidth = "2";
-            c.setLineDash([5, 5]);
-            c.beginPath();
-            c.moveTo(I, J);
-            c.lineTo(p[0], p[1]);
-            c.stroke();
-        }
-        
-        c.setLineDash([0,0]);
         c.fillStyle = "blue";
-        c.strokeStyle = "blue";
         c.beginPath();
         c.moveTo(I,J);
         c.lineTo(I-1, J);
@@ -549,6 +499,27 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         c.lineTo(I, J-20);
         c.stroke();
         c.fill();
+        
+        c.fillStyle = "green";
+        c.beginPath();
+        c.moveTo(p[0],p[1]);
+        c.lineTo(p[0]-1, p[1]);
+        c.lineTo(p[0]-1, p[1]-40);
+        c.lineTo(p[0], p[1]-40);
+        c.lineTo(p[0]+20, p[1]-30);
+        c.lineTo(p[0], p[1]-20);
+        c.stroke();
+        c.fill();
+        
+        if(!K){
+            c.strokeStyle = "red";
+            c.lineWidth = "2";
+            c.setLineDash([5, 5]);
+            c.beginPath();
+            c.moveTo(I, J);
+            c.lineTo(p[0], p[1]);
+            c.stroke();
+        }
         
         // Count until the next
         o++;
@@ -585,14 +556,11 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
     if(flat && !o) h--;
     
     // Next puzzle
-    // Black screen for 5 frames
-    if(o>85){
+    if(o>58){
         c.fillStyle = "#000";
         c.fillRect(0,0,1200,650);
     }
-    
-    // Reset everything for next puzzle
-    if(o == 90){
+    if(o == 60){
         n++;
         I = 0;
         J = 0;
@@ -600,13 +568,10 @@ d = function(title, flat, countryorcapitolorplace, difficulty, puzzle){
         K = 0;
         h = 300;
         q = 2000;
-        
-        // If level 10: reset everything for next level
         if(n == 10){
             n = 0;
             m++;
             e = 1;
-            r = 30000;
         }
     }
 }
@@ -623,7 +588,6 @@ H = function(){
     c.fillText([
     "World Countries (easy)",
     "Capitols (easy)",
-    /*
     "Famous places (easy)",
     "World Countries (medium)",
     "Capitols (medium)",
@@ -631,7 +595,6 @@ H = function(){
     "World countries (hard)",
     "Famous places (hard)",
     "Capitols (hard)"
-    */
     ][m], 600, 360, 800);
     
 }
