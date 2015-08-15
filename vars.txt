@@ -17,7 +17,7 @@ m: current level (0-12)
 n: current puzzle (0-9)
 o: time counter (.5s / 15 frames display + 2s / 60 frames alert) after a click on a puzzle before showing the next one
 p: closest point
-q: distance to closest point
+q: distance to closest point of target
 r: current level score
 s: setInterval handler
 t: all countries and capitols
@@ -43,7 +43,7 @@ M: Math
 N: current "side" (-1 left, 1 right) of a country on the 3D view
 O: current subpath (island)
 P: current path (whole country)
-Q: -
+Q: current capitol coordinates
 R: total score
 S: stars rotation offset
 T: world rotation offset

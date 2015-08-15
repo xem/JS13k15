@@ -37,6 +37,9 @@ o = 0;
 // Min distance to a country
 q = 2000;
 
+// Level score
+r = 30000;
+
 // All countries
 t = [];
 
@@ -116,7 +119,7 @@ with(new XMLHttpRequest){
             Z = [a[i].split(",")[0], a[i].split(",")[1], a[i + 1].split("ÿ")];
             
             // The last 2 chars are the capitol's coordinates. 
-            z[3] = Z[2][Z[2].length - 1].slice(-2);
+            Z[3] = Z[2][Z[2].length - 1].slice(-2);
             Z[2][Z[2].length - 1] = Z[2][Z[2].length - 1].slice(0,-2);
             
             // Add it to the list of all countries and capitols
@@ -188,72 +191,43 @@ with(new XMLHttpRequest){
             if(e == 2){
                 
                 // Level 1
-                if(m == 0){
-                    d(1,0,0,n);
-                }
+                if(m == 0) d(1,0,0,n);
                 
                 // Level 2
-                if(m == 1){
-                    d(1,1,0,n);
-                }
+                if(m == 1) d(1,1,0,n);
                 
-                /*
                 // Level 3
-                if(m == 2){
-                    d(1,2,0,n);
-                }
+                if(m == 2) d(1,2,0,n);
                 
                 // Level 4
-                if(m == 3){
-                    m++;
-                    //d(1,0,0,n);
-                }
+                if(m == 3) d(1,0,1,n);
                 
                 // Level 5
-                if(m == 4){
-                    d(1,0,1,n);
-                }
+                if(m == 4) d(1,1,1,n);
                 
                 // Level 6
-                if(m == 5){
-                    d(1,1,1,n);
-                }
+                if(m == 5) d(1,2,1,n);
                 
                 // Level 7
-                if(m == 6){
-                    d(1,2,1,n);
-                }
+                if(m == 6);// d(1,0,2,n);
                 
                 // Level 8
-                if(m == 7){
-                    m++; //d(0,1,0,0,n);
-                }
+                if(m == 7);// d(1,1,2,n);
                 
                 // Level 9
-                if(m == 8){
-                    d(1,0,2,n);
-                }
+                if(m == 8);// d(1,2,2,n);
                 
                 // Level 10
-                if(m == 9){
-                    d(1,1,2,n);
-                }
+                if(m == 9);
                
                 // Level 11
-                if(m == 10){
-                    d(1,2,2,n);
-                }
+                if(m == 10);
                 
                 // Level 12
-                if(m == 11){
-                    d(1,0,0,n);
-                }
+                if(m == 11);
                 
                 // Level 13
-                if(m == 12){
-                    d(1,0,0,n);
-                }
-                */
+                if(m == 12);
             }
 
             /** Game over **/
@@ -282,6 +256,9 @@ d = function(flat, countryorcapitolorplace, difficulty, puzzle){
         c.fill();
         c.font = "40px Impact, Charcoal";
         c.fillText(["Country: ","Capitol: ","Place: "][countryorcapitolorplace] + [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][[0,1,0][countryorcapitolorplace]], 10, 45);
+        
+        c.textAlign = "right";
+        c.fillText(r + "km remaining", 1190, 45)
     }
     
     // 3D view
@@ -384,8 +361,11 @@ d = function(flat, countryorcapitolorplace, difficulty, puzzle){
         if(I || J){
 
             P = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][2];
+            Q = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][3];
+            l(Q);
             
             // Draw the target country
+                
             for(j = 0; j < P.length; j++){
                 O = P[j];
                 c.fillStyle = "yellow";
@@ -408,15 +388,36 @@ d = function(flat, countryorcapitolorplace, difficulty, puzzle){
                     }
                 }
                 
-                if(c.isPointInPath(I, J)) K = 1;
                 c.closePath();
                 c.fill();
                 c.stroke();
+                
+                // Country / place
+                if(countryorcapitolorplace != 1){
+                    if(c.isPointInPath(I, J)) K = 1;
+                    else{
+                        if(o == 15) r -= ( q < 100  ?  (~~(q/5))*100  :  (~~(q/50))*1000 );
+                        if(r < 0){
+                            r = 0;
+                            clearInterval(s);
+                            l("game over");
+                        }
+                    }
+                }
+                
+                // Capitol
+                else {
+                    x = Q.charCodeAt(0);
+                    y = Q.charCodeAt(1);
+                    p = [x * 4.6 + 40, y * 2.3 + 70];
+                    
+                    // Compute the distance between capitol and flag
+                    q = M.sqrt(M.pow((x * 4.6 + 40) - I, 2) + M.pow((y * 2.3 + 70) - J, 2));
+                }
             }
             
-            
             // Drop flag
-            if(!K){
+            if(!K && q > 5){
                 c.fillStyle = "green";
                 c.strokeStyle = "green";
                 c.beginPath();
@@ -462,7 +463,7 @@ d = function(flat, countryorcapitolorplace, difficulty, puzzle){
                     c.fillText("PERFECT", 600, 350);
                 }
                 else{
-                    c.fillText(["GREAT","NICE","HMMM","MEH","OWW","NOOO"][~~(q/30)] || "EEEK", 600, 350);
+                    c.fillText(["NICE!","GOOD...","MEH.","OWW...","NOOO!"][~~(q/30)] || "WRONG!", 600, 350);
                     c.font = "50px Impact, Charcoal";
                     c.fillText("You're " + ( q < 100  ?  (~~(q/5))*100  :  (~~(q/50))*1000 ) + "km away", 600, 400);
                 }
@@ -484,27 +485,34 @@ d = function(flat, countryorcapitolorplace, difficulty, puzzle){
         
         // Next puzzle
         // Black screen for 5 frames
-        if(o>85){
+        if(o > 85){
             c.fillStyle = "#000";
             c.fillRect(0,0,1200,650);
         }
         
         // Reset everything for next puzzle
         if(o == 90){
-            n++;
-            I = 0;
-            J = 0;
-            o = 0;
-            K = 0;
-            h = 300;
-            q = 2000;
+            n++; // puzzle
+            I = 0; // MouseX
+            J = 0; // Mouse Y
+            o = 0; // Time counter after a click
+            K = 0; // Perfect click
+            h = 300; // puzzle timer
+            q = 2000; // distance to target
             
-            // If level 10: reset everything for next level
-            if(n == 10){
-                n = 0;
-                m++;
-                e = 1;
-                r = 30000;
+            // If puzzle 10: reset everything for next level
+            if(n == 3){
+                n = 0;  // puzzle
+                e = 1; // state (level presentation)
+                R += r; // total score
+                r = 30000; // level score
+                m++;  // level
+                
+                // If level 10: game over
+                if(m == 9){
+                    clearInterval(s);
+                    l("game over. score: " + R);
+                }
             }
         }
     }
