@@ -191,7 +191,7 @@ with(new XMLHttpRequest){
             if(e == 2){
                 
                 // Level 1
-                if(m == 0) d(1,1,0,n);
+                if(m == 0) d(1,0,0,n);
                 
                 // Level 2
                 if(m == 1) d(1,1,0,n);

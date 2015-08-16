@@ -39,11 +39,9 @@ Levels:
 - ?
 - ?
 
-her ideas:
-Extreme points on earth (hotter, colder, higher, deeper, etc)
-Mountains
-Seas
-Rivers
-Timezones
-Flags
-Solar system natural satellites
+Other ideas:
+- Mountains
+- Rivers
+- Timezones
+- Flags
+- Solar system natural satellites
