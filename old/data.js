@@ -199,6 +199,7 @@ d=[
 "Vanuatu,Port Vila",
 "Zambia,Lusaka",*/
 
+/*"Cape Canaveral",
 "Christ the Redeemer",
 "The Great Chinese Wall",
 "The Great Sphinx",
@@ -268,6 +269,7 @@ d=[
 "Opera House",
 "Parc Guell",
 "Pompeii",
+"Dead sea",
 
 "Waterloo",
 "Easter Island",
@@ -298,7 +300,62 @@ d=[
 "Kiyomizu-dera",
 "Petra",
 "Tombouctou",
-"Dead Sea",
-"Cape Canaveral",
-"Kultury i Nauki Palace"
+"Kultury i Nauki Palace",
+*/
+
+
+"Hawaii,Honolulu",
+"Alaska,Juneau",
+"Washington,Olympia",
+"Nevada,Carson City",
+"New Mexico,Santa Fe",
+"New York,Albany",
+"Florida,Tallahassee",
+"Illinois,Springfield",
+"Ohio,Columbus",
+"Rhode Island,Providence",
+"South Carolina,Columbia",
+"Texas,Austin",
+"Utah,Salt Lake City",
+"Virginia,Richmond",
+"West Virginia,Charleston",
+"Pennsylvania,Harrisburg",
+"Massachusetts,Boston",
+"North Carolina,Raleigh",
+"Alabama,Montgomery",
+"California,Sacramento",
+"Colorado,Denver",
+"Georgia,Atlanta",
+"Michigan,Lansing",
+
+"North Dakota,Bismarck",
+"Montana,Helena",
+"Nebraska,Lincoln",
+"Arizona,Phoenix",
+"Arkansas,Little Rock",
+"New Hampshire,Concord",
+"New Jersey,Trenton",
+"Connecticut,Hartford",
+"Delaware,Dover",
+"Oklahoma,Oklahoma City",
+"Idaho,Boise",
+"Oregon,Salem",
+"Indiana,Indianapolis",
+"Iowa,Des Moines",
+"Kansas,Topeka",
+"South Dakota,Pierre",
+"Kentucky,Frankfort",
+"Tennessee,Nashville",
+"Louisiana,Baton Rouge",
+"Maine,Augusta",
+"Maryland,Annapolis",
+"Vermont,Montpelier",
+"Minnesota,St. Paul",
+"Mississippi,Jackson",
+"Wisconsin,Madison",
+"Missouri,Jefferson City",
+"Wyoming,Cheyenne"
+
+
+
 ]

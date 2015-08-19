@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset=utf-8>
 <title>GeoQuiz map editor</title>
-<canvas id=C width=1020 height=500 style="background:url(a.png) no-repeat -5px -5px; background-size:1060px"></canvas>
+<canvas id=C width=1020 height=500 style="background:url(b.png) no-repeat 0px 0px; background-size:1020px"></canvas>
 <pre id=P></pre>
 <style>*{margin:0}</style>
 <script src=data.js></script>
@@ -25,107 +25,58 @@ c=C.getContext("2d");
 
 
 p = [
-/* Cape Canaveral */ ',\\',
-/* Christ the Redeemer */ 'Hº',
-/* The Great Chinese Wall */ 'ÁI',
-/* The Great Sphinx */ 'Z',
-/* The Eiffel Tower */ 'm9',
-/* Tower of Pisa */ 'sA',
-/* Mount Everest */ '®\\',
-/* Sagrada Familia */ 'lE',
-/* Big Ben */ 'k2',
-/* The Statue of Liberty */ '2J',
-/* Forbidden City */ 'ÂI',
-/* The Pyramids of Giza */ 'Z',
-/* The Palace of Versailles */ 'm9',
-/* Acropolis */ '}L',
-/* Trevi Fountain */ 'uD',
-/* Kremlin */ '-',
-/* Loch Ness */ 'i+',
-/* Atomium */ 'n4',
-/* Lascaux caves */ 'l>',
-/* Mont St. Michel */ 'j7',
-/* Piazza San Marco */ 't>',
-/* The Grand Canyon */ 'O',
-/* Millau Bridge */ 'm?',
-/* Rock of Gibraltar */ 'gO',
-/* The Empire State Building */ '4E',
-/* Hollywood Sign */ 'Q',
-/* Times square */ '3G',
-/* Louvre Museum */ 'm9',
-/* White House */ '1K',
-/* Florence Cathedral */ 'sB',
-/* Las Vegas */ 'O',
-/* Madrid Palace */ 'hG',
-/* Central Park */ '4F',
-/* Sistine Chapel */ 'tC',
-/* Piazza del Campo */ 'sA',
 
-/* Machu Picchu */ '0§',
-/* The Burj al Arab Hotel */ 'c',
-/* St. Peter’s Cathedral */ 'uD',
-/* Kilimanjaro */ '',
-/* Capitol Hill */ '1J',
-/* Luxor Temple */ 'a',
-/* Golden Gate Bridge */ 'J',
-/* Burj Khalifa */ 'c',
-/* Alcatraz */ 'L',
-/* Ephesus */ 'K',
-/* Manneken Pis */ 'n4',
-/* Mount Eden crater */ 'ïÔ',
-/* North Cape */ 'z',
-/* St. Basil’s Cathedral */ '-',
-/* Victoria Falls */ '±',
-/* The Great Buddha */ 'ÕP',
-/* Lotus Temple */ '§\\',
-/* The Colosseum */ 'uD',
-/* Abu Simbel */ 'g',
-/* Petronas Twin Towers */ '¼',
-/* Yellowstone */ 'C',
-/* Niagara Falls */ '1B',
-/* The Taj Mahal */ '§\\',
-/* Mount Fuji */ 'ÔO',
-/* Mecca */ 'g',
-/* Auschwitz */ 'y4',
-/* Stonehenge */ 'j3',
-/* Mount Rushmore */ '@',
-/* Pentagon */ '0K',
-/* Cape of Good Hope */ 'yÐ',
-/* Opera House */ 'ÞÏ',
-/* Parc Guell */ 'lE',
-/* Pompeii */ 'vF',
-/* Dead Sea */ 'W',
+/* Hawaii,Honolulu */ 'ñõøÿíÿèÿî',
+/* Alaska,Juneau */ '0?JO%L2C,;ÿ@',
+/* Washington,Olympia */ ']WbXbTsStjkkcock`iÿb_',
+/* Nevada,Carson City */ 'k|{´y´z¼l¡ÿm',
+/* New Mexico,Santa Fe */ '®®ÏÏÑÑÔÓÿµ',
+/* New York,Albany */ 'írìéèÛÞÝ|ä|åxéqÿê',
+/* Florida,Tallahassee */ 'ÃÛÃ×ÍÖÍÙÕÙÕ×××ÛðÚù×ùÓëÓäÏÜÌßÉÛÿÿ',
+/* Illinois,Springfield */ '½ÇÆÅ§Á®À©¾¥¾¡»¼¾ÿÁ',
+/* Ohio,Columbus */ 'ÎÕÙÙÔ¤Ï¡ÍÿÓ',
+/* Rhode Island,Providence */ 'ññôõÿó',
+/* South Carolina,Columbia */ 'ØÏÖÆÑ¿Ò¼Û»ßÄÿ×Å',
+/* Texas,Austin */ 'ÑÏÏ²£±£¿­Ä±Ã´Æ´ÒµÖ´ß¬çªñ«÷¥ô¤ìßÞäßÙÿ¨Ý',
+/* Utah,Salt Lake City */ '{®|®ÿ',
+/* Virginia,Richmond */ 'Ñ°ÕªÙ­Ü¢àå¨æ±ÿâ«',
+/* West Virginia,Charleston */ 'Ù­ÕªÔ¤ÙÙÜÜààÜ¢ÿ×¥',
+/* Pennsylvania,Harrisburg */ 'ÙÛèéêèêçÙÿ',
+/* Massachusetts,Boston */ 'ìõöìÿô',
+/* North Carolina,Raleigh */ 'Î¼×°æ±ç·ä¾ßÄÛÿ»Þ¸',
+/* Alabama,Montgomery */ 'Ã×Ä¼Ë¼ÍÏÍÖÿÈÏ',
+/* California,Sacramento */ 'kl¡z¼{ÁzÌsÌpÃiÀc¦^_ÿf',
+/* Colorado,Denver */ '®®ÿ',
+/* Georgia,Atlanta */ 'Ë¼Ò»Ñ¿ÖÆØÏ××Õ×ÕÙÍÙÍÎÿÏÄ',
+/* Michigan,Lansing */ 'ÆÉÉuÍmÒqÔÑÿÆp½dÄ]ÈgÍcÑlÊkÿÎ',
 
-/* Waterloo */ 'n4',
-/* Easter Island */ 'Â',
-/* Everglades */ '+a',
-/* Cloud gate */ '*D',
-/* Rialto Bridge */ 't>',
-/* Willis Tower */ '*D',
-/* Little mermaid */ 't,',
-/* Tower Bridge */ 'k2',
-/* The Blue Mosque */ '[',
-/* Nevado Mismi */ '1¬',
-/* Table Mountain */ 'yÏ',
-/* Minaret of Jam */ 'R',
-/* Angkor Wat */ '¾x',
-/* Faisal Mosque */ 'b',
-/* Neuschwanstein castle */ 's8',
-/* Golden Temple of Amritsar */ '§W',
-/* Al Aqsa Mosque */ 'U',
-/* Temple of Besakih */ 'È¡',
-/* Chichen Itza */ '$k',
-/* Bran Castle */ '}>',
-/* Hagia Sophia */ 'F',
-/* Uluru */ 'Ô½',
-/* Brandenburg Gate */ 't2',
-/* Blue Domed Church */ '~M',
-/* Taal lake */ 'Ìv',
-/* Cheyenne mountain */ 'M',
-/* Kiyomizu-dera */ 'ÓP',
-/* Petra */ 'X',
-/* Tombouctou */ 'hr',
-/* Palace of Culture and Science */ 'z2'
+/* North Dakota,Bismarck */ 'T«T­kkÿ¡d',
+/* Montana,Helena */ 'vTv[wrrTÿg',
+/* Nebraska,Lincoln */ '°¬§ÿ­',
+/* Arizona,Phoenix */ 'zÌ{Áy´{´{®®ÓÿÃ',
+/* Arkansas,Little Rock */ '²Ä´Æ´É¼ÉÀµ¾µ¾±²±ÿ¸¾',
+/* New Hampshire,Concord */ 'óqðôôpÿò',
+/* New Jersey,Trenton */ 'éçêèêìëÿê',
+/* Connecticut,Hartford */ 'ìññìÿï',
+/* Delaware,Dover */ 'çç£é£éÿè',
+/* Oklahoma,Oklahoma City */ '²®²®²Ä±Ã­Ä£¿£±ÿªº',
+/* Idaho,Boise */ 'sSvTv[wssswuotjÿu~',
+/* Oregon,Salem */ '`ickcolktjuosws_^ÿct',
+/* Indiana,Indianapolis */ 'ÆÅ§Ç©ÎÍÎÿÉ',
+/* Iowa,Des Moines */ '¬­~»~¾¼»º¯ÿ¶',
+/* Kansas,Topeka */ '®°²£²®ÿ®',
+/* South Dakota,Pierre */ 'k§¬­~­kÿ¢x',
+/* Kentucky,Frankfort */ 'Á±Á®Å§Ç©ÎÏ¡Ô¤ÕªÑ°Ä°Ä²ÿÍ¦',
+/* Tennessee,Nashville */ '¾³Á±Ä²Ä°×°Î¼¿¼Àµ¾µÿÇµ',
+/* Louisiana,Baton Rouge */ '¼ÉºÖ¿ÖÁÝ¾â´ÞµÖ´Ó´Éÿ»Û',
+/* Maine,Augusta */ 'ôôpù^ýbþvö|ÿøv',
+/* Maryland,Annapolis */ 'çÜÜààç¬é£ç£ÿä ',
+/* Vermont,Montpelier */ 'írórðìÿïy',
+/* Minnesota,St. Paul */ '­~­k«T²TÀZ·k·u¼|»~ÿ¶v',
+/* Mississippi,Jackson */ '¾¼Ä¼ÃÜÀÜ¿ÖºÖÿ¾Ï',
+/* Wisconsin,Madison */ '·k¼bÇrÅ½»¼|·uÿÁ',
+/* Missouri,Jefferson City */ '¯º»¾¢¾¥À¨Á°¾´¾±²±²£ÿ¹£',
+/* Wyoming,Cheyenne */ 'rrÿ',
 ];
 
 sp=""; // current subpath
@@ -135,9 +86,9 @@ l=function(s){console.log(s)};
 // Trace path
 C.onclick = function(e){
     if(e.which==1){
-        var x=String.fromCharCode(~~(e.pageX/4)).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
+        var x=String.fromCharCode(~~((e.pageX)/4)).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
         //l((e.pageX/4).toString(16));
-        var y=String.fromCharCode(~~(e.pageY/2)).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
+        var y=String.fromCharCode(~~((e.pageY)/2)).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
         //l((e.pageY/2).toString(16));
         sp+=x;
         P.innerHTML+=x;
@@ -256,7 +207,7 @@ C.onmousemove=function(e){
         c.stroke();
     }
     
-    //c.lineTo(~~(e.pageX/4)*4+2, ~~(e.pageY/2)*2+1);
+    c.lineTo(~~(e.pageX/4)*4+2, ~~(e.pageY/2)*2+1);
     c.stroke();
 }
 
@@ -282,7 +233,7 @@ C.oncontextmenu = function(e){
 
 P.innerHTML= "/* " + d[p.length] + " */ '";
 
-setInterval("C.onmousemove({pageX:0,pageY:0})", 20);
+//setInterval("C.onmousemove({pageX:0,pageY:0})", 20);
 
 
 </script>
