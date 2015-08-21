@@ -106,9 +106,9 @@ with(new XMLHttpRequest){
             else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)-1) places.push(a[i].slice(0,-2)), places.push(a[i+1].slice(0,-2));
             else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)) places.push(a[i].slice(0,-2));
             else if(a[i+1])states.push(a[i+1].split(',')[0]), uscapitols.push(a[i+1].split(',')[1]);
-        }*/
+        }
         
-        /*places=places.join("1");
+        places=places.join("1");
         capitols=capitols.join("1");
         uscapitols=uscapitols.join("1");
         countries=countries.join("1");
@@ -120,7 +120,7 @@ with(new XMLHttpRequest){
         console.log(countries);
         console.log(states);*/
         
-        //console.log(places+0+capitols+0+uscapitols+0+countries+0+states);
+        //console.log((places+0+capitols+0+uscapitols+0+countries+0+states).toLowerCase().replace(/1(.)/g,function(a,b){return b.toUpperCase()}));
         
         for(i=0;i<a.length;i+=2){
             if(i < 2 * (76 + 47 + 74 + 2)) countries.push(a[i+1].slice(0,-2)), capitols.push(a[i+1].slice(-2));
@@ -129,11 +129,7 @@ with(new XMLHttpRequest){
             else if(a[i])states.push(a[i].slice(0,-2)), uscapitols.push(a[i].slice(-2));
         }
         
-        console.log(places);
-        console.log(capitols);
-        console.log(uscapitols);
-        console.log(countries);
-        console.log(states);
+        
         
         places=places.join("");
         capitols=capitols.join("");
@@ -141,6 +137,14 @@ with(new XMLHttpRequest){
         countries=countries.join("þ");
         states=states.join("þ");
         
+        console.log(places.length);
+        console.log(capitols.length);
+        console.log(uscapitols.length);
+        console.log(countries.length);
+        console.log(states.length);
+        
+        tmp = (places+"þþ"+capitols+"þþ"+uscapitols+"þþ"+countries+"þþ"+states).toLowerCase();
+        //y=[];for(i in tmp)y.push(tmp.charCodeAt(i));location="data:application/octet-stream;base64,"+btoa(String.fromCharCode.apply(!1,new Uint8Array(y)))
        
 
         /*

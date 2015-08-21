@@ -93,27 +93,8 @@ with(new XMLHttpRequest){
         //for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]); a = a.split("þ");
         a = String.fromCharCode.apply(false, new Uint8Array(response)).split("þ"); // golfed
         
-        //console.log(a);
+        console.log(a);
         
-        places = [];
-        capitols = [];
-        uscapitols = [];
-        countries = [];
-        states = [];
-        for(i=0;i<a.length;i+=2){
-            if(i < 2 * (76 + 47 + 74 + 2)) countries.push(a[i].split(',')[0]), capitols.push(a[i].split(',')[1]);
-            else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)-1) places.push(a[i].slice(0,-2)), places.push(a[i+1].slice(0,-2));
-            else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)) places.push(a[i].slice(0,-2));
-            else if(a[i+1])states.push(a[i+1].split(',')[0]), uscapitols.push(a[i+1].split(',')[0]);
-        }
-        
-        console.log(places);
-        console.log(capitols);
-        console.log(uscapitols);
-        console.log(countries);
-        console.log(states);
-
-        /*
         
         // Loop on all the entries
         for(i = 0; i < a.length - 1; i += 2){
@@ -171,7 +152,32 @@ with(new XMLHttpRequest){
         F.sort(X);
         G.sort(X);
         
-        */
+        console.log(u);
+        console.log(v);
+        console.log(w);
+        console.log(A);
+        console.log(B);
+        console.log(C);
+        console.log(E);
+        console.log(F);
+        console.log(G);
+        
+        tmp = "";
+        for(i in u){
+            tmp += u[i][2].join("ÿ")+"þ";
+        }
+        tmp += "þ"
+        for(i in v){
+            tmp += v[i][2].join("ÿ")+"þ";
+        }
+        tmp += "þ"
+        for(i in w){
+            tmp += w[i][2].join("ÿ")+"þ";
+        }
+        tmp += "þ"
+        
+        console.log(tmp.length);
+
         
         /** Game loop **/
         s = setInterval(function(){
