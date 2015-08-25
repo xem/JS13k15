@@ -1,182 +1,0 @@
-<!doctype html>
-<meta charset=utf-8>
-<title>GeoQuiz map editor</title>
-<canvas id=C width=1020 height=490 style="background:url(a.png) no-repeat -5px -5px; background-size:1050px"></canvas>
-<pre id=P></pre>
-<style>*{margin:0}</style>
-<script>
-
-/*
-* This tool was made to draw easily the fronteers of all the world's countries.
-* It prints JSON data corresponding to each country under the map.
-* How to use:
-* Click to place each point of the path. It appends 2 ASCII characters to the encoded path (one for pageX/2, one for pageY)
-* Press space key to start drawing the next country
-* Right click to insert a separation (for countries separated in many islands/parts), encoded by a "0".
-*/
-
-
-// countries
-names=["Algeria",
-"Argentina",
-"Australia",
-"Austria",
-"Belgium",
-"Brazil",
-"Bulgaria",
-"Canada",
-"Chile",
-"China",
-"Croatia",
-"Cuba",
-"Czech Republic",
-"Denmark",
-"Ecuador",
-"Egypt",
-"Estonia",
-"Finland",
-"France",
-"Germany",
-"Greece",
-"Hungary",
-"Iceland",
-"India",
-"Indonesia",
-"Iran",
-"Iraq",
-"Ireland",
-"Israel",
-"Italy",
-"Jamaica",
-"Japan",
-"Lebanon",
-"Lithuania",
-"Luxembourg",
-"Macedonia",
-"Madagascar",
-"Mexico",
-"Monaco",
-"Morocco",
-"Nepal",
-"Netherlands",
-"New Zealand",
-"North Korea",
-"Norway",
-"Palestine",
-"Paraguay",
-"Peru",
-"Philippines",
-"Poland",
-"Portugal",
-"Romania",
-"Qatar",
-"Russia",
-"Saudi Arabia",
-"Singapore",
-"Slovakia",
-"Slovenia",
-"South Africa",
-"South Korea",
-"Spain",
-"Sweden",
-"Switzerland",
-"Taiwan",
-"Tunisia",
-"Turkey",
-"Ukraine",
-"Uruguay",
-"United Arab Emirates",
-"United Kingdom",
-"United States of America",
-"Venezuela",
-"Vatican City",
-"Vietnam",
-"Guyana",
-"Libya"]
-
-c=C.getContext("2d");
-p=[
-/* Algeria*/ '4(5&8&7)8+8092766665551/1-3,3+4*',
-/* Argentina*/ '[]^``_ _cgjklmnorsvvtojec][~xyy',
-/* Australia */ 'iRkRjUlWmQnUnXoZo[p^paodmhljkkijifhghefdcfbfag`fada_a\\bZdYeVeWgThUhS~jmkmjo',
-/* Austria */ '9:;:',
-/* Belgium */ '677',
-/* Brazil */ 'c __]YXQOQQNKKFFECCFE C G%J&M&P%S$\\"^"a e',
-/* Bulgaria */ '= ? ?!>"=!',
-/* Canada */ '		\n\r	\n\n"\n#\r  \n\r!!"! ! "~\n\n~~	~  \' ~~~~~',
-/* Chile */ 'c\\WZjpvyvvtoje',
-/* China */ 'W.X.Y-Z.[1[3\\4^2_4a4c1c,b(a\'c&`$a#_ ^!_"]$]\'[%[#Z#X UUSSRRR"P#Q&R\'S(R*T,',
-
-
-
-
-
-
-
-
-
-
-
-
-]; // paths
-sp=""; // current subpath
-
-l=s=>console.log(s);
-
-// Trace path
-C.onclick = function(e){
-    if(e.which==1){
-        var x=String.fromCharCode(e.pageX/8).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
-        var y=String.fromCharCode(e.pageY/4).replace(/\\/g,"\\\\").replace(/'/g,"\\'").replace(/\r/g,"\\r").replace(/\n/g,"\\n").replace(/</g,"&lt;");
-        sp+=x;
-        P.innerHTML+=x;
-        sp+=y;
-        P.innerHTML+=y;
-    }
-}
-
-// Next point of path
-C.onmousemove=function(e){
-    C.width=C.width;
-    c.strokeStyle="red";
-    var path;
-    for(i in p){
-        path=p[i].replace(/~/g,"").replace(/\\\\/g,"\\").replace(/\\r/g,"\r").replace(/\\n/g,"\n").replace(/\\'/g,"'").replace(/&lt;/g,"<");
-        c.beginPath();
-        c.moveTo(path.charCodeAt(0)*8+4-.1, path.charCodeAt(1)*4+2-.1);
-        for(j=0;j<path.length;j+=2){
-            c.lineTo(path.charCodeAt(j)*8+4, path.charCodeAt(j+1)*4+2);
-        }
-        c.closePath();
-        c.stroke();
-    }
-    path=sp.replace(/~/g,"").replace(/\\\\/g,"\\").replace(/\\r/g,"\r").replace(/\\n/g,"\n").replace(/\\'/g,"'").replace(/&lt;/g,"<");
-    c.moveTo(path.charCodeAt(0)*8+4-.1, path.charCodeAt(1)*4+2-.1);
-    for(j=0;j<path.length;j+=2){
-        c.lineTo(path.charCodeAt(j)*8+4, path.charCodeAt(j+1)*4+2);
-    }
-    c.lineTo(~~(e.pageX/8)*8 + 4, ~~(e.pageY/4)*4 + 2);
-    c.stroke();
-}
-
-// Change path
-onkeydown=function(e){
-    if(e.keyCode== 32){
-        p.push(sp);
-        P.innerHTML+="',\n/* " + names[p.length] + " */ '";
-        sp="";
-    }
-}
-
-// Separate islands/parts of a country
-C.oncontextmenu = function(e){
-    sp+="~";
-    P.innerHTML+="~";
-    return false;
-}
-
-P.innerHTML= "/* " + names[p.length] + " */ '";
-
-
-
-</script>

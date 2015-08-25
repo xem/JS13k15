@@ -1,33 +1,8 @@
 Variables summary:
 -------------------
 
-_: log
-$: canvas
-a, b, c, d, e, f: temp/reusable vars
-g: all data
-h: context2d
-i, j, k, l: loop vars
-m: Math
-n: game state (1: home screen, 2: level description, 3: puzzle, 4: puzzle feedback, 5: black screen between puzzles, 6: game over)
-o: frame counter for current state
-p: current puzzle score (distance)
-q: level score
-r: total score
-s: stars
-t: text (params: x, y, text, size, color, align)
-u: stars offset
-v: earth rotation offset
-w: game loop
-x: current X coordinate to draw
-y: current Y coordinate to draw
 
-
-
-
-
-
-
-
+a: all data
 b: Uint8Array during data load
 c: canvas context
 d: function used to display the earth (flat or 3D)
@@ -50,7 +25,8 @@ t: all countries and capitols
 u: easy countries shuffled
 v: medium countries shuffled
 w: hard countries shuffled
-
+x: current X coordinate to draw
+y: current Y coordinate to draw
 z: -
 A: easy capitols shuffled
 B: medium capitols shuffled
@@ -79,3 +55,4 @@ X: temp var
 Y: temp var
 Z: temp var
 _: temp var
+$: canvas

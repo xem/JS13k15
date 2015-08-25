@@ -1,623 +1,143 @@
 /** Initializations **/
 
-// Math
-M = Math;
+// Debug
+_ = function(a){ console.log(a) }
 
-// Game data
-a = "";
+// Names of places, capitols, us capitols, countries, us states, in one string (0: category separator, 1: difficulty separator)
+g = "Cape canaveralChrist the redeemerThe great chinese wallThe great sphinxThe eiffel towerTower of pisaMount everestSagrada familiaBig benThe statue of libertyForbidden cityThe pyramids of gizaThe palace of versaillesAcropolisTrevi fountainKremlinLoch nessAtomiumLascaux cavesMont st. michelPiazza san marcoThe grand canyonMillau bridgeRock of gibraltarThe empire state buildingHollywood signTimes squareLouvre museumWhite houseFlorence cathedralLas vegasMadrid palaceCentral parkSistine chapelPiazza del campo1Machu picchuThe burj al arab hotelSt. peter's cathedralKilimanjaroCapitol hillLuxor templeGolden gate bridgeBurj khalifaAlcatrazEphesusManneken pisMount eden craterNorth capeSt. basil's cathedralVictoria fallsThe great buddhaLotus templeThe colosseumAbu simbelPetronas twin towersYellowstoneNiagara fallsThe taj mahalMount fujiMeccaAuschwitzStonehengeMount rushmorePentagonCape of good hopeOpera houseParc guellPompeiiDead sea1WaterlooEaster islandEvergladesCloud gateRialto bridgeWillis towerLittle mermaidTower bridgeThe blue mosqueNevado mismiTable mountainMinaret of jamAngkor watFaisal mosqueNeuschwanstein castleGolden temple of amritsarAl aqsa mosqueTemple of besakihChichen itzaBran castleHagia sophiaUluruBrandenburg gateBlue domed churchTaal lakeCheyenne mountainKiyomizu-deraPetraTombouctouKultury i nauki palace0AlgiersBuenos airesCanberraViennaBrusselsBrasiliaSofiaOttawaSantiagoBeijingZagrebHavanaPragueCopenhagenQuitoCairoTallinnHelsinkiParisBerlinAthensBudapestReykjavikNew delhiJakartaTehranBaghdadDublinJerusalemRomeKingstonTokyoBeirutVilniusLuxembourgSkopjeAntananarivoMexico cityMonacoRabatKathmanduAmsterdamWellingtonPyongyangOsloRamallahAsunciónLimaManilaWarsawLisbonBucharestDohaMoscowRiyadhSingaporeBratislavaLjubljanaPretoriaSeoulMadridStockholmBernTaipeiTunisAnkaraKyivMontevideoAbu dhabiLondonWashington d.c.CaracasVatican cityHanoiGeorgetownTripoli1KabulAndorra la vellaTiranaMinskSarajevoOuagadougouYaoundéBanguiBrazzavilleKinshasaYamoussoukroSan joseBogotáLa pazPraiaNicosiaPorto-novoPhnom penhRoseauSanto domingoMalaboGuatemala cityPort-au-princeTegucigalpaAmmanAstanaPristinaKuwait cityVientianeNairobiKuala lumpurBamakoVallettaChisinauIslamabadPanama citySan marinoDakarBelgradeVictoriaMogadishuSri jayawardenepura kotteKhartoumDodomaBangkokSana'aHarare1Saint john'sYerevanBakuLuandaNassauManamaDhakaBridgetownBelmopanThimphuGaboroneBandar seri begawanBujumburaN'djamenaMoroniDjiboutiSan salvadorAsmaraAddis ababaSuvaLibrevilleBanjulTbilisiAccraSt. george'sConakryBissauSouth tarawaBishkekRigaMaseruMonroviaVaduzLilongweMaleMajuroNouakchottPort louisPalikirUlaanbaatarPodgoricaMaputoNaypyidawWindhoekYaren districtManaguaNiameyAbujaMuscatNgerulmudPort moresbyKigaliBasseterreCastriesKingstownApiaSão toméFreetownHoniaraJubaParamariboMbabaneDamascusDushanbeDiliLoméNuku'alofaPort of spainAshgabatFunafutiKampalaTashkentPort vilaLusaka0HonoluluJuneauOlympiaCarson citySanta feAlbanyTallahasseeSpringfieldColumbusProvidenceColumbiaAustinSalt lake cityRichmondCharlestonHarrisburgBostonRaleighMontgomerySacramentoDenverAtlantaLansing1BismarckHelenaLincolnPhoenixLittle rockConcordTrentonHartfordDoverOklahoma cityBoiseSalemIndianapolisDes moinesTopekaPierreFrankfortNashvilleBaton rougeAugustaAnnapolisMontpelierSt. paulJacksonMadisonJefferson cityCheyenne0AlgeriaArgentinaAustraliaAustriaBelgiumBrazilBulgariaCanadaChileChinaCroatiaCubaCzech republicDenmarkEcuadorEgyptEstoniaFinlandFranceGermanyGreeceHungaryIcelandIndiaIndonesiaIranIraqIrelandIsraelItalyJamaicaJapanLebanonLithuaniaLuxembourgMacedoniaMadagascarMexicoMonacoMoroccoNepalNetherlandsNew zealandNorth koreaNorwayPalestineParaguayPeruPhilippinesPolandPortugalRomaniaQatarRussiaSaudi arabiaSingaporeSlovakiaSloveniaSouth africaSouth koreaSpainSwedenSwitzerlandTaiwanTunisiaTurkeyUkraineUruguayUnited arab emiratesUnited kingdomU.s.a.VenezuelaVatican cityVietnamGuyanaLibya1AfghanistanAndorraAlbaniaBelarusBosnia and herzegovina Burkina fasoCameroonCentral african republicRepublic of the congo Democratic republic of the congo Cote d'ivoireCosta ricaColombiaBoliviaCabo verdeCyprusBeninCambodiaDominicaDominican republicEquatorial guineaGuatemalaHaitiHondurasJordanKazakhstanKosovoKuwaitLaosKenyaMalaysiaMaliMaltaMoldovaPakistanPanamaSan marinoSenegalSerbiaSeychellesSomaliaSri lankaSudanTanzaniaThailandYemenZimbabwe1Antigua and barbudaArmeniaAzerbaijanAngolaBahamasBahrainBangladeshBarbadosBelizeBhutanBotswanaBruneiBurundiChadComorosDjiboutiEl salvadorEritreaEthiopiaFijiGabonGambiaGeorgiaGhanaGrenadaGuineaGuinea-bissauKiribatiKyrgyzstanLatviaLesothoLiberiaLiechtensteinMalawiMaldivesMarshall islandsMauritaniaMauritiusMicronesiaMongoliaMontenegroMozambiqueMyanmarNamibiaNauruNicaraguaNigerNigeriaOmanPalauPapua new guineaRwandaSaint kitts and nevisSaint luciaSaint vincent and the grenadinesSamoaSao tome and principeSierra leoneSolomon islandsSouth sudanSurinameSwazilandSyriaTajikistanTimor-lesteTogoTongaTrinidad and tobagoTurkmenistanTuvaluUgandaUzbekistanVanuatuZambia1GreenlandWestern sahara0HawaiiAlaskaWashingtonNevadaNew mexicoNew yorkFloridaIllinoisOhioRhode islandSouth carolinaTexasUtahVirginiaWest virginiaPennsylvaniaMassachusettsNorth carolinaAlabamaCaliforniaColoradoGeorgiaMichigan1North dakotaMontanaNebraskaArizonaArkansasNew hampshireNew jerseyConnecticutDelawareOklahomaIdahoOregonIndianaIowaKansasSouth dakotaKentuckyTennesseeLouisianaMaineMarylandVermontMinnesotaMississippiWisconsinMissouriWyoming".split(0);
 
 // Context2d
-c = $.getContext("2d");
+h = $.getContext("2d");
 
-// Game status
-e = 0;
+// Math
+m = Math;
 
-// Stars position and size
-f = [];
-for(i = 0; i < 300; i++) f[i] = [M.random() * 1200, M.random() * 650, M.random() + .5];
-
-// frame counter
-//h = 0;
-
-// Level
-m = 0;
-
-// Puzzle
+// Game state
 n = 0;
 
-o = 0;
+// Stars position and size
+s = []; for(i = 0; i < 300; i++) s[i] = [m.random() * 1200, m.random() * 650, m.random() + .5];
 
-// Min distance to a country
-q = 30000;
-
-// Level score
-r = 30000;
-
-// All countries and capitols
-t = [];
-
-// Easy countries
-u = [];
-
-// Medium countries
-v = [];
-
-// Hard countries
-w = [];
-
-// Easy capitols
-A = [];
-
-// Medium capitols
-B = [];
-
-// Hard capitols
-C = [];
-
-// Easy places
-E = [];
-
-// Medium places
-F = [];
-
-// Hard places
-G = [];
-
-I = J = K = 0;
-
-// Side of a country
-N = 0;
-
-// Total score
-R = 0;
+// Text
+t = function(x, y, text, size, color, align){
+    size = size || 50;
+    color = color || "#fff";
+    align = align || "center";
+    h.fillStyle = color;
+    h.font = size + "px Impact, Charcoal";
+    h.fillText(text, x, y);
+}
 
 // Stars scroll offset
-S = 0;
+u = 0;
 
 // Earth rotation offset
-T = 0;
+v = 0;
 
 
 /** Gather & shuffle the data **/
 
-// Load the game's data in AJAX, as an arrayBuffer, from the file called "0"
-with(new XMLHttpRequest){
-    open("GET", 0), 
-    responseType = 'arraybuffer', 
-    send(), 
-    onload = function(){
-        
-        // Fill a with the file's text content
-        // Separate entries using "þ"
-        
-        //for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]); a = a.split("þ");
-        a = String.fromCharCode.apply(false, new Uint8Array(response)).split("þ"); // golfed
-        
-        console.log(a);
-        
-        
-        // Loop on all the entries
-        for(i = 0; i < a.length - 1; i += 2){
-            
-            // Always isolate the last 2 chars of the entry and the rest. (for countries, it corresponds to capitol position, for places, it's their position)
-            // Make an array with [country, capitol, coords, capitol coords] or [place, , coords, ]
-            Z = [a[i].split(",")[0], a[i].split(",")[1], a[i + 1].slice(0, -2).split("ÿ"), a[i + 1].slice(-2)];
-            
-            // Add country entries to the list of all countries and capitols
-            if(i < 2 * (76 + 47 + 74 + 2)) t.push(Z);
-
-            // Retrieve easy countries and capitols
-            if(i < 2 * 76){
-                u.push(Z);
-                A.push(Z);
-            }
-            
-            // Retrieve medium countries and capitols
-            else if(i < 2 * (76 + 47)){
-                v.push(Z);
-                B.push(Z);
-            }
-            
-            // Retrieve hard countries and capitols
-            else if(i < 2 * (76 + 47 + 74)){
-                w.push(Z);
-                C.push(Z);
-            }
-            
-            // Retrieve easy places
-            else if(i < 2 * (76 + 47 + 74 + 2 + 35)){
-                E.push(Z);
-            }
-            
-            // Retrieve medium places
-            else if(i < 2 * (76 + 47 + 74 + 2 + 35 + 34)){
-                F.push(Z);
-            }
-            
-            // Retrieve hard places
-            else if(i < 2 * (76 + 47 + 74 + 2 + 35 + 34 + 30)){
-                G.push(Z);
-            }
-        }
-        
-        // Shuffle the levels' puzzles
-        X = function(){return .5 - M.random()}
-        u.sort(X);
-        v.sort(X);
-        w.sort(X);
-        A.sort(X);
-        B.sort(X);
-        C.sort(X);
-        E.sort(X);
-        F.sort(X);
-        G.sort(X);
-        
-        console.log(u);
-        console.log(v);
-        console.log(w);
-        console.log(A);
-        console.log(B);
-        console.log(C);
-        console.log(E);
-        console.log(F);
-        console.log(G);
-        
-        tmp = "";
-        for(i in u){
-            tmp += u[i][2].join("ÿ")+"þ";
-        }
-        tmp += "þ"
-        for(i in v){
-            tmp += v[i][2].join("ÿ")+"þ";
-        }
-        tmp += "þ"
-        for(i in w){
-            tmp += w[i][2].join("ÿ")+"þ";
-        }
-        tmp += "þ"
-        
-        console.log(tmp.length);
-
-        
-        /** Game loop **/
-        s = setInterval(function(){
-            
-            
-
-        
-        
-            // Reset canvas
-            $.width ^= 0;
-            
-            
-            
-            
-            
-            
-            /*
-            
-            // Welcome screen
-            if(e == 0){
-                d(0);
-
-                // Text
-                c.fillStyle = "#fff";
-                c.font = "300px Impact, Charcoal";
-                c.fillText("GE", 30, 375, 300);
-                c.fillText("Quiz", 620, 375, 500);
-                c.font = "30px Impact, Charcoal";
-                c.fillText("JS13kGames 2015", 900, 405);
-                c.font = "80px Impact, Charcoal";
-                c.fillText("START", 500, 570);
-            }
-            
-            // Level presentation
-            if(e == 1){
-                H();
-            }
-            
-            // Puzzle
-            if(e == 2){
-                
-                // Level 1
-                if(m == 0) d(1,0,0,n);
-                
-                // Level 2
-                if(m == 1) d(1,1,0,n);
-                
-                // Level 3
-                if(m == 2) d(1,2,0,n);
-                
-                // Level 4
-                if(m == 3) d(1,0,1,n);
-                
-                // Level 5
-                if(m == 4) d(1,1,1,n);
-                
-                // Level 6
-                if(m == 5) d(1,2,1,n);
-                
-                // Level 7
-                if(m == 6);// d(1,0,2,n);
-                
-                // Level 8
-                if(m == 7);// d(1,1,2,n);
-                
-                // Level 9
-                if(m == 8);// d(1,2,2,n);
-                
-                // Level 10
-                if(m == 9);
-               
-                // Level 11
-                if(m == 10);
-                
-                // Level 12
-                if(m == 11);
-                
-                // Level 13
-                if(m == 12);
-            }
-
-            // Game over
-            
-            
-            */
-            
-            
-            
-            
-
-        }, 33);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-/** Draw the world map and the game's UI **/
-
-d = function(flat, countryorcapitolorplace, difficulty, puzzle){
+// Load the game's data in AJAX, as an arrayBuffer, from the file called "1"
+a = new XMLHttpRequest;
+a.open("GET", 1);
+a.responseType = 'arraybuffer';
+a.send();
+a.onload = function(){
     
-    /*
+    b = new Uint8Array(a.response);
+    c = 0;
     
-    // Background
-    $.style.background = flat ? "radial-gradient(#75D1FF 50%, #3591bF)" : "#000";
-    
-    // 2D view
-    if(flat){
+    // Reconstitute all the data
+    // For each category
+    for(i in g){
+        g[i] = g[i].split(1);
         
-        // UI
-        c.rect(0, 0, 1200, 66);
-        c.fill();
-        c.beginPath();
-        c.fillStyle = "#fff";
-        c.rect(0, 60, h * 4, 5);
-        c.fill();
-        c.font = "40px Impact, Charcoal";
-        c.fillText(["Country: ","Capitol: ","Place: "][countryorcapitolorplace] + [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][[0,1,0][countryorcapitolorplace]], 10, 45);
-        
-        c.textAlign = "right";
-        c.fillText(r + "km remaining", 1190, 45)
-    }
-    
-    // 3D view
-    else {
-        
-        // Earth rotation
-        T += 1;
-        T %= 220;
-        
-        // Star scrolling
-        S--;
-        S %= 1200;
-
-        for(i = 0; i < 300; i++){
-          c.fillStyle = "#fff";
-          c.beginPath();
-          c.arc(X = f[i][0] + S, Y = f[i][1], Z = f[i][2] + M.random() * .5, 0, 7);
-          c.arc(1200 + X, Y, Z, 0, 7);
-          c.fill();
-        }
-
-        // Blue circle
-        c.beginPath();
-        gradient = c.createLinearGradient(300,0,600,0);
-        gradient.addColorStop(0,"#75D1FF");
-        gradient.addColorStop(1,"#3591bF");
-        c.fillStyle = gradient;
-        c.arc(470, 260, 140, 0, 7);
-        c.fill();
-    }
-    
-    // Draw countries
-    c.strokeStyle = "#83864F";
-    c.fillStyle = "#95D866";
-    
-    if(o < 85){
-        for(i = 0; i < t.length; i++){
+        // For each difficulty
+        for(j in g[i]){
+            g[i][j] = g[i][j].split(/(?=[A-Z])/);
             
-            // Current country
-            P = t[i][2];
-            
-            for(j = 0; j < P.length; j++){
+            // For each name
+            for(k in g[i][j]){
                 
-                // Current island / territory to draw
-                O = P[j];
-                c.beginPath();
-                
-                // Map (flat)
-                if(flat){
-                    //c.moveTo(O.charCodeAt(0) * 4 + 50 - .1,  O.charCodeAt(1) * 2 + 50 - .1);
-                    for(k = 0;k < O.length; k += 2){
-                        x = O.charCodeAt(k);
-                        y = O.charCodeAt(k + 1);
-                        c.lineTo(x * 4.6 + 40, y * 2.3 + 70);
-                    }
-                    c.closePath();
-                    c.fill();
-                    c.stroke();
+                // Make an array with the name and the coordinates
+                // 2 coordinates for places, capitols, us capitols
+                if(c < 2 * (35 + 34 + 30 + 76 + 47 + 74 + 23 + 27)){
+                    g[i][j][k] = [g[i][j][k], [b[c], b[c+1]]];
+                    c += 2;
                 }
                 
-                // Globe (3D)
+                // List of coordinates separated by 254 for countries and capitols
                 else{
-                    for(k = 0; k < O.length; k += 2){
-                        x = (O.charCodeAt(k) + 220 - T) / 110;
-                        y = -(O.charCodeAt(k + 1) - 120) / 150;
-                        while(x > 1) x-=2;
-                        if(x > -1 && x < -.5) x = -0.5;
-                        if(x > .5 && x < 1) x = 0.5;
-                        if(!k && t[i][0] != "Russia" && t[i][0] != "Canada"){
-                            if(x < 0) N = -.5;
-                            if(x > 0) N = .5;
-                        }
-                        if(t[i][0] == "Russia"){
-                            N = -.5;
-                            if(T > 70) N = .5;
-                            if(T > 170) N = -.5;
-                        }
-                        if(t[i][0] == "Canada"){
-                            N = .5;
-                            if(T > 40) N = -.5;
-                            if(T > 140) N = .5;
-                        }
-                        if((x <= -.5 || x >= .5)) x = N;
-                        x = M.sin(x * M.PI) * M.cos(y * M.PI / 2);
-                        y = M.sin(-y * M.PI / 2);
-                        x = x * 140 + 470;
-                        y = y * 140 + 260;
-                        c.lineTo(x, y);
+                    g[i][j][k] = [g[i][j][k], []];
+                    while(b[c]!= 254 && c < b.length){
+                        g[i][j][k][1].push(b[c]);
+                        c++;
                     }
-                    c.closePath();
-                    c.fill();
-                    c.stroke();
+                    c++;
                 }
             }
         }
     }
     
-    // Gameplay
-    if(flat){
-        
-        // After a click, show the good country, the distance, etc
-        if(I || J){
-
-            P = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][2];
-            Q = [[u,v,w],[A,B,C],[E,F,G]][countryorcapitolorplace][difficulty][puzzle][3];
-            log(Q);
-            
-            // Draw the target country
-                
-            for(j = 0; j < P.length; j++){
-                O = P[j];
-                c.fillStyle = "yellow";
-                c.beginPath();
-                
-                //c.moveTo(O.charCodeAt(0) * 4.6 + 40 - .1,  O.charCodeAt(1) * 2.3 + 70 - .1);
-                for(k = 0;k < O.length; k += 2){
-                    x = O.charCodeAt(k);
-                    y = O.charCodeAt(k + 1);
-                    c.lineTo(x * 4.6 + 40, y * 2.3 + 70);
-                    
-                    // Compute the distance between point and flag
-                    X = M.sqrt(M.pow((x * 4.6 + 40) - I, 2) + M.pow((y * 2.3 + 70) - J, 2));
-                    //if(o==1) log(X);
-                    
-                    // Save it if it's the smallest
-                    if(X < q){
-                        q = X;
-                        p = [x * 4.6 + 40, y * 2.3 + 70];
-                    }
-                }
-                
-                c.closePath();
-                c.fill();
-                c.stroke();
-                
-                // Country / place
-                if(countryorcapitolorplace != 1){
-                    if(c.isPointInPath(I, J)) K = 1;
-                    else{
-                        if(o == 15) r -= ( q < 100  ?  (~~(q/5))*100  :  (~~(q/50))*1000 );
-                        if(r < 0){
-                            r = 0;
-                            //clearInterval(s);
-                            log("game over");
-                        }
-                    }
-                }
-                
-                // Capitol
-                else {
-                    x = Q.charCodeAt(0);
-                    y = Q.charCodeAt(1);
-                    p = [x * 4.6 + 40, y * 2.3 + 70];
-                    
-                    // Compute the distance between capitol and flag
-                    q = M.sqrt(M.pow((x * 4.6 + 40) - I, 2) + M.pow((y * 2.3 + 70) - J, 2));
-                }
-            }
-            
-            // Drop flag
-            if(!K && q > 5){
-                c.fillStyle = "green";
-                c.strokeStyle = "green";
-                c.beginPath();
-                c.moveTo(p[0],p[1]);
-                c.lineTo(p[0]-1, p[1]);
-                c.lineTo(p[0]-1, p[1]-40);
-                c.lineTo(p[0], p[1]-40);
-                c.lineTo(p[0]+20, p[1]-30);
-                c.lineTo(p[0], p[1]-20);
-                c.stroke();
-                c.fill();
-                
-                c.strokeStyle = "red";
-                c.lineWidth = "2";
-                c.setLineDash([5, 5]);
-                c.beginPath();
-                c.moveTo(I, J);
-                c.lineTo(p[0], p[1]);
-                c.stroke();
-            }
-            
-            c.setLineDash([0,0]);
-            c.fillStyle = "blue";
-            c.strokeStyle = "blue";
-            c.beginPath();
-            c.moveTo(I,J);
-            c.lineTo(I-1, J);
-            c.lineTo(I-1, J-40);
-            c.lineTo(I, J-40);
-            c.lineTo(I+20, J-30);
-            c.lineTo(I, J-20);
-            c.stroke();
-            c.fill();
-            
-            // Count until the next
-            o++;
-            
-            if(o > 15){
-                c.textAlign = "center";
-                c.fillStyle = "#000";
-                c.font = "100px Impact, Charcoal";
-                if(K || q < 3){
-                    c.fillText("PERFECT", 600, 350);
-                }
-                else{
-                    c.fillText(["NICE!","GOOD...","MEH.","OWW...","NOOO!"][~~(q/30)] || "WRONG!", 600, 350);
-                    c.font = "50px Impact, Charcoal";
-                    c.fillText("You're " + ( q < 100  ?  (~~(q/5))*100  :  (~~(q/50))*1000 ) + "km away", 600, 400);
-                }
-            }
-        }
-        
-        // Time out
-        if(h == 0){
-            c.textAlign = "center";
-            o++;
-            c.fillStyle = "#000";
-            c.font = "100px Impact, Charcoal";
-            c.fillText("TIME OUT", 600, 350);
-            c.font = "50px Impact, Charcoal";
-            c.fillText("10,000km penalty", 600, 400);
-        }
-        
-        if(!o) h--;
-        
-        // Next puzzle
-        // Black screen for 5 frames
-        if(o > 85){
-            c.fillStyle = "#000";
-            c.fillRect(0,0,1200,650);
-        }
-        
-        // Reset everything for next puzzle
-        if(o == 90){
-            n++; // puzzle
-            I = 0; // MouseX
-            J = 0; // Mouse Y
-            o = 0; // Time counter after a click
-            K = 0; // Perfect click
-            h = 300; // puzzle timer
-            q = 2000; // distance to target
-            
-            // After 10th puzzle: reset everything for next level
-            if(n == 10){
-                n = 0;  // puzzle
-                e = 1; // state (level presentation)
-                R += r; // total score
-                r = 30000; // level score
-                m++;  // level
-                
-                // After 9th level: game over (win)
-                if(m == 9){
-                    //clearInterval(s);
-                    log("game over. score: " + R);
-                }
-            }
-        }
-    }
+    // Shuffle
+    b = function(){return .5 - m.random()}
+    g[0][0].sort(b); // Places easy
+    g[0][1].sort(b); // Places medium
+    g[0][2].sort(b); // Places hard
+    g[1][0].sort(b); // Capitols easy
+    g[1][1].sort(b); // Capitols medium
+    g[1][2].sort(b); // Capitols hard
+    g[2][0].sort(b); // US capitols easy
+    g[2][1].sort(b); // US capitols hard
+    g[3][0].sort(b); // Countries easy
+    g[3][1].sort(b); // Countries medium
+    g[3][2].sort(b); // Countries hard
+    g[4][0].sort(b); // US states easy
+    g[4][1].sort(b); // US states hard
     
-    */
+    
+    _(g[0][0]);
+    _(g[0][1]);
+    _(g[0][2]);
+    _(g[1][0]);
+    _(g[1][1]);
+    _(g[1][2]);
+    _(g[2][0]);
+    _(g[2][1]);
+    _(g[3][0]);
+    _(g[3][1]);
+    _(g[3][2]);
+    _(g[4][0]);
+    _(g[4][1]);
+    
+    // Launch game
+    w();
 }
-
-/** Draw a level's homescreen **/
-H = function(){
     
-    /*
-    // Background
-    $.style.background = "#000";
-    c.fillStyle = "#fff";
-    c.font = "60px Impact, Charcoal";
-    c.textAlign = "center";
-    c.fillText("Level " + (m+1) + ":", 600, 280, 800);
-    c.fillText([
-    "World Countries (easy)",
-    "Capitols (easy)",
-    "Famous places (easy)",
-    "World Countries (medium)",
-    "Capitols (medium)",
-    "Famous places (medium)",
-    "World countries (hard)",
-    "Famous places (hard)",
-    "Capitols (hard)"
-    ][m], 600, 360, 800);
-    */
+/** Game loop **/
+w = function(){
+    
+    // Reset canvas
+    $.width ^= 0;
+    
+    
+    // Welcome screen
+    if(n == 0){
+        
+        // Draw world
+        //d(0);
+
+        // Text
+        t(30,375,"GE",300);
+        t(620,375,"Quiz",300);
+        t(900,405,"JS13kGames 2015",30);
+        t(500,570,"START",80);
+    }
+    
+    
+    
+    
+    
+    // Next frame
+    requestAnimationFrame(w);
 }
-
-/** Handle Clicks **/
-$.onclick = function(a){
-    
-    /*
-    
-    // Home screen
-    if(e==0){
-        e = 1;
-    }
-    
-    // Level presentation screen
-    else if(e==1){
-        e = 2;
-        h = 300;
-    }
-    
-    // Puzzle screen
-    else if(e==2 && !o){
-        I = a.pageX;
-        J = a.pageY;
-    }
-    */
-}
-
-
-
-// Debug only
-
-log = function(a){ console.log(a) }
