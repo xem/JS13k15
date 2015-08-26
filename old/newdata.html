@@ -91,10 +91,14 @@ with(new XMLHttpRequest){
         // Fill a with the file's text content
         // Separate entries using "þ"
         
-        //for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]); a = a.split("þ");
-        a = String.fromCharCode.apply(false, new Uint8Array(response)).split("þ"); // golfed
+        for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]); a = a.split("þ");
+        //a = String.fromCharCode.apply(false, new Uint8Array(response)).split("þ"); // golfed
         
-        //console.log(a);
+        console.log(a[36]);
+        console.log(a[37]);
+        for(i=0;i<a[37].length;i++){
+            console.log(i, a[37][i], a[37].charCodeAt(i));
+        }
         
         places = [];
         capitols = [];
@@ -137,14 +141,14 @@ with(new XMLHttpRequest){
         countries=countries.join("þ");
         states=states.join("þ");
         
-        console.log(places.length);
+        /*console.log(places.length);
         console.log(capitols.length);
         console.log(uscapitols.length);
         console.log(countries.length);
-        console.log(states.length);
+        console.log(states.length);*/
         
         tmp = (places+capitols+uscapitols+countries+"þ"+states).toLowerCase();
-        y=[];for(i in tmp)y.push(tmp.charCodeAt(i));location="data:application/octet-stream;base64,"+btoa(String.fromCharCode.apply(!1,new Uint8Array(y)))
+        //y=[];for(i in tmp)y.push(tmp.charCodeAt(i));location="data:application/octet-stream;base64,"+btoa(String.fromCharCode.apply(!1,new Uint8Array(y)))
        
 
         /*

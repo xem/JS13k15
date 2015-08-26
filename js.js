@@ -47,6 +47,9 @@ a.onload = function(){
     b = new Uint8Array(a.response);
     c = 0;
     
+    z = String.fromCharCode.apply(false, new Uint8Array(a.response));
+    _(z);
+    
     // Reconstitute all the data
     // For each category
     for(i in g){
@@ -66,7 +69,7 @@ a.onload = function(){
                     c += 2;
                 }
                 
-                // List of coordinates separated by 254 for countries and capitols
+                // List of coordinates separated by 254 for countries and us states
                 else{
                     g[i][j][k] = [g[i][j][k], []];
                     while(b[c]!= 254 && c < b.length){
@@ -96,19 +99,19 @@ a.onload = function(){
     g[4][1].sort(b); // US states hard
     
     
-    _(g[0][0]);
-    _(g[0][1]);
-    _(g[0][2]);
-    _(g[1][0]);
-    _(g[1][1]);
-    _(g[1][2]);
-    _(g[2][0]);
-    _(g[2][1]);
+    // _(g[0][0]);
+    // _(g[0][1]);
+    // _(g[0][2]);
+    // _(g[1][0]);
+    // _(g[1][1]);
+    // _(g[1][2]);
+    // _(g[2][0]);
+    // _(g[2][1]);
     _(g[3][0]);
     _(g[3][1]);
     _(g[3][2]);
-    _(g[4][0]);
-    _(g[4][1]);
+    // _(g[4][0]);
+    // _(g[4][1]);
     
     // Launch game
     w();
@@ -124,8 +127,111 @@ w = function(){
     // Welcome screen
     if(n == 0){
         
-        // Draw world
-        //d(0);
+        // Stars
+        u--;
+        u %= 1200;
+
+        for(i = 0; i < 300; i++){
+          h.fillStyle = "#fff";
+          h.beginPath();
+          h.arc(a = s[i][0] + u, b = s[i][1], c = s[i][2] + m.random() * .2, 0, 7);
+          h.arc(1200 + a, b, c, 0, 7);
+          h.fill();
+        }
+
+        // Earth
+
+        // Background
+        h.beginPath();
+        gradient = h.createLinearGradient(300,0,600,0);
+        gradient.addColorStop(0,"#75D1FF");
+        gradient.addColorStop(1,"#3591bF");
+        h.fillStyle = gradient;
+        h.arc(470, 260, 140, 0, 7);
+        h.fill();
+        
+        // Rotation
+        v += 1;
+        v %= 220;
+        
+        // Countries
+        h.strokeStyle = "#83864F";
+        h.fillStyle = "#95D866";
+        
+        // Loop on difficulties
+        for(i = 0; i < g[3].length; i++){
+            
+            // Loop on countries
+            for(j = 0; j < g[3][i].length; j++){
+            if(g[3][i][j][0] == "France"){
+                // Current country
+                //_(g[3][i][j][0]);
+                a = g[3][i][j][1];
+                
+                // Loop on coordinates
+                for(k = 0; k < a.length; k += 2){
+                    
+                    // Start new island
+                    if(a[k] == 255){
+                        k++;
+                        h.closePath();
+                        h.fill();
+                        h.stroke();
+                        h.beginPath();
+                    }
+
+                    // Current point
+                    x = (a[k] - v) / 110;
+                    y = (a[k+1] - 120) / 150;
+                    
+                    _(a[k]);
+                    _(a[k+1]);
+                    
+                    while(x > 1) x-=2;
+                    if(x > -1 && x < -.5) x = -0.5;
+                    if(x > .5 && x < 1) x = 0.5;
+                    
+                    // Fix canada & russia
+                    if(!k && g[3][i][j][0] != "Russia" && g[3][i][j][0] != "Canada"){
+                        if(x < 0) b = -.5;
+                        else b = .5;
+                    }
+                    
+                    if(g[3][i][j][0] == "Russia"){
+                        b = -.5;
+                        if(v > 70) b = .5;
+                        if(v > 170) b = -.5;
+                    }
+                    
+                    if(g[3][i][j][0] == "Canada"){
+                        b = .5;
+                        if(v > 40) b = -.5;
+                        if(v > 140) b = .5;
+                    }
+                    
+                    if((x <= -.5 || x >= .5)) x = b;
+                    
+                    //x = m.sin(x * m.PI) * m.cos(y * m.PI / 2);
+                    //y = m.sin(y * m.PI / 2);
+                    x = x * 140 + 470;
+                    y = y * 140 + 260;
+                    
+                    // Start country
+                    if(k == 0){
+                        h.beginPath();
+                        h.moveTo(x, y);
+                    }
+                    
+                    // Continue country
+                    h.lineTo(x, y);
+                }
+                
+                h.closePath();
+                h.fill();
+                h.stroke();
+            }
+            }
+        }
 
         // Text
         t(30,375,"GE",300);
@@ -134,10 +240,7 @@ w = function(){
         t(500,570,"START",80);
     }
     
-    
-    
-    
-    
+
     // Next frame
-    requestAnimationFrame(w);
+    //requestAnimationFrame(w);
 }

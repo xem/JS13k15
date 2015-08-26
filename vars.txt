@@ -4,7 +4,7 @@ Variables summary:
 _: log
 $: canvas
 a, b, c, d, e, f: temp/reusable vars
-g: all data
+g: all data (places, capitols, us capitols, countries, us states)
 h: context2d
 i, j, k, l: loop vars
 m: Math
@@ -20,7 +20,7 @@ v: earth rotation offset
 w: game loop
 x: current X coordinate to draw
 y: current Y coordinate to draw
-
+z: 
 
 
 
