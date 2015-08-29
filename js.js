@@ -15,6 +15,9 @@ m = Math;
 // Game state
 n = 0;
 
+// Current level score
+q = 30000;
+
 // Stars position and size
 s = []; for(i = 0; i < 300; i++) s[i] = [m.random() * 1200, m.random() * 650, m.random() + .5];
 
@@ -100,8 +103,10 @@ a.onload = function(){
     g[4][0].sort(b); // US states easy
     g[4][1].sort(b); // US states hard
     
+    _(g);
+    
     // Launch game
-    setInterval(w, 33);
+    w();
 }
     
 /** Game loop **/
@@ -109,7 +114,6 @@ w = function(){
     
     // Reset canvas
     $.width ^= 0;
-    
     
     // Welcome screen
     if(n == 0){
@@ -141,7 +145,7 @@ w = function(){
         v += 1;
         v %= 220;
         
-        // Countries
+        // Draw countries
         h.strokeStyle = "#83864F";
         h.fillStyle = "#95D866";
         
@@ -234,6 +238,10 @@ w = function(){
     // Level presentation screen
     else if(n==1){
         
+        // Background
+        $.style.background = "";
+        
+        // Text
         t(600, 280, "Level " + (A + 1) + ":", 60);
         
         t(600,  360, [
@@ -252,26 +260,142 @@ w = function(){
         "Capitols (hard)"
         ][A], 60);
     }
+    
+    // Puzzle screen
+    else if(n > 1 && n < 6){
+        
+        // Background
+        $.style.background = "radial-gradient(#75D1FF 50%, #3591bF)";
+        
+        // UI
+        h.rect(0, 0, 1200, 66);
+        h.fill();
+        h.beginPath();
+        h.fillStyle = "#fff";
+        if(n == 2){
+            h.rect(0, 60, o * 4, 5);
+            h.fill();
+        }
+        
+        t(10, 45,
+        
+        [
+            "Country",
+            "Capitol",
+            "Place",
+            "Country",
+            "Capitol",
+            "U.S. state",
+            "Place",
+            "U.S. capitol",
+            "Country",
+            "U.S. state",
+            "Place",
+            "U.S. capitol",
+            "Capitol",
+        ][A] + ": " + 
+        
+        [
+            g[3][0],
+            g[1][0],
+            g[0][0],
+            g[3][1],
+            g[1][1],
+            g[4][0],
+            g[0][1],
+            g[2][0],
+            g[3][3],
+            g[4][1],
+            g[0][2],
+            g[2][1],
+            g[1][2]
+        ][A][B][0], 40, 0, "left");
+        
+        t(1190, 45, q + "km remaining", 40, 0, "right");
+
+        // Draw countries
+        h.strokeStyle = "#83864F";
+        h.fillStyle = "#95D866";
+        
+        // Loop on difficulties
+        for(i = 0; i < g[3].length; i++){
+            
+            // Loop on countries
+            for(j = 0; j < g[3][i].length; j++){
+                
+                // Current country
+                a = g[3][i][j][1];
+                
+                // Loop on coordinates
+                for(k = 0; k < a.length; k += 2){
+                    
+                    // Start new island
+                    if(a[k] == 255){
+                        k++;
+                        h.closePath();
+                        h.fill();
+                        h.stroke();
+                        h.beginPath();
+                    }
+                    
+                    //tmp
+                    if(a[k+1]==255){
+                        k+=2;
+                        h.closePath();
+                        h.fill();
+                        h.stroke();
+                        h.beginPath();
+                    }
+
+                    // Current point
+                    x = a[k] * 4.9 + 0;
+                    y = a[k+1] * 2.35 + 65;
+                    
+                    // Start country
+                    if(k == 0){
+                        h.beginPath();
+                        h.moveTo(x, y);
+                    }
+                    
+                    // Continue country
+                    h.lineTo(x, y);
+                }
+                
+                h.closePath();
+                h.fill();
+                h.stroke();
+            }
+        }
+        
+        // Update frame counter
+        if(o) o--;
+    }
+    
+    setTimeout(w, 33);
 }
 
 
 /** Handle Clicks **/
 $.onclick = function(a){
     
-    // Home screen
+    // Home screen => Level presentation screen
     if(n == 0){
         n = 1;
     }
     
-    // Level presentation screen
+    // Level presentation screen => Puzzle screen
     else if(n == 1){
         n = 2;
         o = 300;
     }
     
-    // Puzzle screen
+    // Puzzle screen => Puzzle feedback
     else if(n == 2){
         X = a.pageX;
         Y = a.pageY;
+        //n = 3;
+        o = 30;
     }
+    
+    // Other game states don't require clicking
 }
