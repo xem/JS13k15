@@ -15,6 +15,9 @@ m = Math;
 // Game state
 n = 0;
 
+// Puzzle score
+p = 50000;
+
 // Current level score
 q = 30000;
 
@@ -264,6 +267,23 @@ w = function(){
     // Puzzle screen
     else if(n > 1 && n < 6){
         
+        // Puzzles list
+        C = [
+            g[3][0],
+            g[1][0],
+            g[0][0],
+            g[3][1],
+            g[1][1],
+            g[4][0],
+            g[0][1],
+            g[2][0],
+            g[3][3],
+            g[4][1],
+            g[0][2],
+            g[2][1],
+            g[1][2]
+        ][A];
+        
         // Background
         $.style.background = "radial-gradient(#75D1FF 50%, #3591bF)";
         
@@ -293,23 +313,11 @@ w = function(){
             "Place",
             "U.S. capitol",
             "Capitol",
-        ][A] + ": " + 
+        ][A]
         
-        [
-            g[3][0],
-            g[1][0],
-            g[0][0],
-            g[3][1],
-            g[1][1],
-            g[4][0],
-            g[0][1],
-            g[2][0],
-            g[3][3],
-            g[4][1],
-            g[0][2],
-            g[2][1],
-            g[1][2]
-        ][A][B][0], 40, 0, "left");
+        + ": " + 
+        
+        C[B][0].toUpperCase(), 40, 0, "left");
         
         t(1190, 45, q + "km remaining", 40, 0, "right");
 
@@ -367,6 +375,135 @@ w = function(){
             }
         }
         
+        
+        // Puzzle feedback
+        if(n == 3){
+            
+            // Draw target
+            
+            // Country / State
+            if(A == 0 || A == 3 || A == 5 || A == 8 || A == 9){
+                
+                // Draw country in yellow
+                a = C[B][1];
+                h.fillStyle = "yellow";
+                h.beginPath();
+
+                
+                // Loop on coordinates
+                for(k = 0; k < a.length; k += 2){
+                    
+                    // Start new island
+                    if(a[k] == 255){
+                        k++;
+                        h.closePath();
+                        h.fill();
+                        h.stroke();
+                        if(o == 30){
+                            if(h.isPointInPath(X, Y)){
+                                p = 0;
+                            }
+                        }
+                        
+                        h.beginPath();
+                    }
+
+                    // Current point
+                    x = a[k] * 4.9 + 0;
+                    y = a[k+1] * 2.35 + 65;
+                    
+                    // Test if it's the closest point to where we clicked
+                    if(o == 30){
+                        b = m.sqrt(m.pow(x - X, 2) + m.pow(y - Y, 2));
+                        _(b);
+                        if(b < p){
+                            p = b;
+                            c = [x, y];
+                        }
+                    }
+                    
+                    
+                    
+                    // Start country
+                    if(k == 0){
+                        h.beginPath();
+                        h.moveTo(x, y);
+                    }
+                    
+                    // Continue country
+                    h.lineTo(x, y);
+
+                }
+                
+                h.closePath();
+                h.fill();
+                h.stroke();
+                if(o == 30){
+                    if(h.isPointInPath(X, Y)){
+                        p = 0;
+                    }
+                }
+            }
+            
+
+            
+            // Place / capitol
+            else {
+                
+            }
+            
+            _(p);
+            
+            
+            // Drop flags
+            if(p > 5){
+                h.fillStyle = "green";
+                h.strokeStyle = "green";
+                h.beginPath();
+                h.moveTo(c[0],c[1]);
+                h.lineTo(c[0]-1, c[1]);
+                h.lineTo(c[0]-1, c[1]-40);
+                h.lineTo(c[0], c[1]-40);
+                h.lineTo(c[0]+20, c[1]-30);
+                h.lineTo(c[0], c[1]-20);
+                h.stroke();
+                h.fill();
+                
+                h.strokeStyle = "red";
+                h.lineWidth = "2";
+                h.setLineDash([5, 5]);
+                h.beginPath();
+                h.moveTo(X, Y);
+                h.lineTo(c[0], c[1]);
+                h.stroke();
+            }
+            
+            h.setLineDash([0,0]);
+            h.fillStyle = "blue";
+            h.strokeStyle = "blue";
+            h.beginPath();
+            h.moveTo(X,Y);
+            h.lineTo(X-1, Y);
+            h.lineTo(X-1, Y-40);
+            h.lineTo(X, Y-40);
+            h.lineTo(X+20, Y-30);
+            h.lineTo(X, Y-20);
+            h.stroke();
+            h.fill();
+            
+            
+            // Update score
+            if(o == 15) q -= (p < 100 ? (~~(p/5))*100 : (~~(p/50))*1000);
+            if(q < 0){
+                q = 0;
+                
+                // game over
+                h = 6;
+            }
+            
+        }
+        
+        
         // Update frame counter
         if(o) o--;
     }
@@ -393,7 +530,7 @@ $.onclick = function(a){
     else if(n == 2){
         X = a.pageX;
         Y = a.pageY;
-        //n = 3;
+        n = 3;
         o = 30;
     }
     

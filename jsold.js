@@ -307,7 +307,7 @@ console.log(tmp.length);
 
 d = function(flat, countryorcapitolorplace, difficulty, puzzle){
     
-    /*
+
     
     // Background
     $.style.background = flat ? "radial-gradient(#75D1FF 50%, #3591bF)" : "#000";
