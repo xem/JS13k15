@@ -23,6 +23,7 @@ t = function(x, y, text, size, color, align){
     size = size || 50;
     color = color || "#fff";
     align = align || "center";
+    h.textAlign = align;
     h.fillStyle = color;
     h.font = size + "px Impact, Charcoal";
     h.fillText(text, x, y);
@@ -34,6 +35,9 @@ u = 0;
 // Earth rotation offset
 v = 0;
 
+// Current level / puzzle
+A = 0;
+B = 0;
 
 /** Gather & shuffle the data **/
 
@@ -45,10 +49,8 @@ a.send();
 a.onload = function(){
     
     b = new Uint8Array(a.response);
-    c = 0;
     
-    z = String.fromCharCode.apply(false, new Uint8Array(a.response));
-    _(z);
+    c = 0;
     
     // Reconstitute all the data
     // For each category
@@ -64,7 +66,7 @@ a.onload = function(){
                 
                 // Make an array with the name and the coordinates
                 // 2 coordinates for places, capitols, us capitols
-                if(c < 2 * (35 + 34 + 30 + 76 + 47 + 74 + 23 + 27)){
+                if(i < 3){
                     g[i][j][k] = [g[i][j][k], [b[c], b[c+1]]];
                     c += 2;
                 }
@@ -98,23 +100,8 @@ a.onload = function(){
     g[4][0].sort(b); // US states easy
     g[4][1].sort(b); // US states hard
     
-    
-    // _(g[0][0]);
-    // _(g[0][1]);
-    // _(g[0][2]);
-    // _(g[1][0]);
-    // _(g[1][1]);
-    // _(g[1][2]);
-    // _(g[2][0]);
-    // _(g[2][1]);
-    _(g[3][0]);
-    _(g[3][1]);
-    _(g[3][2]);
-    // _(g[4][0]);
-    // _(g[4][1]);
-    
     // Launch game
-    w();
+    setInterval(w, 33);
 }
     
 /** Game loop **/
@@ -163,9 +150,8 @@ w = function(){
             
             // Loop on countries
             for(j = 0; j < g[3][i].length; j++){
-            if(g[3][i][j][0] == "France"){
+                
                 // Current country
-                //_(g[3][i][j][0]);
                 a = g[3][i][j][1];
                 
                 // Loop on coordinates
@@ -179,13 +165,19 @@ w = function(){
                         h.stroke();
                         h.beginPath();
                     }
+                    
+                    //tmp
+                    if(a[k+1]==255){
+                        k+=2;
+                        h.closePath();
+                        h.fill();
+                        h.stroke();
+                        h.beginPath();
+                    }
 
                     // Current point
                     x = (a[k] - v) / 110;
                     y = (a[k+1] - 120) / 150;
-                    
-                    _(a[k]);
-                    _(a[k+1]);
                     
                     while(x > 1) x-=2;
                     if(x > -1 && x < -.5) x = -0.5;
@@ -211,8 +203,8 @@ w = function(){
                     
                     if((x <= -.5 || x >= .5)) x = b;
                     
-                    //x = m.sin(x * m.PI) * m.cos(y * m.PI / 2);
-                    //y = m.sin(y * m.PI / 2);
+                    x = m.sin(x * m.PI) * m.cos(y * m.PI / 2);
+                    y = m.sin(y * m.PI / 2);
                     x = x * 140 + 470;
                     y = y * 140 + 260;
                     
@@ -230,17 +222,56 @@ w = function(){
                 h.fill();
                 h.stroke();
             }
-            }
         }
 
         // Text
-        t(30,375,"GE",300);
-        t(620,375,"Quiz",300);
-        t(900,405,"JS13kGames 2015",30);
-        t(500,570,"START",80);
+        t(180, 375, "GE", 300);
+        t(890, 375, "Quiz", 300);
+        t(990, 405, "JS13kGames 2015", 30);
+        t(600, 570, "START", 80);
     }
     
+    // Level presentation screen
+    else if(n==1){
+        
+        t(600, 280, "Level " + (A + 1) + ":", 60);
+        
+        t(600,  360, [
+        "Countries (easy)",
+        "Capitols (easy)",
+        "Famous places (easy)",
+        "Countries (medium)",
+        "Capitols (medium)",
+        "U.S. states (medium)",
+        "Famous places (medium)",
+        "U.S. capitols (medium)",
+        "World countries (hard)",
+        "U.S. states (hard)",
+        "Famous places (hard)",
+        "U.S. capitols (hard)",
+        "Capitols (hard)"
+        ][A], 60);
+    }
+}
 
-    // Next frame
-    //requestAnimationFrame(w);
+
+/** Handle Clicks **/
+$.onclick = function(a){
+    
+    // Home screen
+    if(n == 0){
+        n = 1;
+    }
+    
+    // Level presentation screen
+    else if(n == 1){
+        n = 2;
+        o = 300;
+    }
+    
+    // Puzzle screen
+    else if(n == 2){
+        X = a.pageX;
+        Y = a.pageY;
+    }
 }

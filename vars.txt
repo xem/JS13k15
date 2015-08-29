@@ -18,10 +18,11 @@ t: text (params: x, y, text, size, color, align)
 u: stars offset
 v: earth rotation offset
 w: game loop
-x: current X coordinate to draw
-y: current Y coordinate to draw
-z: 
-
+x, y: current coordinates
+z:
+A: current level
+B: current puzzle
+X, Y: click coordinates
 
 
 

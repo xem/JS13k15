@@ -91,14 +91,14 @@ with(new XMLHttpRequest){
         // Fill a with the file's text content
         // Separate entries using "þ"
         
-        for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]); a = a.split("þ");
-        //a = String.fromCharCode.apply(false, new Uint8Array(response)).split("þ"); // golfed
+        //for(i in b = new Uint8Array(response)) a += String.fromCharCode(b[i]); a = a.split("þ");
+        a = String.fromCharCode.apply(false, new Uint8Array(response)).split("þ"); // golfed
         
-        console.log(a[36]);
-        console.log(a[37]);
-        for(i=0;i<a[37].length;i++){
-            console.log(i, a[37][i], a[37].charCodeAt(i));
-        }
+        //console.log(a[0]);
+        //console.log(a[1]);
+        //for(i=0;i<a[1].length;i++){
+        //    console.log(i, a[1][i], a[1].charCodeAt(i));
+        //}
         
         places = [];
         capitols = [];
@@ -130,14 +130,18 @@ with(new XMLHttpRequest){
             if(i < 2 * (76 + 47 + 74 + 2)) countries.push(a[i+1].slice(0,-2)), capitols.push(a[i+1].slice(-2));
             else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)-1) places.push(a[i].slice(-2)), places.push(a[i+1].slice(-2));
             else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)) places.push(a[i].slice(-2));
-            else if(a[i])states.push(a[i].slice(0,-2)), uscapitols.push(a[i].slice(-2));
+            else {
+                //console.log(a[i]);
+                if(a[i])states.push(a[i].slice(0,-2)), uscapitols.push(a[i].slice(-2));
+            }
         }
-        
-        
+        for(i=0;i<uscapitols.length;i++){
+            console.log(uscapitols[i], uscapitols[i].charCodeAt(0), uscapitols[i].charCodeAt(1));
+        }
         
         places=places.join("");
         capitols=capitols.join("");
-        uscapitols=uscapitols.join("");
+        uscapitols=uscapitols.join("").slice(0,-4);
         countries=countries.join("þ");
         states=states.join("þ");
         
@@ -147,8 +151,8 @@ with(new XMLHttpRequest){
         console.log(countries.length);
         console.log(states.length);*/
         
-        tmp = (places+capitols+uscapitols+countries+"þ"+states).toLowerCase();
-        //y=[];for(i in tmp)y.push(tmp.charCodeAt(i));location="data:application/octet-stream;base64,"+btoa(String.fromCharCode.apply(!1,new Uint8Array(y)))
+        tmp = (places+capitols+uscapitols+countries+"þ"+states);
+        y=[];for(i in tmp)y.push(tmp.charCodeAt(i));location="data:application/octet-stream;base64,"+btoa(String.fromCharCode.apply(!1,new Uint8Array(y)))
        
 
         /*
