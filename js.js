@@ -15,6 +15,9 @@ m = Math;
 // Game state
 n = 0;
 
+// Frame counter
+o = 0;
+
 // Puzzle score
 p = 50000;
 
@@ -265,7 +268,7 @@ w = function(){
     }
     
     // Puzzle screen
-    else if(n > 1 && n < 6){
+    else if(n == 2 || n == 3){
         
         // Puzzles list
         C = [
@@ -384,7 +387,7 @@ w = function(){
             // Country / State
             if(A == 0 || A == 3 || A == 5 || A == 8 || A == 9){
                 
-                // Draw country in yellow
+                // Draw country/state in yellow
                 a = C[B][1];
                 h.fillStyle = "yellow";
                 h.beginPath();
@@ -399,7 +402,7 @@ w = function(){
                         h.closePath();
                         h.fill();
                         h.stroke();
-                        if(o == 30){
+                        if(o == 60){
                             if(h.isPointInPath(X, Y)){
                                 p = 0;
                             }
@@ -413,16 +416,13 @@ w = function(){
                     y = a[k+1] * 2.35 + 65;
                     
                     // Test if it's the closest point to where we clicked
-                    if(o == 30){
+                    if(o == 60){
                         b = m.sqrt(m.pow(x - X, 2) + m.pow(y - Y, 2));
-                        _(b);
                         if(b < p){
                             p = b;
                             c = [x, y];
                         }
                     }
-                    
-                    
                     
                     // Start country
                     if(k == 0){
@@ -438,7 +438,7 @@ w = function(){
                 h.closePath();
                 h.fill();
                 h.stroke();
-                if(o == 30){
+                if(o == 60){
                     if(h.isPointInPath(X, Y)){
                         p = 0;
                     }
@@ -452,10 +452,8 @@ w = function(){
                 
             }
             
-            _(p);
             
-            
-            // Drop flags
+            // Drop flags, trace red line
             if(p > 5){
                 h.fillStyle = "green";
                 h.strokeStyle = "green";
@@ -491,22 +489,60 @@ w = function(){
             h.stroke();
             h.fill();
             
-            
             // Update score
-            if(o == 15) q -= (p < 100 ? (~~(p/5))*100 : (~~(p/50))*1000);
-            if(q < 0){
-                q = 0;
-                
-                // game over
-                h = 6;
+            if(o == 45) q -= (p < 100 ? (~~(p/5)) * 100 : (~~(p/50)) * 1000);
+            
+            // Text
+            if(o < 45){
+                t(600, 350, p > 5 ? (p < 100 ? (~~(p/5)) * 100 : (~~(p/50)) * 1000) + "km away" : "PERFECT", 100, "#000")
             }
             
+            
+            // Game over
+            if(q < 0){
+                q = 0;
+                //n = 6;
+            }
+            
+            // Go to black screen before next puzzle
+            if(o == 0) {
+                n = 4;
+                o = 10;
+            }
         }
-        
-        
-        // Update frame counter
-        if(o) o--;
     }
+    
+    // Black screen between puzzles
+    if(n == 4){
+        
+        h.fillRect(0,0,1200,650);
+        if(o == 0){
+            
+            // Reset click
+            X = 0;
+            Y = 0;
+            
+            // Next puzzle
+            B++;
+            n = 2;
+            
+            // Or next level
+            if(B > 9){
+                B = 0;
+                A++;
+                n = 1;
+                r += q;
+                
+                // Or you won
+                if(A > 12){
+                    n = 6;
+                }
+            }
+        }
+    }
+    
+    // Update frame counter
+    if(o) o--;
     
     setTimeout(w, 33);
 }
@@ -531,7 +567,7 @@ $.onclick = function(a){
         X = a.pageX;
         Y = a.pageY;
         n = 3;
-        o = 30;
+        o = 60;
     }
     
     // Other game states don't require clicking
