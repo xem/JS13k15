@@ -22,7 +22,10 @@ o = 0;
 p = 50000;
 
 // Current level score
-q = 30000;
+q = 20000;
+
+// Total score
+r = 0;
 
 // Stars position and size
 s = []; for(i = 0; i < 300; i++) s[i] = [m.random() * 1200, m.random() * 650, m.random() + .5];
@@ -44,9 +47,16 @@ u = 0;
 // Earth rotation offset
 v = 0;
 
+// Time out
+z = 0;
+
 // Current level / puzzle
 A = 0;
 B = 0;
+
+// Click coords
+X = 0;
+Y = 0;
 
 /** Gather & shuffle the data **/
 
@@ -123,6 +133,9 @@ w = function(){
     
     // Welcome screen
     if(n == 0){
+        
+        // Background
+        h.fillRect(0,0,1200,650);
         
         // Stars
         u--;
@@ -242,10 +255,10 @@ w = function(){
     }
     
     // Level presentation screen
-    else if(n==1){
+    else if(n == 1){
         
         // Background
-        $.style.background = "";
+        h.fillRect(0,0,1200,650);
         
         // Text
         t(600, 280, "Level " + (A + 1) + ":", 60);
@@ -286,9 +299,6 @@ w = function(){
             g[2][1],
             g[1][2]
         ][A];
-        
-        // Background
-        $.style.background = "radial-gradient(#75D1FF 50%, #3591bF)";
         
         // UI
         h.rect(0, 0, 1200, 66);
@@ -350,8 +360,8 @@ w = function(){
                     }
                     
                     //tmp
-                    if(a[k+1]==255){
-                        k+=2;
+                    if(a[k + 1] == 255){
+                        k += 2;
                         h.closePath();
                         h.fill();
                         h.stroke();
@@ -360,7 +370,7 @@ w = function(){
 
                     // Current point
                     x = a[k] * 4.9 + 0;
-                    y = a[k+1] * 2.35 + 65;
+                    y = a[k + 1] * 2.35 + 65;
                     
                     // Start country
                     if(k == 0){
@@ -378,6 +388,17 @@ w = function(){
             }
         }
         
+        if(n == 2){
+            
+            // Time out
+            if(o == 0){
+                p = 10000;
+                n = 3;
+                o = 60;
+                z = 1;
+            }
+        }
+        
         
         // Puzzle feedback
         if(n == 3){
@@ -392,7 +413,6 @@ w = function(){
                 h.fillStyle = "yellow";
                 h.beginPath();
 
-                
                 // Loop on coordinates
                 for(k = 0; k < a.length; k += 2){
                     
@@ -405,6 +425,7 @@ w = function(){
                         if(o == 60){
                             if(h.isPointInPath(X, Y)){
                                 p = 0;
+                                c = [X, Y];
                             }
                         }
                         
@@ -441,6 +462,7 @@ w = function(){
                 if(o == 60){
                     if(h.isPointInPath(X, Y)){
                         p = 0;
+                        c = [X, Y];
                     }
                 }
             }
@@ -453,61 +475,70 @@ w = function(){
             }
             
             
-            // Drop flags, trace red line
-            if(p > 5){
-                h.fillStyle = "green";
-                h.strokeStyle = "green";
+            if(!z){
+                
+                // Drop flags, trace red line
+                if(p > 5){
+                    h.fillStyle = "green";
+                    h.strokeStyle = "green";
+                    h.beginPath();
+                    h.moveTo(c[0], c[1]);
+                    h.lineTo(c[0]-1, c[1]);
+                    h.lineTo(c[0]-1, c[1]-40);
+                    h.lineTo(c[0], c[1]-40);
+                    h.lineTo(c[0]+20, c[1]-30);
+                    h.lineTo(c[0], c[1]-20);
+                    h.stroke();
+                    h.fill();
+                    
+                    h.strokeStyle = "red";
+                    h.lineWidth = "2";
+                    h.setLineDash([5, 5]);
+                    h.beginPath();
+                    h.moveTo(X, Y);
+                    h.lineTo(c[0], c[1]);
+                    h.stroke();
+                }
+                
+                h.setLineDash([0,0]);
+                h.fillStyle = "blue";
+                h.strokeStyle = "blue";
                 h.beginPath();
-                h.moveTo(c[0],c[1]);
-                h.lineTo(c[0]-1, c[1]);
-                h.lineTo(c[0]-1, c[1]-40);
-                h.lineTo(c[0], c[1]-40);
-                h.lineTo(c[0]+20, c[1]-30);
-                h.lineTo(c[0], c[1]-20);
+                h.moveTo(X,Y);
+                h.lineTo(X-1, Y);
+                h.lineTo(X-1, Y-40);
+                h.lineTo(X, Y-40);
+                h.lineTo(X+20, Y-30);
+                h.lineTo(X, Y-20);
                 h.stroke();
                 h.fill();
-                
-                h.strokeStyle = "red";
-                h.lineWidth = "2";
-                h.setLineDash([5, 5]);
-                h.beginPath();
-                h.moveTo(X, Y);
-                h.lineTo(c[0], c[1]);
-                h.stroke();
             }
-            
-            h.setLineDash([0,0]);
-            h.fillStyle = "blue";
-            h.strokeStyle = "blue";
-            h.beginPath();
-            h.moveTo(X,Y);
-            h.lineTo(X-1, Y);
-            h.lineTo(X-1, Y-40);
-            h.lineTo(X, Y-40);
-            h.lineTo(X+20, Y-30);
-            h.lineTo(X, Y-20);
-            h.stroke();
-            h.fill();
             
             // Update score
             if(o == 45) q -= (p < 100 ? (~~(p/5)) * 100 : (~~(p/50)) * 1000);
             
             // Text
             if(o < 45){
-                t(600, 350, p > 5 ? (p < 100 ? (~~(p/5)) * 100 : (~~(p/50)) * 1000) + "km away" : "PERFECT", 100, "#000")
+                if(z){
+                    t(600, 350, "TIME OUT", 100, "#000");
+                    t(600, 400, "10,000km penalty", 50, "#000");
+                }
+                else{
+                    t(600, 350, p > 5 ? (p < 100 ? (~~(p/5)) * 100 : (~~(p/50)) * 1000) + "km away" : "PERFECT", 100, "#000")
+                }
             }
             
             
             // Game over
             if(q < 0){
                 q = 0;
-                //n = 6;
+                n = 6;
             }
             
             // Go to black screen before next puzzle
             if(o == 0) {
                 n = 4;
-                o = 10;
+                o = 5;
             }
         }
     }
@@ -525,6 +556,9 @@ w = function(){
             // Next puzzle
             B++;
             n = 2;
+            p = 50000;
+            o = 300;
+            z = 0;
             
             // Or next level
             if(B > 9){
@@ -532,6 +566,7 @@ w = function(){
                 A++;
                 n = 1;
                 r += q;
+                q = 20000;
                 
                 // Or you won
                 if(A > 12){
@@ -543,6 +578,8 @@ w = function(){
     
     // Update frame counter
     if(o) o--;
+    
+    _("A" + A + " B" + B + " n" + n);
     
     setTimeout(w, 33);
 }

@@ -19,7 +19,7 @@ u: stars offset
 v: earth rotation offset
 w: game loop
 x, y: current coordinates
-z:
+z: time out
 A: current level (0-12)
 B: current puzzle (0-9)
 C: current puzzle list (array)
