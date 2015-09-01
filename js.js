@@ -325,7 +325,7 @@ w = function(){
             "U.S. state",
             "Place",
             "U.S. capitol",
-            "Capitol",
+            "Capitol"
         ][A]
         
         + ": " + 
@@ -398,7 +398,6 @@ w = function(){
             }
         }
         
-        
         // Puzzle feedback
         if(n == 3){
             
@@ -468,8 +467,8 @@ w = function(){
             
             // Place / capitol
             else {
-                x = a[k] * 4.9 + 0;
-                y = a[k + 1] * 2.35 + 65;
+                x = a[0] * 4.9 + 0;
+                y = a[1] * 2.35 + 65;
                     
                 h.fillStyle = "yellow";
                 h.beginPath();
@@ -588,7 +587,7 @@ w = function(){
     // Update frame counter
     if(o) o--;
     
-    _("A" + A + " B" + B + " n" + n);
+    //_("A" + A + " B" + B + " n" + n);
     
     setTimeout(w, 33);
 }
