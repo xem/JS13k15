@@ -293,7 +293,7 @@ w = function(){
             g[4][0],
             g[0][1],
             g[2][0],
-            g[3][3],
+            g[3][2],
             g[4][1],
             g[0][2],
             g[2][1],
@@ -388,9 +388,8 @@ w = function(){
             }
         }
         
+        // Time out
         if(n == 2){
-            
-            // Time out
             if(o == 0){
                 p = 10000;
                 n = 3;
@@ -404,12 +403,12 @@ w = function(){
         if(n == 3){
             
             // Draw target
+            a = C[B][1];
             
             // Country / State
             if(A == 0 || A == 3 || A == 5 || A == 8 || A == 9){
                 
                 // Draw country/state in yellow
-                a = C[B][1];
                 h.fillStyle = "yellow";
                 h.beginPath();
 
@@ -467,14 +466,24 @@ w = function(){
                 }
             }
             
-
-            
             // Place / capitol
             else {
+                x = a[k] * 4.9 + 0;
+                y = a[k + 1] * 2.35 + 65;
+                    
+                h.fillStyle = "yellow";
+                h.beginPath();
+                h.arc(x, y, 10, 0, 7);
+                h.fill();
                 
+                if(o == 60){
+                    b = m.sqrt(m.pow(x - X, 2) + m.pow(y - Y, 2));
+                    p = b;
+                    c = [x, y];
+                }
             }
-            
-            
+
+            // If not timeout
             if(!z){
                 
                 // Drop flags, trace red line
@@ -561,7 +570,7 @@ w = function(){
             z = 0;
             
             // Or next level
-            if(B > 9){
+            if(B > 1){
                 B = 0;
                 A++;
                 n = 1;
