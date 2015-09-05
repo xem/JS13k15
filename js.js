@@ -401,7 +401,6 @@ w = function(){
         // Time out
         if(n == 2){
             if(o == 0){
-                p = 10000;
                 n = 3;
                 o = 60;
                 z = 1;
@@ -536,18 +535,24 @@ w = function(){
             if(o == 45){
                 if(A == 5 || A == 7 || A == 9 || A == 11){
                     e = (p < 100 ? (~~(p/10)) * 100 : (~~(p/100)) * 1000);
+                    q -= z ? 5000 : e;
                 }
                 else{
                     e =  (p < 100 ? (~~(p/4)) * 100 : (~~(p/40)) * 1000);
+                    q -= z ? 10000 : e;
                 }
-                q -= e;
             }
             
             // Text
             if(o < 45){
                 if(z){
                     t(600, 350, "TIME OUT", 100, "#000");
-                    t(600, 400, "10,000km penalty", 50, "#000");
+                    if(A == 5 || A == 7 || A == 9 || A == 11){
+                        t(600, 400, "5,000km penalty", 50, "#000");
+                    }
+                    else {
+                        t(600, 400, "10,000km penalty", 50, "#000");
+                    }
                 }
                 else{
                     t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, "#000")
@@ -555,10 +560,12 @@ w = function(){
             }
             
             
+            d = 0;
+            
             // Game over
-            if(q < 0){
+            if(q <= 0){
                 q = 0;
-                n = 5;
+                d = 1;
             }
             
             // Go to black screen before next puzzle
@@ -572,6 +579,12 @@ w = function(){
     // Black screen between puzzles
     if(n == 4){
         
+        // Game over
+        if(d){
+            n = 5;
+        }
+        
+        // Prepare next screen
         h.fillRect(0,0,1200,650);
         if(o == 0){
             
@@ -599,7 +612,7 @@ w = function(){
                 
                 // Or you won
                 if(A > 12){
-                    n = 6;
+                    n = 5;
                 }
             }
         }
