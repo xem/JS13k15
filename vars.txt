@@ -8,7 +8,7 @@ g: all data (places, capitols, us capitols, countries, us states)
 h: context2d
 i, j, k, l: loop vars
 m: Math
-n: game state (0: home screen, 1: level description, 2: puzzle, 3: puzzle feedback, 4: black screen between puzzles, 5: game over, 6: win)
+n: game state (0: home screen, 1: level description, 2: puzzle, 3: puzzle feedback, 4: black screen between puzzles, 5: game over)
 o: frame counter for current state
 p: current puzzle score (distance)
 q: level score

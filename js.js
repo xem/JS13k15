@@ -51,7 +51,7 @@ v = 0;
 z = 0;
 
 // Current level / puzzle
-A = 0;
+A = 0; //5;
 B = 0;
 
 // Click coords
@@ -278,6 +278,8 @@ w = function(){
         "U.S. capitols (hard)",
         "Capitols (hard)"
         ][A], 60);
+        
+        t(600, 450, "START", 30);
     }
     
     // Puzzle screen
@@ -311,7 +313,6 @@ w = function(){
         }
         
         t(10, 45,
-        
         [
             "Country",
             "Capitol",
@@ -334,18 +335,27 @@ w = function(){
         
         t(1190, 45, q + "km remaining", 40, 0, "right");
 
-        // Draw countries
         h.strokeStyle = "#83864F";
         h.fillStyle = "#95D866";
+            
+        // Draw US map
+        if(A == 5 || A == 7 || A == 9 || A == 11){
+            f = 4
+        }
         
+        // Draw world map
+        else{
+            f = 3;
+        }
+            
         // Loop on difficulties
-        for(i = 0; i < g[3].length; i++){
+        for(i = 0; i < g[f].length; i++){
             
             // Loop on countries
-            for(j = 0; j < g[3][i].length; j++){
+            for(j = 0; j < g[f][i].length; j++){
                 
                 // Current country
-                a = g[3][i][j][1];
+                a = g[f][i][j][1];
                 
                 // Loop on coordinates
                 for(k = 0; k < a.length; k += 2){
@@ -369,8 +379,8 @@ w = function(){
                     }
 
                     // Current point
-                    x = a[k] * 4.9 + 0;
-                    y = a[k + 1] * 2.35 + 65;
+                    x = a[k] * (f == 4 ? 4.7 : 4.9);
+                    y = a[k + 1] * 2.35 + (f == 4 ? 47 : 65);
                     
                     // Start country
                     if(k == 0){
@@ -431,8 +441,8 @@ w = function(){
                     }
 
                     // Current point
-                    x = a[k] * 4.9 + 0;
-                    y = a[k+1] * 2.35 + 65;
+                    x = a[k] * (f == 4 ? 4.7 : 4.9);
+                    y = a[k+1] * 2.35 + (f == 4 ? 47 : 65);
                     
                     // Test if it's the closest point to where we clicked
                     if(o == 60){
@@ -523,7 +533,15 @@ w = function(){
             }
             
             // Update score
-            if(o == 45) q -= (p < 100 ? (~~(p/5)) * 100 : (~~(p/50)) * 1000);
+            if(o == 45){
+                if(A == 5 || A == 7 || A == 9 || A == 11){
+                    e = (p < 100 ? (~~(p/10)) * 100 : (~~(p/100)) * 1000);
+                }
+                else{
+                    e =  (p < 100 ? (~~(p/4)) * 100 : (~~(p/40)) * 1000);
+                }
+                q -= e;
+            }
             
             // Text
             if(o < 45){
@@ -532,7 +550,7 @@ w = function(){
                     t(600, 400, "10,000km penalty", 50, "#000");
                 }
                 else{
-                    t(600, 350, p > 5 ? (p < 100 ? (~~(p/5)) * 100 : (~~(p/50)) * 1000) + "km away" : "PERFECT", 100, "#000")
+                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, "#000")
                 }
             }
             
@@ -540,7 +558,7 @@ w = function(){
             // Game over
             if(q < 0){
                 q = 0;
-                n = 6;
+                n = 5;
             }
             
             // Go to black screen before next puzzle
@@ -575,6 +593,9 @@ w = function(){
                 n = 1;
                 r += q;
                 q = 20000;
+                if(A == 5 || A == 7 || A == 9 || A == 11){
+                    q = 10000;
+                }
                 
                 // Or you won
                 if(A > 12){
@@ -582,6 +603,20 @@ w = function(){
                 }
             }
         }
+    }
+    
+    // Game over
+    if(n == 5){
+        
+        h.fillRect(0,0,1200,650);
+        
+        // Text
+        t(600, 280, A == 13 ? "YOU WON!" : "GAME OVER!");
+        
+        t(600,  360, A + " levels passed ~ total score: " + r + "km", 40);
+        
+        t(600, 450, "REPLAY", 30);
+        
     }
     
     // Update frame counter
@@ -615,5 +650,20 @@ $.onclick = function(a){
         o = 60;
     }
     
+    // Puzzle screen => Puzzle feedback
+    else if(n == 5){
+        location = location;
+    }
+    
     // Other game states don't require clicking
 }
+
+// Broken:
+// State: cambodia
+// Capitol: BANGUI
+// US capitols? (illinois for ex.)
+
+// Todo:
+// draw canada + mexico on us map
+// draw world map
+// delay game over after puzzle feedback
