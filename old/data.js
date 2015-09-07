@@ -1,5 +1,5 @@
 d=[
-/*"Algeria,Algiers",
+"Algeria,Algiers",
 "Argentina,Buenos Aires",
 "Australia,Canberra",
 "Austria,Vienna",
@@ -197,7 +197,7 @@ d=[
 "Uganda,Kampala",
 "Uzbekistan,Tashkent",
 "Vanuatu,Port Vila",
-"Zambia,Lusaka",*/
+"Zambia,Lusaka",
 
 /*"Cape Canaveral",
 "Christ the Redeemer",
@@ -304,7 +304,7 @@ d=[
 */
 
 
-"Hawaii,Honolulu",
+/*"Hawaii,Honolulu",
 "Alaska,Juneau",
 "Washington,Olympia",
 "Nevada,Carson City",
@@ -354,7 +354,7 @@ d=[
 "Mississippi,Jackson",
 "Wisconsin,Madison",
 "Missouri,Jefferson City",
-"Wyoming,Cheyenne"
+"Wyoming,Cheyenne"*/
 
 
 
