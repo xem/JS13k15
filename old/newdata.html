@@ -131,12 +131,12 @@ with(new XMLHttpRequest){
             else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)-1) places.push(a[i].slice(-2)), places.push(a[i+1].slice(-2));
             else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)) places.push(a[i].slice(-2));
             else {
-                //console.log(a[i]);
+                console.log(a[i]);
                 if(a[i])states.push(a[i].slice(0,-2)), uscapitols.push(a[i].slice(-2));
             }
         }
         for(i=0;i<uscapitols.length;i++){
-            console.log(uscapitols[i], uscapitols[i].charCodeAt(0), uscapitols[i].charCodeAt(1));
+            //console.log(uscapitols[i], uscapitols[i].charCodeAt(0), uscapitols[i].charCodeAt(1));
         }
         
         places=places.join("");
