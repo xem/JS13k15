@@ -301,10 +301,6 @@ w = function(){
             g[2][1],
             g[1][2]
         ][A];
-
-        h.closePath();
-        h.strokeStyle = "#83864F";
-        h.fillStyle = "#95D866";
             
         // Draw US map
         if(A == 5 || A == 7 || A == 9 || A == 11){
@@ -353,6 +349,8 @@ w = function(){
                     // Start country
                     if(k == 0){
                         h.beginPath();
+                        h.strokeStyle = B < 5 ? "#83864F" : "#95D866";
+                        h.fillStyle = "#95D866";
                         h.moveTo(x, y);
                     }
                     
@@ -409,7 +407,7 @@ w = function(){
 
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
-                    y = a[k + 1] * (f == 4 ? 2.42 : 2.35) + (f == 4 ? 47 : 60);
+                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 60);
                     
                     // Test if it's the closest point to where we clicked
                     if(o == 60){
@@ -544,9 +542,11 @@ w = function(){
         }
         
         // UI
+        h.beginPath();
         h.fillStyle = "#000";
         h.rect(0, 0, 1200, 66);
         h.fill();
+        h.closePath();
         h.beginPath();
         h.fillStyle = "#fff";
         if(n == 2){
