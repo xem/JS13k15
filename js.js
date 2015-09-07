@@ -4,7 +4,7 @@
 _ = function(a){ console.log(a) }
 
 // Names of places, capitols, us capitols, countries, us states, in one string (0: category separator, 1: difficulty separator)
-g = "Cape canaveralChrist the redeemerThe great chinese wallThe great sphinxThe eiffel towerTower of pisaMount everestSagrada familiaBig benThe statue of libertyForbidden cityThe pyramids of gizaThe palace of versaillesAcropolisTrevi fountainKremlinLoch nessAtomiumLascaux cavesMont st. michelPiazza san marcoThe grand canyonMillau bridgeRock of gibraltarThe empire state buildingHollywood signTimes squareLouvre museumWhite houseFlorence cathedralLas vegasMadrid palaceCentral parkSistine chapelPiazza del campo1Machu picchuThe burj al arab hotelSt. peter's cathedralKilimanjaroCapitol hillLuxor templeGolden gate bridgeBurj khalifaAlcatrazEphesusManneken pisMount eden craterNorth capeSt. basil's cathedralVictoria fallsThe great buddhaLotus templeThe colosseumAbu simbelPetronas twin towersYellowstoneNiagara fallsThe taj mahalMount fujiMeccaAuschwitzStonehengeMount rushmorePentagonCape of good hopeOpera houseParc guellPompeiiDead sea1WaterlooEaster islandEvergladesCloud gateRialto bridgeWillis towerLittle mermaidTower bridgeThe blue mosqueNevado mismiTable mountainMinaret of jamAngkor watFaisal mosqueNeuschwanstein castleGolden temple of amritsarAl aqsa mosqueTemple of besakihChichen itzaBran castleHagia sophiaUluruBrandenburg gateBlue domed churchTaal lakeCheyenne mountainKiyomizu-deraPetraTombouctouKultury i nauki palace0AlgiersBuenos airesCanberraViennaBrusselsBrasiliaSofiaOttawaSantiagoBeijingZagrebHavanaPragueCopenhagenQuitoCairoTallinnHelsinkiParisBerlinAthensBudapestReykjavikNew delhiJakartaTehranBaghdadDublinJerusalemRomeKingstonTokyoBeirutVilniusLuxembourgSkopjeAntananarivoMexico cityMonacoRabatKathmanduAmsterdamWellingtonPyongyangOsloRamallahAsunciónLimaManilaWarsawLisbonBucharestDohaMoscowRiyadhSingaporeBratislavaLjubljanaPretoriaSeoulMadridStockholmBernTaipeiTunisAnkaraKyivMontevideoAbu dhabiLondonWashington d.c.CaracasVatican cityHanoiGeorgetownTripoli1KabulAndorra la vellaTiranaMinskSarajevoOuagadougouYaoundéBanguiBrazzavilleKinshasaYamoussoukroSan joseBogotáLa pazPraiaNicosiaPorto-novoPhnom penhRoseauSanto domingoMalaboGuatemala cityPort-au-princeTegucigalpaAmmanAstanaPristinaKuwait cityVientianeNairobiKuala lumpurBamakoVallettaChisinauIslamabadPanama citySan marinoDakarBelgradeVictoriaMogadishuSri jayawardenepura kotteKhartoumDodomaBangkokSana'aHarare1Saint john'sYerevanBakuLuandaNassauManamaDhakaBridgetownBelmopanThimphuGaboroneBandar seri begawanBujumburaN'djamenaMoroniDjiboutiSan salvadorAsmaraAddis ababaSuvaLibrevilleBanjulTbilisiAccraSt. george'sConakryBissauSouth tarawaBishkekRigaMaseruMonroviaVaduzLilongweMaleMajuroNouakchottPort louisPalikirUlaanbaatarPodgoricaMaputoNaypyidawWindhoekYaren districtManaguaNiameyAbujaMuscatNgerulmudPort moresbyKigaliBasseterreCastriesKingstownApiaSão toméFreetownHoniaraJubaParamariboMbabaneDamascusDushanbeDiliLoméNuku'alofaPort of spainAshgabatFunafutiKampalaTashkentPort vilaLusaka0HonoluluJuneauOlympiaCarson citySanta feAlbanyTallahasseeSpringfieldColumbusProvidenceColumbiaAustinSalt lake cityRichmondCharlestonHarrisburgBostonRaleighMontgomerySacramentoDenverAtlantaLansing1BismarckHelenaLincolnPhoenixLittle rockConcordTrentonHartfordDoverOklahoma cityBoiseSalemIndianapolisDes moinesTopekaPierreFrankfortNashvilleBaton rougeAugustaAnnapolisMontpelierSt. paulJacksonMadisonJefferson cityCheyenne0AlgeriaArgentinaAustraliaAustriaBelgiumBrazilBulgariaCanadaChileChinaCroatiaCubaCzech republicDenmarkEcuadorEgyptEstoniaFinlandFranceGermanyGreeceHungaryIcelandIndiaIndonesiaIranIraqIrelandIsraelItalyJamaicaJapanLebanonLithuaniaLuxembourgMacedoniaMadagascarMexicoMonacoMoroccoNepalNetherlandsNew zealandNorth koreaNorwayPalestineParaguayPeruPhilippinesPolandPortugalRomaniaQatarRussiaSaudi arabiaSingaporeSlovakiaSloveniaSouth africaSouth koreaSpainSwedenSwitzerlandTaiwanTunisiaTurkeyUkraineUruguayUnited arab emiratesUnited kingdomU.s.a.VenezuelaVatican cityVietnamGuyanaLibya1AfghanistanAndorraAlbaniaBelarusBosnia and herzegovina Burkina fasoCameroonCentral african republicRepublic of the congo Democratic republic of the congo Cote d'ivoireCosta ricaColombiaBoliviaCabo verdeCyprusBeninCambodiaDominicaDominican republicEquatorial guineaGuatemalaHaitiHondurasJordanKazakhstanKosovoKuwaitLaosKenyaMalaysiaMaliMaltaMoldovaPakistanPanamaSan marinoSenegalSerbiaSeychellesSomaliaSri lankaSudanTanzaniaThailandYemenZimbabwe1Antigua and barbudaArmeniaAzerbaijanAngolaBahamasBahrainBangladeshBarbadosBelizeBhutanBotswanaBruneiBurundiChadComorosDjiboutiEl salvadorEritreaEthiopiaFijiGabonGambiaGeorgiaGhanaGrenadaGuineaGuinea-bissauKiribatiKyrgyzstanLatviaLesothoLiberiaLiechtensteinMalawiMaldivesMarshall islandsMauritaniaMauritiusMicronesiaMongoliaMontenegroMozambiqueMyanmarNamibiaNauruNicaraguaNigerNigeriaOmanPalauPapua new guineaRwandaSaint kitts and nevisSaint luciaSaint vincent and the grenadinesSamoaSao tome and principeSierra leoneSolomon islandsSouth sudanSurinameSwazilandSyriaTajikistanTimor-lesteTogoTongaTrinidad and tobagoTurkmenistanTuvaluUgandaUzbekistanVanuatuZambia1ZZ0HawaiiAlaskaWashingtonNevadaNew mexicoNew yorkFloridaIllinoisOhioRhode islandSouth carolinaTexasUtahVirginiaWest virginiaPennsylvaniaMassachusettsNorth carolinaAlabamaCaliforniaColoradoGeorgiaMichigan1North dakotaMontanaNebraskaArizonaArkansasNew hampshireNew jerseyConnecticutDelawareOklahomaIdahoOregonIndianaIowaKansasSouth dakotaKentuckyTennesseeLouisianaMaineMarylandVermontMinnesotaMississippiWisconsinMissouriWyomingZZZZ".split(0);
+g = "Cape canaveralChrist the redeemerThe great chinese wallThe great sphinxThe eiffel towerTower of pisaMount everestSagrada familiaBig benThe statue of libertyForbidden cityThe pyramids of gizaThe palace of versaillesAcropolisTrevi fountainKremlinLoch nessAtomiumLascaux cavesMont st. michelPiazza san marcoThe grand canyonMillau bridgeRock of gibraltarThe empire state buildingHollywood signTimes squareLouvre museumWhite houseFlorence cathedralLas vegasMadrid palaceCentral parkSistine chapelPiazza del campo1Machu picchuThe burj al arab hotelSt. peter's cathedralKilimanjaroCapitol hillLuxor templeGolden gate bridgeBurj khalifaAlcatrazEphesusManneken pisMount eden craterNorth capeSt. basil's cathedralVictoria fallsThe great buddhaLotus templeThe colosseumAbu simbelPetronas twin towersYellowstoneNiagara fallsThe taj mahalMount fujiMeccaAuschwitzStonehengeMount rushmorePentagonCape of good hopeOpera houseParc guellPompeiiDead sea1WaterlooEaster islandEvergladesCloud gateRialto bridgeWillis towerLittle mermaidTower bridgeThe blue mosqueNevado mismiTable mountainMinaret of jamAngkor watFaisal mosqueNeuschwanstein castleGolden temple of amritsarAl aqsa mosqueTemple of besakihChichen itzaBran castleHagia sophiaUluruBrandenburg gateBlue domed churchTaal lakeCheyenne mountainKiyomizu-deraPetraTombouctouKultury i nauki palace0AlgiersBuenos airesCanberraViennaBrusselsBrasiliaSofiaOttawaSantiagoBeijingZagrebHavanaPragueCopenhagenQuitoCairoTallinnHelsinkiParisBerlinAthensBudapestReykjavikNew delhiJakartaTehranBaghdadDublinJerusalemRomeKingstonTokyoBeirutVilniusLuxembourgSkopjeAntananarivoMexico cityMonacoRabatKathmanduAmsterdamWellingtonPyongyangOsloRamallahAsunciónLimaManilaWarsawLisbonBucharestDohaMoscowRiyadhSingaporeBratislavaLjubljanaPretoriaSeoulMadridStockholmBernTaipeiTunisAnkaraKyivMontevideoAbu dhabiLondonWashington d.c.CaracasVatican cityHanoiGeorgetownTripoli1KabulAndorra la vellaTiranaMinskSarajevoOuagadougouYaoundéBanguiBrazzavilleKinshasaYamoussoukroSan joseBogotáLa pazPraiaNicosiaPorto-novoPhnom penhRoseauSanto domingoMalaboGuatemala cityPort-au-princeTegucigalpaAmmanAstanaPristinaKuwait cityVientianeNairobiKuala lumpurBamakoVallettaChisinauIslamabadPanama citySan marinoDakarBelgradeVictoriaMogadishuSri jayawardenepura kotteKhartoumDodomaBangkokSana'aHarare1Saint john'sYerevanBakuLuandaNassauManamaDhakaBridgetownBelmopanThimphuGaboroneBandar seri begawanBujumburaN'djamenaMoroniDjiboutiSan salvadorAsmaraAddis ababaSuvaLibrevilleBanjulTbilisiAccraSt. george'sConakryBissauSouth tarawaBishkekRigaMaseruMonroviaVaduzLilongweMaleMajuroNouakchottPort louisPalikirUlaanbaatarPodgoricaMaputoNaypyidawWindhoekYaren districtManaguaNiameyAbujaMuscatNgerulmudPort moresbyKigaliBasseterreCastriesKingstownApiaSão toméFreetownHoniaraJubaParamariboMbabaneDamascusDushanbeDiliLoméNuku'alofaPort of spainAshgabatFunafutiKampalaTashkentPort vilaLusaka0HonoluluJuneauOlympiaCarson citySanta feAlbanyTallahasseeSpringfieldColumbusProvidenceColumbiaAustinSalt lake cityRichmondCharlestonHarrisburgBostonRaleighMontgomerySacramentoDenverAtlantaLansing1BismarckHelenaLincolnPhoenixLittle rockConcordTrentonHartfordDoverOklahoma cityBoiseSalemIndianapolisDes moinesTopekaPierreFrankfortNashvilleBaton rougeAugustaAnnapolisMontpelierSt. paulJacksonMadisonJefferson cityCheyenne0AlgeriaArgentinaAustraliaAustriaBelgiumBrazilBulgariaCanadaChileChinaCroatiaCubaCzech republicDenmarkEcuadorEgyptEstoniaFinlandFranceGermanyGreeceHungaryIcelandIndiaIndonesiaIranIraqIrelandIsraelItalyJamaicaJapanLebanonLithuaniaLuxembourgMacedoniaMadagascarMexicoMonacoMoroccoNepalNetherlandsNew zealandNorth koreaNorwayPalestineParaguayPeruPhilippinesPolandPortugalRomaniaQatarRussiaSaudi arabiaSingaporeSlovakiaSloveniaSouth africaSouth koreaSpainSwedenSwitzerlandTaiwanTunisiaTurkeyUkraineUruguayUnited arab emiratesUnited kingdomU.s.a.VenezuelaVatican cityVietnamGuyanaLibya1AfghanistanAndorraAlbaniaBelarusBosnia and herzegovina Burkina fasoCameroonCentral african republicRepublic of the congo Democratic republic of the congo Cote d'ivoireCosta ricaColombiaBoliviaCabo verdeCyprusBeninCambodiaDominicaDominican republicEquatorial guineaGuatemalaHaitiHondurasJordanKazakhstanKosovoKuwaitLaosKenyaMalaysiaMaliMaltaMoldovaPakistanPanamaSan marinoSenegalSerbiaSeychellesSomaliaSri lankaSudanTanzaniaThailandYemenZimbabwe1Antigua and barbudaArmeniaAzerbaijanAngolaBahamasBahrainBangladeshBarbadosBelizeBhutanBotswanaBruneiBurundiChadComorosDjiboutiEl salvadorEritreaEthiopiaFijiGabonGambiaGeorgiaGhanaGrenadaGuineaGuinea-bissauKiribatiKyrgyzstanLatviaLesothoLiberiaLiechtensteinMalawiMaldivesMarshall islandsMauritaniaMauritiusMicronesiaMongoliaMontenegroMozambiqueMyanmarNamibiaNauruNicaraguaNigerNigeriaOmanPalauPapua new guineaRwandaSaint kitts and nevisSaint luciaSaint vincent and the grenadinesSamoaSao tome and principeSierra leoneSolomon islandsSouth sudanSurinameSwazilandSyriaTajikistanTimor-lesteTogoTongaTrinidad and tobagoTurkmenistanTuvaluUgandaUzbekistanVanuatuZambia1ZZ0HawaiiAlaskaWashingtonNevadaNew mexicoNew yorkFloridaIllinoisOhioRhode islandSouth carolinaTexasUtahVirginiaWest virginiaPennsylvaniaMassachusettsNorth carolinaAlabamaCaliforniaColoradoGeorgiaMichigan1North dakotaMontanaNebraskaArizonaArkansasNew hampshireNew jerseyConnecticutDelawareOklahomaIdahoOregonIndianaIowaKansasSouth dakotaKentuckyTennesseeLouisianaMaineMarylandVermontMinnesotaMississippiWisconsinMissouriWyoming1ZZ".split(0);
 
 // Context2d
 h = $.getContext("2d");
@@ -102,24 +102,6 @@ a.onload = function(){
             }
         }
     }
-    
-    // Shuffle
-    b = function(){return .5 - m.random()}
-    g[0][0].sort(b); // Places easy
-    g[0][1].sort(b); // Places medium
-    g[0][2].sort(b); // Places hard
-    g[1][0].sort(b); // Capitols easy
-    g[1][1].sort(b); // Capitols medium
-    g[1][2].sort(b); // Capitols hard
-    g[2][0].sort(b); // US capitols easy
-    g[2][1].sort(b); // US capitols hard
-    g[3][0].sort(b); // Countries easy
-    g[3][1].sort(b); // Countries medium
-    g[3][2].sort(b); // Countries hard
-    g[4][0].sort(b); // US states easy
-    g[4][1].sort(b); // US states hard
-    
-    _(g);
     
     // Launch game
     w();
@@ -442,8 +424,8 @@ w = function(){
             
             // Place / capitol
             else {
-                x = a[0] * 4.9 + 0;
-                y = a[1] * 2.35 + 65;
+                x = a[0] * (f == 4 ? 4.8 : 4.9);
+                y = a[1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 60);
                     
                 h.fillStyle = "yellow";
                 h.beginPath();
@@ -650,6 +632,24 @@ $.onclick = function(a){
     // Home screen => Level presentation screen
     if(n == 0){
         n = 1;
+        
+        // Shuffle data now
+        b = function(){return .5 - m.random()}
+        g[0][0].sort(b); // Places easy
+        g[0][1].sort(b); // Places medium
+        g[0][2].sort(b); // Places hard
+        g[1][0].sort(b); // Capitols easy
+        g[1][1].sort(b); // Capitols medium
+        g[1][2].sort(b); // Capitols hard
+        g[2][0].sort(b); // US capitols easy
+        g[2][1].sort(b); // US capitols hard
+        g[3][0].sort(b); // Countries easy
+        g[3][1].sort(b); // Countries medium
+        g[3][2].sort(b); // Countries hard
+        g[4][0].sort(b); // US states easy
+        g[4][1].sort(b); // US states hard
+        
+        _(g);
     }
     
     // Level presentation screen => Puzzle screen
