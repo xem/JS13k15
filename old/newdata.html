@@ -127,9 +127,9 @@ with(new XMLHttpRequest){
         //console.log((places+0+capitols+0+uscapitols+0+countries+0+states).toLowerCase().replace(/1(.)/g,function(a,b){return b.toUpperCase()}));
         
         for(i=0;i<a.length;i+=2){
-            if(i < 2 * (76 + 47 + 74 + 2)) countries.push(a[i+1].slice(0,-2)), capitols.push(a[i+1].slice(-2));
-            else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)-1) places.push(a[i].slice(-2)), places.push(a[i+1].slice(-2));
-            else if(i < 2 * (76 + 47 + 74 + 2 + (35 + 34 + 30)/2)) places.push(a[i].slice(-2));
+            if(i < 2 * (76 + 47 + 74 + 4)) countries.push(a[i+1].slice(0,-2)), capitols.push(a[i+1].slice(-2));
+            else if(i < 2 * (76 + 47 + 74 + 4 + (35 + 34 + 30)/2)-1) places.push(a[i].slice(-2)), places.push(a[i+1].slice(-2));
+            else if(i < 2 * (76 + 47 + 74 + 4 + (35 + 34 + 30)/2)) places.push(a[i].slice(-2));
             else {
                 console.log(a[i]);
                 if(a[i])states.push(a[i].slice(0,-2)), uscapitols.push(a[i].slice(-2));
