@@ -254,7 +254,7 @@ w = function(){
     else if(n == 1){
         
         // Background
-        h.fillRect(0,0,1200,650);
+        h.fillRect(0, 0, 1200, 650);
         
         // Text
         t(600, 280, "Level " + (A + 1) + ":", 60);
@@ -343,14 +343,14 @@ w = function(){
                     y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
                     if(B == 4 || B == 9){
                         x = 1200 - x;
-                        y = 700 - y;
+                        y = 715 - y;
                     }
                     
                     // Start country
                     if(k == 0){
                         h.beginPath();
-                        h.strokeStyle = B < 7 ? "#83864F" : "#000";
-                        h.fillStyle = B < 7 ? "#95D866" : "#000";
+                        h.strokeStyle = B < 5 ? "#83864F" : "#000";
+                        h.fillStyle = B < 5 ? "#95D866" : "#000";
                         "#95D866";
                         h.moveTo(x, y);
                     }
@@ -427,7 +427,7 @@ w = function(){
                     y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
                     if(B == 4 || B == 9){
                         x = 1200 - x;
-                        y = 700 - y;
+                        y = 715 - y;
                     }
                     
                     // Test if it's the closest point to where we clicked
@@ -467,7 +467,7 @@ w = function(){
                 y = a[1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
                 if(B == 4 || B == 9){
                     x = 1200 - x;
-                    y = 700 - y;
+                    y = 715 - y;
                 }
                     
                 h.fillStyle = "yellow";
@@ -537,16 +537,16 @@ w = function(){
             // Text
             if(o < 45){
                 if(z){
-                    t(600, 350, "TIME OUT", 100, B < 7 ? "#000" : "#fff");
+                    t(600, 350, "TIME OUT", 100, B < 5 ? "#000" : "#fff");
                     if(A == 5 || A == 7 || A == 9 || A == 11){
-                        t(600, 400, "5,000km penalty", 50, B < 7 ? "#000" : "#fff");
+                        t(600, 400, "5,000km penalty", 50, B < 5 ? "#000" : "#fff");
                     }
                     else {
-                        t(600, 400, "10,000km penalty", 50, B < 7 ? "#000" : "#fff");
+                        t(600, 400, "10,000km penalty", 50, B < 5 ? "#000" : "#fff");
                     }
                 }
                 else{
-                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, B < 7 ? "#000" : "#fff")
+                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, B < 5 ? "#000" : "#fff")
                 }
             }
             
@@ -635,7 +635,7 @@ w = function(){
                 r += q;
                 q = 30000;
                 if(A == 5 || A == 7 || A == 9 || A == 11){
-                    q = 20000;
+                    q = 15000;
                 }
                 
                 // Or you won
