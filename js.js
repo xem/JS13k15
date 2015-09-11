@@ -4,7 +4,7 @@
 _ = function(a){ console.log(a) }
 
 // Names of places, capitols, us capitols, countries, us states, in one string (0: category separator, 1: difficulty separator)
-g = "Cape canaveralChrist the redeemerThe great chinese wallThe great sphinxThe eiffel towerTower of pisaMount everestSagrada familiaBig benThe statue of libertyForbidden cityThe pyramids of gizaThe palace of versaillesAcropolisTrevi fountainKremlinLoch nessAtomiumLascaux cavesMont st. michelPiazza san marcoThe grand canyonMillau bridgeRock of gibraltarThe empire state buildingHollywood signTimes squareLouvre museumWhite houseFlorence cathedralLas vegasMadrid palaceCentral parkSistine chapelPiazza del campo1Machu picchuThe burj al arab hotelSt. peter's cathedralKilimanjaroCapitol hillLuxor templeGolden gate bridgeBurj khalifaAlcatrazEphesusManneken pisMount eden craterNorth capeSt. basil's cathedralVictoria fallsThe great buddhaLotus templeThe colosseumAbu simbelPetronas twin towersYellowstoneNiagara fallsThe taj mahalMount fujiMeccaAuschwitzStonehengeMount rushmorePentagonCape of good hopeOpera houseParc guellPompeiiDead sea1WaterlooEaster islandEvergladesCloud gateRialto bridgeWillis towerLittle mermaidTower bridgeThe blue mosqueNevado mismiTable mountainMinaret of jamAngkor watFaisal mosqueNeuschwanstein castleGolden temple of amritsarAl aqsa mosqueTemple of besakihChichen itzaBran castleHagia sophiaUluruBrandenburg gateBlue domed churchTaal lakeCheyenne mountainKiyomizu-deraPetraTombouctouKultury i nauki palace0AlgiersBuenos airesCanberraViennaBrusselsBrasiliaSofiaOttawaSantiagoBeijingZagrebHavanaPragueCopenhagenQuitoCairoTallinnHelsinkiParisBerlinAthensBudapestReykjavikNew delhiJakartaTehranBaghdadDublinJerusalemRomeKingstonTokyoBeirutVilniusLuxembourgSkopjeAntananarivoMexico cityMonacoRabatKathmanduAmsterdamWellingtonPyongyangOsloRamallahAsunciónLimaManilaWarsawLisbonBucharestDohaMoscowRiyadhSingaporeBratislavaLjubljanaPretoriaSeoulMadridStockholmBernTaipeiTunisAnkaraKyivMontevideoAbu dhabiLondonWashington d.c.CaracasVatican cityHanoiGeorgetownTripoli1KabulAndorra la vellaTiranaMinskSarajevoOuagadougouYaoundéBanguiBrazzavilleKinshasaYamoussoukroSan joseBogotáLa pazPraiaNicosiaPorto-novoPhnom penhRoseauSanto domingoMalaboGuatemala cityPort-au-princeTegucigalpaAmmanAstanaPristinaKuwait cityVientianeNairobiKuala lumpurBamakoVallettaChisinauIslamabadPanama citySan marinoDakarBelgradeVictoriaMogadishuSri jayawardenepura kotteKhartoumDodomaBangkokSana'aHarare1Saint john'sYerevanBakuLuandaNassauManamaDhakaBridgetownBelmopanThimphuGaboroneBandar seri begawanBujumburaN'djamenaMoroniDjiboutiSan salvadorAsmaraAddis ababaSuvaLibrevilleBanjulTbilisiAccraSt. george'sConakryBissauSouth tarawaBishkekRigaMaseruMonroviaVaduzLilongweMaleMajuroNouakchottPort louisPalikirUlaanbaatarPodgoricaMaputoNaypyidawWindhoekYaren districtManaguaNiameyAbujaMuscatNgerulmudPort moresbyKigaliBasseterreCastriesKingstownApiaSão toméFreetownHoniaraJubaParamariboMbabaneDamascusDushanbeDiliLoméNuku'alofaPort of spainAshgabatFunafutiKampalaTashkentPort vilaLusaka0HonoluluJuneauOlympiaCarson citySanta feAlbanyTallahasseeSpringfieldColumbusProvidenceColumbiaAustinSalt lake cityRichmondCharlestonHarrisburgBostonRaleighMontgomerySacramentoDenverAtlantaLansing1BismarckHelenaLincolnPhoenixLittle rockConcordTrentonHartfordDoverOklahoma cityBoiseSalemIndianapolisDes moinesTopekaPierreFrankfortNashvilleBaton rougeAugustaAnnapolisMontpelierSt. paulJacksonMadisonJefferson cityCheyenne0AlgeriaArgentinaAustraliaAustriaBelgiumBrazilBulgariaCanadaChileChinaCroatiaCubaCzech republicDenmarkEcuadorEgyptEstoniaFinlandFranceGermanyGreeceHungaryIcelandIndiaIndonesiaIranIraqIrelandIsraelItalyJamaicaJapanLebanonLithuaniaLuxembourgMacedoniaMadagascarMexicoMonacoMoroccoNepalNetherlandsNew zealandNorth koreaNorwayPalestineParaguayPeruPhilippinesPolandPortugalRomaniaQatarRussiaSaudi arabiaSingaporeSlovakiaSloveniaSouth africaSouth koreaSpainSwedenSwitzerlandTaiwanTunisiaTurkeyUkraineUruguayUnited arab emiratesUnited kingdomU.s.a.VenezuelaVatican cityVietnamGuyanaLibya1AfghanistanAndorraAlbaniaBelarusBosnia and herzegovina Burkina fasoCameroonCentral african republicRepublic of the congo Democratic republic of the congo Cote d'ivoireCosta ricaColombiaBoliviaCabo verdeCyprusBeninCambodiaDominicaDominican republicEquatorial guineaGuatemalaHaitiHondurasJordanKazakhstanKosovoKuwaitLaosKenyaMalaysiaMaliMaltaMoldovaPakistanPanamaSan marinoSenegalSerbiaSeychellesSomaliaSri lankaSudanTanzaniaThailandYemenZimbabwe1Antigua and barbudaArmeniaAzerbaijanAngolaBahamasBahrainBangladeshBarbadosBelizeBhutanBotswanaBruneiBurundiChadComorosDjiboutiEl salvadorEritreaEthiopiaFijiGabonGambiaGeorgiaGhanaGrenadaGuineaGuinea-bissauKiribatiKyrgyzstanLatviaLesothoLiberiaLiechtensteinMalawiMaldivesMarshall islandsMauritaniaMauritiusMicronesiaMongoliaMontenegroMozambiqueMyanmarNamibiaNauruNicaraguaNigerNigeriaOmanPalauPapua new guineaRwandaSaint kitts and nevisSaint luciaSaint vincent and the grenadinesSamoaSao tome and principeSierra leoneSolomon islandsSouth sudanSurinameSwazilandSyriaTajikistanTimor-lesteTogoTongaTrinidad and tobagoTurkmenistanTuvaluUgandaUzbekistanVanuatuZambia1ZZZZ0HawaiiAlaskaWashingtonNevadaNew mexicoNew yorkFloridaIllinoisOhioRhode islandSouth carolinaTexasUtahVirginiaWest virginiaPennsylvaniaMassachusettsNorth carolinaAlabamaCaliforniaColoradoGeorgiaMichigan1North dakotaMontanaNebraskaArizonaArkansasNew hampshireNew jerseyConnecticutDelawareOklahomaIdahoOregonIndianaIowaKansasSouth dakotaKentuckyTennesseeLouisianaMaineMarylandVermontMinnesotaMississippiWisconsinMissouriWyoming1ZZ".split(0);
+g = "Cape canaveralChrist the redeemerThe great chinese wallThe great sphinxThe eiffel towerTower of pisaMount everestSagrada familiaBig benThe statue of libertyForbidden cityThe pyramids of gizaThe palace of versaillesAcropolisTrevi fountainKremlinLoch nessAtomiumLascaux cavesMont st. michelPiazza san marcoThe grand canyonMillau bridgeRock of gibraltarThe empire state buildingHollywood signTimes squareLouvre museumWhite houseFlorence cathedralLas vegasMadrid palaceCentral parkSistine chapelPiazza del campo1Machu picchuThe burj al arab hotelSt. peter's cathedralKilimanjaroCapitol hillLuxor templeGolden gate bridgeBurj khalifaAlcatrazEphesusManneken pisMount eden craterNorth capeSt. basil's cathedralVictoria fallsThe great buddhaLotus templeThe colosseumAbu simbelPetronas twin towersYellowstoneNiagara fallsThe taj mahalMount fujiMeccaAuschwitzStonehengeMount rushmorePentagonCape of good hopeOpera houseParc guellPompeiiDead sea1WaterlooEaster islandEvergladesCloud gateRialto bridgeWillis towerLittle mermaidTower bridgeThe blue mosqueNevado mismiTable mountainMinaret of jamAngkor watFaisal mosqueNeuschwanstein castleGolden temple of amritsarAl aqsa mosqueTemple of besakihChichen itzaBran castleHagia sophiaUluruBrandenburg gateBlue domed churchTaal lakeCheyenne mountainKiyomizu-deraPetraTombouctouKultury i nauki palace0AlgiersBuenos airesCanberraViennaBrusselsBrasiliaSofiaOttawaSantiagoBeijingZagrebHavanaPragueCopenhagenQuitoCairoTallinnHelsinkiParisBerlinAthensBudapestReykjavikNew delhiJakartaTehranBaghdadDublinJerusalemRomeKingstonTokyoBeirutVilniusLuxembourgSkopjeAntananarivoMexico cityMonacoRabatKathmanduAmsterdamWellingtonPyongyangOsloRamallahAsunciónLimaManilaWarsawLisbonBucharestDohaMoscowRiyadhSingaporeBratislavaLjubljanaPretoriaSeoulMadridStockholmBernTaipeiTunisAnkaraKyivMontevideoAbu dhabiLondonWashington d.c.CaracasVatican cityHanoiGeorgetownTripoli1KabulAndorra la vellaTiranaMinskSarajevoOuagadougouYaoundéBanguiBrazzavilleKinshasaYamoussoukroSan joseBogotáLa pazPraiaNicosiaPorto-novoPhnom penhRoseauSanto domingoMalaboGuatemala cityPort-au-princeTegucigalpaAmmanAstanaPristinaKuwait cityVientianeNairobiKuala lumpurBamakoVallettaChisinauIslamabadPanama citySan marinoDakarBelgradeVictoriaMogadishuSri jayawardenepura kotteKhartoumDodomaBangkokSana'aHarare1Saint john'sYerevanBakuLuandaNassauManamaDhakaBridgetownBelmopanThimphuGaboroneBandar seri begawanBujumburaN'djamenaMoroniDjiboutiSan salvadorAsmaraAddis ababaSuvaLibrevilleBanjulTbilisiAccraSt. george'sConakryBissauSouth tarawaBishkekRigaMaseruMonroviaVaduzLilongweMaleMajuroNouakchottPort louisPalikirUlaanbaatarPodgoricaMaputoNaypyidawWindhoekYaren districtManaguaNiameyAbujaMuscatNgerulmudPort moresbyKigaliBasseterreCastriesKingstownApiaSão toméFreetownHoniaraJubaParamariboMbabaneDamascusDushanbeDiliLoméNuku'alofaPort of spainAshgabatFunafutiKampalaTashkentPort vilaLusakaZZZZ0HonoluluJuneauOlympiaCarson citySanta feAlbanyTallahasseeSpringfieldColumbusProvidenceColumbiaAustinSalt lake cityRichmondCharlestonHarrisburgBostonRaleighMontgomerySacramentoDenverAtlantaLansing1BismarckHelenaLincolnPhoenixLittle rockConcordTrentonHartfordDoverOklahoma cityBoiseSalemIndianapolisDes moinesTopekaPierreFrankfortNashvilleBaton rougeAugustaAnnapolisMontpelierSt. paulJacksonMadisonJefferson cityCheyenne0AlgeriaArgentinaAustraliaAustriaBelgiumBrazilBulgariaCanadaChileChinaCroatiaCubaCzech republicDenmarkEcuadorEgyptEstoniaFinlandFranceGermanyGreeceHungaryIcelandIndiaIndonesiaIranIraqIrelandIsraelItalyJamaicaJapanLebanonLithuaniaLuxembourgMacedoniaMadagascarMexicoMonacoMoroccoNepalNetherlandsNew zealandNorth koreaNorwayPalestineParaguayPeruPhilippinesPolandPortugalRomaniaQatarRussiaSaudi arabiaSingaporeSlovakiaSloveniaSouth africaSouth koreaSpainSwedenSwitzerlandTaiwanTunisiaTurkeyUkraineUruguayUnited arab emiratesUnited kingdomU.s.a.VenezuelaVatican cityVietnamGuyanaLibya1AfghanistanAndorraAlbaniaBelarusBosnia and herzegovina Burkina fasoCameroonCentral african republicRepublic of the congo Democratic republic of the congo Cote d'ivoireCosta ricaColombiaBoliviaCabo verdeCyprusBeninCambodiaDominicaDominican republicEquatorial guineaGuatemalaHaitiHondurasJordanKazakhstanKosovoKuwaitLaosKenyaMalaysiaMaliMaltaMoldovaPakistanPanamaSan marinoSenegalSerbiaSeychellesSomaliaSri lankaSudanTanzaniaThailandYemenZimbabwe1Antigua and barbudaArmeniaAzerbaijanAngolaBahamasBahrainBangladeshBarbadosBelizeBhutanBotswanaBruneiBurundiChadComorosDjiboutiEl salvadorEritreaEthiopiaFijiGabonGambiaGeorgiaGhanaGrenadaGuineaGuinea-bissauKiribatiKyrgyzstanLatviaLesothoLiberiaLiechtensteinMalawiMaldivesMarshall islandsMauritaniaMauritiusMicronesiaMongoliaMontenegroMozambiqueMyanmarNamibiaNauruNicaraguaNigerNigeriaOmanPalauPapua new guineaRwandaSaint kitts and nevisSaint luciaSaint vincent and the grenadinesSamoaSao tome and principeSierra leoneSolomon islandsSouth sudanSurinameSwazilandSyriaTajikistanTimor-lesteTogoTongaTrinidad and tobagoTurkmenistanTuvaluUgandaUzbekistanVanuatuZambia1ZZZZ0HawaiiAlaskaWashingtonNevadaNew mexicoNew yorkFloridaIllinoisOhioRhode islandSouth carolinaTexasUtahVirginiaWest virginiaPennsylvaniaMassachusettsNorth carolinaAlabamaCaliforniaColoradoGeorgiaMichigan1North dakotaMontanaNebraskaArizonaArkansasNew hampshireNew jerseyConnecticutDelawareOklahomaIdahoOregonIndianaIowaKansasSouth dakotaKentuckyTennesseeLouisianaMaineMarylandVermontMinnesotaMississippiWisconsinMissouriWyoming1ZZ".split(0);
 
 // Context2d
 h = $.getContext("2d");
@@ -22,7 +22,7 @@ o = 0;
 p = 50000;
 
 // Current level score
-q = 20000;
+q = 30000;
 
 // Total score
 r = 0;
@@ -38,6 +38,8 @@ t = function(x, y, text, size, color, align){
     h.textAlign = align;
     h.fillStyle = color;
     h.font = size + "px Impact, Charcoal";
+    h.strokeStyle = "#000";
+    h.strokeText(text, x, y);
     h.fillText(text, x, y);
 }
 
@@ -102,8 +104,6 @@ a.onload = function(){
             }
         }
     }
-    
-    _(g);
     
     // Hack for algeria
     g[3][0][0][1]=[105,81,107,78,113,76,112,82,114,88,114,97,116,102,111,109,109,110,100,95,99,93,106,85,255,109,78];
@@ -323,7 +323,7 @@ w = function(){
                         h.beginPath();
                     }
                     
-                    //tmp
+                    // hack
                     if(a[k + 1] == 255){
                         k += 2;
                         h.closePath();
@@ -334,13 +334,13 @@ w = function(){
 
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
-                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 60);
+                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
                     
                     // Start country
                     if(k == 0){
                         h.beginPath();
-                        h.strokeStyle = B < 5 ? "#83864F" : "#000";
-                        h.fillStyle = B < 5 ? "#95D866" : "#000";
+                        h.strokeStyle = B < 8 ? "#83864F" : "#000";
+                        h.fillStyle = B < 8 ? "#95D866" : "#000";
                         "#95D866";
                         h.moveTo(x, y);
                     }
@@ -369,6 +369,7 @@ w = function(){
             
             // Draw target
             a = C[B][1];
+            _(C[B]);
             
             // Country / State
             if(A == 0 || A == 3 || A == 5 || A == 8 || A == 9){
@@ -395,10 +396,25 @@ w = function(){
                         
                         h.beginPath();
                     }
+                    
+                    // hack
+                    if(a[k + 1] == 255){
+                        k += 2;
+                        h.closePath();
+                        h.fill();
+                        h.stroke();
+                        if(o == 60){
+                            if(h.isPointInPath(X, Y)){
+                                p = 0;
+                                c = [X, Y];
+                            }
+                        }
+                        h.beginPath();
+                    }
 
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
-                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 60);
+                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
                     
                     // Test if it's the closest point to where we clicked
                     if(o == 60){
@@ -434,7 +450,7 @@ w = function(){
             // Place / capitol
             else {
                 x = a[0] * (f == 4 ? 4.8 : 4.9);
-                y = a[1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 60);
+                y = a[1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
                     
                 h.fillStyle = "yellow";
                 h.beginPath();
@@ -503,16 +519,16 @@ w = function(){
             // Text
             if(o < 45){
                 if(z){
-                    t(600, 350, "TIME OUT", 100, B < 5 ? "#000" : "#fff");
+                    t(600, 350, "TIME OUT", 100, B < 8 ? "#000" : "#fff");
                     if(A == 5 || A == 7 || A == 9 || A == 11){
-                        t(600, 400, "5,000km penalty", 50, B < 5 ? "#000" : "#fff");
+                        t(600, 400, "5,000km penalty", 50, B < 8 ? "#000" : "#fff");
                     }
                     else {
-                        t(600, 400, "10,000km penalty", 50, B < 5 ? "#000" : "#fff");
+                        t(600, 400, "10,000km penalty", 50, B < 8 ? "#000" : "#fff");
                     }
                 }
                 else{
-                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, B < 5 ? "#000" : "#fff")
+                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, B < 8 ? "#000" : "#fff")
                 }
             }
             
@@ -599,9 +615,9 @@ w = function(){
                 A++;
                 n = 1;
                 r += q;
-                q = 20000;
+                q = 30000;
                 if(A == 5 || A == 7 || A == 9 || A == 11){
-                    q = 10000;
+                    q = 20000;
                 }
                 
                 // Or you won
@@ -677,12 +693,9 @@ $.onclick = function(a){
     
     // Puzzle screen => Puzzle feedback
     else if(n == 5){
+        window.open("http://twitter.com/home?status=I played the @js13kgames game GeoQuiz by @MaximeEuziere. My score: " + (A + 1) + "levels, " + r + "km. Play here: http://xem.github.io/JS13k15");
         location = location;
     }
     
     // Other game states don't require clicking
 }
-
-// Broken:
-// Capitol: BANGUI
-// US capitols? (illinois for ex.)
