@@ -105,14 +105,20 @@ a.onload = function(){
         }
     }
     
-    // Hack for algeria
-    g[3][0][0][1]=[105,81,107,78,113,76,112,82,114,88,114,97,116,102,111,109,109,110,100,95,99,93,106,85,255,109,78];
+    //_(g);
+    
+    // Hack for Algeria
+    g[3][0][0][1] = [105,81,107,78,113,76,112,82,114,88,114,97,116,102,111,109,109,110,100,95,99,93,106,85,255,109,78];
+    
+    // Hack for Tallahassee
+    g[2][0][6][1] = [207,218];
+    
+    // Hack for Bangui
+    g[1][1][7][1] = [121,137];
     
     // Launch game
     w();
 }
-
-v = 100
 
 /** Game loop **/
 w = function(){
@@ -335,12 +341,16 @@ w = function(){
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
                     y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
+                    if(B == 4 || B == 9){
+                        x = 1200 - x;
+                        y = 700 - y;
+                    }
                     
                     // Start country
                     if(k == 0){
                         h.beginPath();
-                        h.strokeStyle = B < 8 ? "#83864F" : "#000";
-                        h.fillStyle = B < 8 ? "#95D866" : "#000";
+                        h.strokeStyle = B < 7 ? "#83864F" : "#000";
+                        h.fillStyle = B < 7 ? "#95D866" : "#000";
                         "#95D866";
                         h.moveTo(x, y);
                     }
@@ -369,7 +379,7 @@ w = function(){
             
             // Draw target
             a = C[B][1];
-            _(C[B]);
+            //_(C[B]);
             
             // Country / State
             if(A == 0 || A == 3 || A == 5 || A == 8 || A == 9){
@@ -415,6 +425,10 @@ w = function(){
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
                     y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
+                    if(B == 4 || B == 9){
+                        x = 1200 - x;
+                        y = 700 - y;
+                    }
                     
                     // Test if it's the closest point to where we clicked
                     if(o == 60){
@@ -451,6 +465,10 @@ w = function(){
             else {
                 x = a[0] * (f == 4 ? 4.8 : 4.9);
                 y = a[1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
+                if(B == 4 || B == 9){
+                    x = 1200 - x;
+                    y = 700 - y;
+                }
                     
                 h.fillStyle = "yellow";
                 h.beginPath();
@@ -519,16 +537,16 @@ w = function(){
             // Text
             if(o < 45){
                 if(z){
-                    t(600, 350, "TIME OUT", 100, B < 8 ? "#000" : "#fff");
+                    t(600, 350, "TIME OUT", 100, B < 7 ? "#000" : "#fff");
                     if(A == 5 || A == 7 || A == 9 || A == 11){
-                        t(600, 400, "5,000km penalty", 50, B < 8 ? "#000" : "#fff");
+                        t(600, 400, "5,000km penalty", 50, B < 7 ? "#000" : "#fff");
                     }
                     else {
-                        t(600, 400, "10,000km penalty", 50, B < 8 ? "#000" : "#fff");
+                        t(600, 400, "10,000km penalty", 50, B < 7 ? "#000" : "#fff");
                     }
                 }
                 else{
-                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, B < 8 ? "#000" : "#fff")
+                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, B < 7 ? "#000" : "#fff")
                 }
             }
             
@@ -544,7 +562,7 @@ w = function(){
             // Go to black screen before next puzzle
             if(o == 0) {
                 n = 4;
-                o = 5;
+                o = 15;
             }
         }
         
@@ -636,16 +654,14 @@ w = function(){
         // Text
         t(600, 280, A == 13 ? "YOU WON!" : "GAME OVER!");
         
-        t(600,  360, A + " levels passed ~ total score: " + r + "km", 40);
+        t(600,  360, "Level " + (A + 1) + " ~ total score: " + r + "km", 40);
         
-        t(600, 450, "REPLAY", 30);
+        t(600, 450, "TWEET YOUR SCORE / REPLAY", 30);
         
     }
     
     // Update frame counter
     if(o) o--;
-    
-    //_("A" + A + " B" + B + " n" + n);
     
     setTimeout(w, 33);
 }
@@ -673,8 +689,7 @@ $.onclick = function(a){
         g[3][2].sort(b); // Countries hard
         g[4][0].sort(b); // US states easy
         g[4][1].sort(b); // US states hard
-        
-        _(g);
+        //_(g);
     }
     
     // Level presentation screen => Puzzle screen
