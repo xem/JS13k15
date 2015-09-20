@@ -53,7 +53,7 @@ v = 0;
 z = 0;
 
 // Current level / puzzle
-A = 1;
+A = 0;
 B = 0;
 
 // Capitols - country map
