@@ -23,6 +23,7 @@ z: time out
 A: current level (0-12)
 B: current puzzle (0-9)
 C: current puzzle list (array)
+D: capitols - countries map
 
 X, Y: click coordinates
 

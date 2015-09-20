@@ -53,8 +53,11 @@ v = 0;
 z = 0;
 
 // Current level / puzzle
-A = 0;
+A = 1;
 B = 0;
+
+// Capitols - country map
+D = { };
 
 // Click coords
 X = 0;
@@ -105,7 +108,21 @@ a.onload = function(){
         }
     }
     
-    //_(g);
+    for(i in g[1]){
+        for(j in g[1][i]){
+            if(g[3][i][j]){
+                D[g[1][i][j][0]] = g[3][i][j][0];
+            }
+        }
+    }
+    
+    for(i in g[2]){
+        for(j in g[2][i]){
+            if(g[4][i][j]){
+                D[g[2][i][j][0]] = g[4][i][j][0];
+            }
+        }
+    }
     
     // Hack for Algeria
     g[3][0][0][1] = [105,81,107,78,113,76,112,82,114,88,114,97,116,102,111,109,109,110,100,95,99,93,106,85,255,109,78];
@@ -479,6 +496,14 @@ w = function(){
                     b = m.sqrt(m.pow(x - X, 2) + m.pow(y - Y, 2));
                     p = b;
                     c = [x, y];
+                }
+            }
+            
+            if(o < 60){
+                
+                // Tell the country of the current capitol
+                if(A == 1 || A == 4 || A == 7 || A == 11 || A == 12){
+                    t(600, 630, C[B][0].toUpperCase() + " IS THE CAPITOL OF " + D[C[B][0]].toUpperCase(), 40, "#fff", "center");
                 }
             }
 
