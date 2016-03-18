@@ -133,6 +133,15 @@ a.onload = function(){
     // Hack for Bangui
     g[1][1][7][1] = [121,137];
     
+    // Hack for raleigh
+    g[2][0][17][1] = [226,182];
+    
+    // Hack to remove the last capitols
+    delete g[1][2][74];
+    delete g[1][2][75];
+    delete g[1][2][76];
+    delete g[1][2][77];
+    
     // Launch game
     w();
 }
