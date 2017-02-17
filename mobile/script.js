@@ -28,11 +28,11 @@ q = 30000;
 r = 0;
 
 // Stars position and size
-s = []; for(i = 0; i < 300; i++) s[i] = [m.random() * 1200, m.random() * 650, m.random() + .5];
+s = []; for(i = 0; i < 300; i++) s[i] = [m.random() * 1200*2/3, m.random() * 650*2/3, m.random() + .5];
 
 // Text
 t = function(x, y, text, size, color, align){
-    size = size || 50;
+    size = size || 50*2/3;
     color = color || "#fff";
     align = align || "center";
     h.textAlign = align;
@@ -57,7 +57,7 @@ A = 0;
 B = 0;
 
 // Capitols - country map
-D = { };
+D = {"Algiers":"Algeria","Buenos aires":"Argentina","Canberra":"Australia","Vienna":"Austria","Brussels":"Belgium","Brasilia":"Brazil","Sofia":"Bulgaria","Ottawa":"Canada","Santiago":"Chile","Beijing":"China","Zagreb":"Croatia","Havana":"Cuba","Prague":"Czech republic","Copenhagen":"Denmark","Quito":"Ecuador","Cairo":"Egypt","Tallinn":"Estonia","Helsinki":"Finland","Paris":"France","Berlin":"Germany","Athens":"Greece","Budapest":"Hungary","Reykjavik":"Iceland","New delhi":"India","Jakarta":"Indonesia","Tehran":"Iran","Baghdad":"Iraq","Dublin":"Ireland","Jerusalem":"Israel","Rome":"Italy","Kingston":"Jamaica","Tokyo":"Japan","Beirut":"Lebanon","Vilnius":"Lithuania","Luxembourg":"Luxembourg","Skopje":"Macedonia","Antananarivo":"Madagascar","Mexico city":"Mexico","Monaco":"Monaco","Rabat":"Morocco","Kathmandu":"Nepal","Amsterdam":"Netherlands","Wellington":"New zealand","Pyongyang":"North korea","Oslo":"Norway","Ramallah":"Palestine","Asunción":"Paraguay","Lima":"Peru","Manila":"Philippines","Warsaw":"Poland","Lisbon":"Portugal","Bucharest":"Romania","Doha":"Qatar","Moscow":"Russia","Riyadh":"Saudi arabia","Singapore":"Singapore","Bratislava":"Slovakia","Ljubljana":"Slovenia","Pretoria":"South africa","Seoul":"South korea","Madrid":"Spain","Stockholm":"Sweden","Bern":"Switzerland","Taipei":"Taiwan","Tunis":"Tunisia","Ankara":"Turkey","Kyiv":"Ukraine","Montevideo":"Uruguay","Abu dhabi":"United arab emirates","London":"United kingdom","Washington d.c.":"U.s.a.","Caracas":"Venezuela","Vatican city":"Vatican city","Hanoi":"Vietnam","Georgetown":"Guyana","Tripoli":"Libya","Kabul":"Afghanistan","Andorra la vella":"Andorra","Tirana":"Albania","Minsk":"Belarus","Sarajevo":"Bosnia and herzegovina ","Ouagadougou":"Burkina faso","Yaoundé":"Cameroon","Bangui":"Central african republic","Brazzaville":"Republic of the congo ","Kinshasa":"Democratic republic of the congo ","Yamoussoukro":"Cote d'ivoire","San jose":"Costa rica","Bogotá":"Colombia","La paz":"Bolivia","Praia":"Cabo verde","Nicosia":"Cyprus","Porto-novo":"Benin","Phnom penh":"Cambodia","Roseau":"Dominica","Santo domingo":"Dominican republic","Malabo":"Equatorial guinea","Guatemala city":"Guatemala","Port-au-prince":"Haiti","Tegucigalpa":"Honduras","Amman":"Jordan","Astana":"Kazakhstan","Pristina":"Kosovo","Kuwait city":"Kuwait","Vientiane":"Laos","Nairobi":"Kenya","Kuala lumpur":"Malaysia","Bamako":"Mali","Valletta":"Malta","Chisinau":"Moldova","Islamabad":"Pakistan","Panama city":"Panama","San marino":"San marino","Dakar":"Senegal","Belgrade":"Serbia","Victoria":"Seychelles","Mogadishu":"Somalia","Sri jayawardenepura kotte":"Sri lanka","Khartoum":"Sudan","Dodoma":"Tanzania","Bangkok":"Thailand","Sana'a":"Yemen","Harare":"Zimbabwe","Saint john's":"Antigua and barbuda","Yerevan":"Armenia","Baku":"Azerbaijan","Luanda":"Angola","Nassau":"Bahamas","Manama":"Bahrain","Dhaka":"Bangladesh","Bridgetown":"Barbados","Belmopan":"Belize","Thimphu":"Bhutan","Gaborone":"Botswana","Bandar seri begawan":"Brunei","Bujumbura":"Burundi","N'djamena":"Chad","Moroni":"Comoros","Djibouti":"Djibouti","San salvador":"El salvador","Asmara":"Eritrea","Addis ababa":"Ethiopia","Suva":"Fiji","Libreville":"Gabon","Banjul":"Gambia","Tbilisi":"Georgia","Accra":"Ghana","St. george's":"Grenada","Conakry":"Guinea","Bissau":"Guinea-bissau","South tarawa":"Kiribati","Bishkek":"Kyrgyzstan","Riga":"Latvia","Maseru":"Lesotho","Monrovia":"Liberia","Vaduz":"Liechtenstein","Lilongwe":"Malawi","Male":"Maldives","Majuro":"Marshall islands","Nouakchott":"Mauritania","Port louis":"Mauritius","Palikir":"Micronesia","Ulaanbaatar":"Mongolia","Podgorica":"Montenegro","Maputo":"Mozambique","Naypyidaw":"Myanmar","Windhoek":"Namibia","Yaren district":"Nauru","Managua":"Nicaragua","Niamey":"Niger","Abuja":"Nigeria","Muscat":"Oman","Ngerulmud":"Palau","Port moresby":"Papua new guinea","Kigali":"Rwanda","Basseterre":"Saint kitts and nevis","Castries":"Saint lucia","Kingstown":"Saint vincent and the grenadines","Apia":"Samoa","São tomé":"Sao tome and principe","Freetown":"Sierra leone","Honiara":"Solomon islands","Juba":"South sudan","Paramaribo":"Suriname","Mbabane":"Swaziland","Damascus":"Syria","Dushanbe":"Tajikistan","Dili":"Timor-leste","Lomé":"Togo","Nuku'alofa":"Tonga","Port of spain":"Trinidad and tobago","Ashgabat":"Turkmenistan","Funafuti":"Tuvalu","Kampala":"Uganda","Tashkent":"Uzbekistan","Port vila":"Vanuatu","Lusaka":"Zambia","Honolulu":"Hawaii","Juneau":"Alaska","Olympia":"Washington","Carson city":"Nevada","Santa fe":"New mexico","Albany":"New york","Tallahassee":"Florida","Springfield":"Illinois","Columbus":"Ohio","Providence":"Rhode island","Columbia":"South carolina","Austin":"Texas","Salt lake city":"Utah","Richmond":"Virginia","Charleston":"West virginia","Harrisburg":"Pennsylvania","Boston":"Massachusetts","Raleigh":"North carolina","Montgomery":"Alabama","Sacramento":"California","Denver":"Colorado","Atlanta":"Georgia","Lansing":"Michigan","Bismarck":"North dakota","Helena":"Montana","Lincoln":"Nebraska","Phoenix":"Arizona","Little rock":"Arkansas","Concord":"New hampshire","Trenton":"New jersey","Hartford":"Connecticut","Dover":"Delaware","Oklahoma city":"Oklahoma","Boise":"Idaho","Salem":"Oregon","Indianapolis":"Indiana","Des moines":"Iowa","Topeka":"Kansas","Pierre":"South dakota","Frankfort":"Kentucky","Nashville":"Tennessee","Baton rouge":"Louisiana","Augusta":"Maine","Annapolis":"Maryland","Montpelier":"Vermont","St. paul":"Minnesota","Jackson":"Mississippi","Madison":"Wisconsin","Jefferson city":"Missouri","Cheyenne":"Wyoming"};
 
 // Click coords
 X = 0;
@@ -67,23 +67,23 @@ Y = 0;
 w = function(){
     
     // Reset canvas
-    $.width ^= 0;
+    $.width = $.width;
     
     // Welcome screen
     if(n == 0){
         
         // Background
-        h.fillRect(0,0,1200,650);
+        h.fillRect(0,0,1200*2/3,650*2/3);
         
         // Stars
         u--;
-        u %= 1200;
+        u %= 1200*2/3;
 
         for(i = 0; i < 300; i++){
           h.fillStyle = "#fff";
           h.beginPath();
           h.arc(a = s[i][0] + u, b = s[i][1], c = s[i][2] + m.random() * .2, 0, 7);
-          h.arc(1200 + a, b, c, 0, 7);
+          h.arc(1200*2/3 + a, b, c, 0, 7);
           h.fill();
         }
 
@@ -95,7 +95,7 @@ w = function(){
         gradient.addColorStop(0,"#75D1FF");
         gradient.addColorStop(1,"#3591bF");
         h.fillStyle = gradient;
-        h.arc(470, 260, 140, 0, 7);
+        h.arc(470*2/3, 260*2/3, 140*2/3, 0, 7);
         h.fill();
         
         // Rotation
@@ -173,11 +173,11 @@ w = function(){
                     // Start country
                     if(k == 0){
                         h.beginPath();
-                        h.moveTo(x, y);
+                        h.moveTo(x*2/3, y*2/3);
                     }
                     
                     // Continue country
-                    h.lineTo(x, y);
+                    h.lineTo(x*2/3, y*2/3);
                 }
                 
                 h.closePath();
@@ -187,21 +187,21 @@ w = function(){
         }
 
         // Text
-        t(180, 375, "GE", 300);
-        t(890, 375, "Quiz", 300);
-        t(600, 570, "START", 80);
+        t(180*2/3, 375*2/3, "GE", 300*2/3);
+        t(890*2/3, 375*2/3, "Quiz", 300*2/3);
+        t(600*2/3, 570*2/3, "START", 80*2/3);
     }
     
     // Level presentation screen
     else if(n == 1){
         
         // Background
-        h.fillRect(0, 0, 1200, 650);
+        h.fillRect(0, 0, 1200*2/3, 650*2/3);
         
         // Text
-        t(600, 280, "Level " + (A + 1) + ":", 60);
+        t(600*2/3, 280*2/3, "Level " + (A + 1) + ":", 60*2/3);
         
-        t(600,  360, [
+        t(600*2/3,  360*2/3, [
         "Countries (easy)",
         "Capitols (easy)",
         "Famous places (easy)",
@@ -215,9 +215,9 @@ w = function(){
         "Famous places (hard)",
         "U.S. capitols (hard)",
         "Capitols (hard)"
-        ][A], 60);
+        ][A], 60*2/3);
         
-        t(600, 450, "START", 30);
+        t(600*2/3, 450*2/3, "START", 30*2/3);
     }
     
     // Puzzle screen
@@ -282,7 +282,7 @@ w = function(){
 
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
-                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
+                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38*2/3 : 98*2/3);
                     if(B == 4 || B == 9){
                         x = 1200 - x;
                         y = 715 - y;
@@ -294,11 +294,11 @@ w = function(){
                         h.strokeStyle = B < 5 ? "#83864F" : "#000";
                         h.fillStyle = B < 5 ? "#95D866" : "#000";
                         "#95D866";
-                        h.moveTo(x, y);
+                        h.moveTo(x*2/3, y*2/3);
                     }
                     
                     // Continue country
-                    h.lineTo(x, y);
+                    h.lineTo(x*2/3, y*2/3);
                 }
                 
                 h.closePath();
@@ -366,7 +366,7 @@ w = function(){
 
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
-                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
+                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38*2/3 : 98*2/3);
                     if(B == 4 || B == 9){
                         x = 1200 - x;
                         y = 715 - y;
@@ -384,11 +384,11 @@ w = function(){
                     // Start country
                     if(k == 0){
                         h.beginPath();
-                        h.moveTo(x, y);
+                        h.moveTo(x*2/3, y*2/3);
                     }
                     
                     // Continue country
-                    h.lineTo(x, y);
+                    h.lineTo(x*2/3, y*2/3);
 
                 }
                 
@@ -414,7 +414,7 @@ w = function(){
                     
                 h.fillStyle = "yellow";
                 h.beginPath();
-                h.arc(x, y, 10, 0, 7);
+                h.arc(x*2/3, y*2/3, 10*2/3, 0, 7);
                 h.fill();
                 
                 if(o == 60){
@@ -428,7 +428,7 @@ w = function(){
                 
                 // Tell the country of the current capitol
                 if(A == 1 || A == 4 || A == 7 || A == 11 || A == 12){
-                    t(600, 630, C[B][0].toUpperCase() + " IS THE CAPITOL OF " + D[C[B][0]].toUpperCase(), 40, "#fff", "center");
+                    t(600*2/3, 630*2/3, C[B][0].toUpperCase() + " IS THE CAPITOL OF " + D[C[B][0]].toUpperCase(), 40*2/3, "#fff", "center");
                 }
             }
 
@@ -440,21 +440,21 @@ w = function(){
                     h.fillStyle = "green";
                     h.strokeStyle = "green";
                     h.beginPath();
-                    h.moveTo(c[0], c[1]);
-                    h.lineTo(c[0]-1, c[1]);
-                    h.lineTo(c[0]-1, c[1]-40);
-                    h.lineTo(c[0], c[1]-40);
-                    h.lineTo(c[0]+20, c[1]-30);
-                    h.lineTo(c[0], c[1]-20);
+                    h.moveTo(c[0]*2/3, c[1]*2/3);
+                    h.lineTo((c[0]-1)*2/3, c[1]*2/3);
+                    h.lineTo((c[0]-1)*2/3, (c[1]-40)*2/3);
+                    h.lineTo(c[0]*2/3, (c[1]-40)*2/3);
+                    h.lineTo((c[0]+20)*2/3, (c[1]-30)*2/3);
+                    h.lineTo(c[0]*2/3, (c[1]-20)*2/3);
                     h.stroke();
                     h.fill();
                     
                     h.strokeStyle = "red";
                     h.lineWidth = "2";
-                    h.setLineDash([5, 5]);
+                    h.setLineDash([5*2/3, 5*2/3]);
                     h.beginPath();
-                    h.moveTo(X, Y);
-                    h.lineTo(c[0], c[1]);
+                    h.moveTo(X*2/3, Y*2/3);
+                    h.lineTo(c[0]*2/3, c[1]*2/3);
                     h.stroke();
                 }
                 
@@ -462,12 +462,12 @@ w = function(){
                 h.fillStyle = "blue";
                 h.strokeStyle = "blue";
                 h.beginPath();
-                h.moveTo(X,Y);
-                h.lineTo(X-1, Y);
-                h.lineTo(X-1, Y-40);
-                h.lineTo(X, Y-40);
-                h.lineTo(X+20, Y-30);
-                h.lineTo(X, Y-20);
+                h.moveTo(X*2/3,Y*2/3);
+                h.lineTo((X-1)*2/3, Y*2/3);
+                h.lineTo((X-1)*2/3, (Y-40)*2/3);
+                h.lineTo(X*2/3, (Y-40)*2/3);
+                h.lineTo((X+20)*2/3, (Y-30)*2/3);
+                h.lineTo(X*2/3, (Y-20)*2/3);
                 h.stroke();
                 h.fill();
             }
@@ -487,16 +487,16 @@ w = function(){
             // Text
             if(o < 45){
                 if(z){
-                    t(600, 350, "TIME OUT", 100, B < 5 ? "#000" : "#fff");
+                    t(600*2/3, 350*2/3, "TIME OUT", 100*2/3, B < 5 ? "#000" : "#fff");
                     if(A == 5 || A == 7 || A == 9 || A == 11){
-                        t(600, 400, "5,000km penalty", 50, B < 5 ? "#000" : "#fff");
+                        t(600*2/3, 400*2/3, "5,000km penalty", 50*2/3, B < 5 ? "#000" : "#fff");
                     }
                     else {
-                        t(600, 400, "10,000km penalty", 50, B < 5 ? "#000" : "#fff");
+                        t(600*2/3, 400*2/3, "10,000km penalty", 50*2/3, B < 5 ? "#000" : "#fff");
                     }
                 }
                 else{
-                    t(600, 350, p > 5 ? e + "km away" : "PERFECT", 100, B < 5 ? "#000" : "#fff")
+                    t(600*2/3, 350*2/3, p > 5 ? e + "km away" : "PERFECT", 100*2/3, B < 5 ? "#000" : "#fff")
                 }
             }
             
@@ -519,18 +519,18 @@ w = function(){
         // UI
         h.beginPath();
         h.fillStyle = "#000";
-        h.rect(0, 0, 1200, 66);
+        h.rect(0, 0, 1200*2/3, 66*2/3);
         h.fill();
         h.closePath();
         h.beginPath();
         h.fillStyle = "#fff";
         if(n == 2){
-            h.rect(0, 60, o * 4, 5);
+            h.rect(0, 60*2/3, o * 4*2/3, 5*2/3);
             h.fill();
         }
         h.closePath();
         
-        t(10, 45,
+        t(10*2/3, 45*2/3,
         [
             "Country",
             "Capitol",
@@ -549,9 +549,9 @@ w = function(){
         
         + ": " + 
         
-        C[B][0].toUpperCase(), 40, 0, "left");
+        C[B][0].toUpperCase(), 40*2/3, 0, "left");
         
-        t(1190, 45, q + "km remaining", 40, 0, "right");
+        t(1190*2/3, 45*2/3, q + "km remaining", 40*2/3, 0, "right");
     }
     
     // Black screen between puzzles
@@ -563,7 +563,7 @@ w = function(){
         }
         
         // Prepare next screen
-        h.fillRect(0,0,1200,650);
+        h.fillRect(0,0,1200*2/3,650*2/3);
         if(o == 0){
             
             // Reset click
@@ -627,14 +627,14 @@ w = function(){
     // Game over
     if(n == 5){
         
-        h.fillRect(0,0,1200,650);
+        h.fillRect(0,0,1200*2/3,650*2/3);
         
         // Text
-        t(600, 280, A == 13 ? "YOU WON!" : "GAME OVER!");
+        t(600*2/3, 280*2/3, A == 13 ? "YOU WON!" : "GAME OVER!");
         
-        t(600,  360, "Level " + (A + 1) + " ~ total score: " + r + "km", 40);
+        t(600*2/3,  360*2/3, "Level " + (A + 1) + " ~ total score: " + r + "km", 40*2/3);
         
-        t(600, 450, "REPLAY?", 30);
+        t(600*2/3, 450*2/3, "REPLAY?", 30*2/3);
         
         Z.style.display = "block";
         
