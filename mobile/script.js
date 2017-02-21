@@ -35,6 +35,8 @@ t = function(x, y, text, size, color, align){
     size = size || 50*2/3;
     color = color || "#fff";
     align = align || "center";
+    h.setLineDash([0,0]);
+    h.setLineDash([]);
     h.textAlign = align;
     h.fillStyle = color;
     h.font = size + "px Impact, impactreg, Charcoal";
@@ -190,6 +192,8 @@ w = function(){
         t(180*2/3, 375*2/3, "GE", 300*2/3);
         t(890*2/3, 375*2/3, "Quiz", 300*2/3);
         t(600*2/3, 570*2/3, "START", 80*2/3);
+        t(1045*2/3, 420*2/3, "Maxime EUZIERE", 30*2/3);
+        t(1055*2/3, 450*2/3, "Anders KAARE", 30*2/3);
     }
     
     // Level presentation screen
@@ -282,10 +286,10 @@ w = function(){
 
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
-                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38*2/3 : 98*2/3);
+                    y = a[k + 1] * (f == 4 ? 2.5 : 2.35) + (f == 4 ? 38*2/3 : 98*2/3);
                     if(B == 4 || B == 9){
                         x = 1200 - x;
-                        y = 715 - y;
+                        y = 710 - y;
                     }
                     
                     // Start country
@@ -366,18 +370,18 @@ w = function(){
 
                     // Current point
                     x = a[k] * (f == 4 ? 4.8 : 4.9);
-                    y = a[k + 1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38*2/3 : 98*2/3);
+                    y = a[k + 1] * (f == 4 ? 2.5 : 2.35) + (f == 4 ? 38*2/3 : 98*2/3);
                     if(B == 4 || B == 9){
                         x = 1200 - x;
-                        y = 715 - y;
+                        y = 710 - y;
                     }
                     
                     // Test if it's the closest point to where we clicked
                     if(o == 60){
-                        b = m.sqrt(m.pow(x - X, 2) + m.pow(y - Y, 2));
+                        b = m.sqrt(m.pow(x*2/3 - X, 2) + m.pow(y*2/3 - Y, 2));
                         if(b < p){
                             p = b;
-                            c = [x, y];
+                            c = [x*2/3, y*2/3];
                         }
                     }
                     
@@ -406,10 +410,10 @@ w = function(){
             // Place / capitol
             else {
                 x = a[0] * (f == 4 ? 4.8 : 4.9);
-                y = a[1] * (f == 4 ? 2.46 : 2.35) + (f == 4 ? 38 : 65);
+                y = a[1] * (f == 4 ? 2.5 : 2.35) + (f == 4 ? 38 : 65);
                 if(B == 4 || B == 9){
                     x = 1200 - x;
-                    y = 715 - y;
+                    y = 710 - y;
                 }
                     
                 h.fillStyle = "yellow";
@@ -418,9 +422,9 @@ w = function(){
                 h.fill();
                 
                 if(o == 60){
-                    b = m.sqrt(m.pow(x - X, 2) + m.pow(y - Y, 2));
+                    b = m.sqrt(m.pow(x*2/3 - X, 2) + m.pow(y*2/3 - Y, 2));
                     p = b;
-                    c = [x, y];
+                    c = [x*2/3, y*2/3];
                 }
             }
             
@@ -440,34 +444,37 @@ w = function(){
                     h.fillStyle = "green";
                     h.strokeStyle = "green";
                     h.beginPath();
-                    h.moveTo(c[0]*2/3, c[1]*2/3);
-                    h.lineTo((c[0]-1)*2/3, c[1]*2/3);
-                    h.lineTo((c[0]-1)*2/3, (c[1]-40)*2/3);
-                    h.lineTo(c[0]*2/3, (c[1]-40)*2/3);
-                    h.lineTo((c[0]+20)*2/3, (c[1]-30)*2/3);
-                    h.lineTo(c[0]*2/3, (c[1]-20)*2/3);
+                    h.moveTo(c[0], c[1]);
+                    h.lineTo((c[0]-1), c[1]);
+                    h.lineTo((c[0]-1), (c[1]-40));
+                    h.lineTo(c[0], (c[1]-40));
+                    h.lineTo((c[0]+20), (c[1]-30));
+                    h.lineTo(c[0], (c[1]-20));
                     h.stroke();
                     h.fill();
                     
+                    h.save();
                     h.strokeStyle = "red";
                     h.lineWidth = "2";
                     h.setLineDash([5*2/3, 5*2/3]);
                     h.beginPath();
-                    h.moveTo(X*2/3, Y*2/3);
-                    h.lineTo(c[0]*2/3, c[1]*2/3);
+                    h.moveTo(X, Y);
+                    h.lineTo(c[0], c[1]);
                     h.stroke();
+                    h.restore();
                 }
                 
                 h.setLineDash([0,0]);
+                h.setLineDash([]);
                 h.fillStyle = "blue";
                 h.strokeStyle = "blue";
                 h.beginPath();
-                h.moveTo(X*2/3,Y*2/3);
-                h.lineTo((X-1)*2/3, Y*2/3);
-                h.lineTo((X-1)*2/3, (Y-40)*2/3);
-                h.lineTo(X*2/3, (Y-40)*2/3);
-                h.lineTo((X+20)*2/3, (Y-30)*2/3);
-                h.lineTo(X*2/3, (Y-20)*2/3);
+                h.moveTo(X,Y);
+                h.lineTo((X-1), Y);
+                h.lineTo((X-1), (Y-40));
+                h.lineTo(X, (Y-40));
+                h.lineTo((X+20), (Y-30));
+                h.lineTo(X, (Y-20));
                 h.stroke();
                 h.fill();
             }
@@ -648,7 +655,7 @@ w = function(){
 
 
 // Launch game
-w();
+onload = w();
 
 
 /** Handle Clicks **/
@@ -684,8 +691,8 @@ $.onclick = function(a){
     
     // Puzzle screen => Puzzle feedback
     else if(n == 2){
-        X = a.pageX;
-        Y = a.pageY;
+        X = a.pageX / (innerWidth / 800);
+        Y = a.pageY / (innerWidth / 800);
         n = 3;
         o = 60;
     }
