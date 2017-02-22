@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset=utf-8>
-<meta content='user-scalable=0' name='viewport'>
+<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
 <body bgcolor=0 style=margin:0>
 <title>GeoQuiz</title>
 <canvas id=$ width=800 height=433 style="cursor:pointer;background:#75D1FF;background:radial-gradient(#75D1FF 50%,#3591bF)"></canvas>
@@ -30,7 +30,7 @@ html, body {
   overflow: hidden;
 }
 
-* {
+canvas {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;
@@ -38,7 +38,8 @@ html, body {
   -ms-user-select: none;
   user-select: none;
   outline: none;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent
 }
 </style>
 <script>
