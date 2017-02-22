@@ -1,5 +1,6 @@
 <!doctype html>
 <meta charset=utf-8>
+<meta content='user-scalable=0' name='viewport'>
 <body bgcolor=0 style=margin:0>
 <title>GeoQuiz</title>
 <canvas id=$ width=800 height=433 style="cursor:pointer;background:#75D1FF;background:radial-gradient(#75D1FF 50%,#3591bF)"></canvas>
@@ -28,4 +29,20 @@ button {
 html, body {
   overflow: hidden;
 }
+
+* {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* mobile webkit */
+}
 </style>
+<script>
+ontouchstart = ongesturestart = onmousedown = function(e){
+  e.preventDefault();
+}
+</script>
