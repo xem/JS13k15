@@ -4,6 +4,7 @@
 <body bgcolor=0 style=margin:0>
 <title>GeoQuiz</title>
 <canvas id=$ width=800 height=433 style="cursor:pointer;background:#75D1FF;background:radial-gradient(#75D1FF 50%,#3591bF)"></canvas>
+<audio id=music src="geoquiz.mp3" autoplay loop>
 <button onclick='window.open("http://twitter.com/home?status=I played GeoQuiz by @MaximeEuziere and @sqaxomonophonen. My score: " + (A + 1) + "levels, " + r + "km. Play here: http://xem.github.io/JS13k15/mobile")' id=Z>Tweet your score!</button><script src=script.js></script>
 <style>
 @font-face {
@@ -14,6 +15,12 @@
 
 canvas {
   width: 100vw;
+}
+
+audio {
+  width: 0;
+  height: 0;
+  opacity: 0;
 }
 
 button {
